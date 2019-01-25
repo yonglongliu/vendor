@@ -1,0 +1,4 @@
+type teetz_device, dev_type;
+#add for chipone fingerprint
+type fpsensor_fp_device, dev_type;
+

@@ -1,0 +1,19 @@
+ifeq ($(BOARD_TEE_CONFIG), watchdata)
+
+LOCAL_PATH:= $(call my-dir)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := libteeproduction
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MULTILIB := both
+
+LOCAL_MODULE_STEM_32 := $(LOCAL_MODULE).so
+LOCAL_MODULE_STEM_64 := $(LOCAL_MODULE).so
+LOCAL_SRC_FILES_32 := lib/$(LOCAL_MODULE).so
+LOCAL_SRC_FILES_64 := lib64/$(LOCAL_MODULE).so
+
+include $(BUILD_PREBUILT)
+endif
+

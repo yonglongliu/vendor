@@ -1,0 +1,14 @@
+#
+# Spreadtrum FM drivers
+#
+menuconfig SPRD_WCN_FM
+	tristate "FM Support"
+	default m
+	---help---
+	  Say Y to enable built-in FM controller in the
+	  Spreadtrum FM based System-on-Chip devices.
+
+config FM_KAIOS
+	bool "KAIOS"
+	depends on SPRD_WCN_FM
+	default n

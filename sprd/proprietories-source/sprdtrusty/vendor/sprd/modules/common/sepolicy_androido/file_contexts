@@ -1,0 +1,9 @@
+# for keystore
+/dev/trusty-ipc-dev0			u:object_r:teetz_device:s0
+/dev/block/mmcblk0rpmb			u:object_r:mmcblk_device:s0
+/dev/block/mmcblk0p27			u:object_r:mmcblk_device:s0
+/system/bin/sprdstorageproxyd	u:object_r:tee_exec:s0
+/data/ss(/.*)?				u:object_r:ss_file:s0
+# for rpmb server
+/dev/socket/rpmbserver u:object_r:rpmb_socket:s0
+/system/bin/rpmbserver u:object_r:tee_exec:s0

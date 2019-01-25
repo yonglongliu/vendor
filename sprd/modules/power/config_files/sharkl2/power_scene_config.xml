@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Copyright (C) 2012 The Androscene Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ -->
+
+<power>
+    <mode name="normal">
+        <scene name="interaction_touch" >
+            <set path="subsys" file="cpufreq" value="conf_4" />
+        </scene>
+        <scene name="interaction_launch" >
+            <set path="/sys/devices/system/cpu/cpuhotplug" file="cluster0_core_min_limit" value="4" />
+            <set path="subsys" file="cpufreq" value="conf_4" />
+        </scene>
+        <scene name="interaction_fling" >
+            <set path="subsys" file="cpufreq" value="conf_4" />
+        </scene>
+        <scene name="interaction_other" >
+            <set path="subsys" file="cpufreq" value="conf_4" />
+        </scene>
+        <scene name="ddr" >
+            <set path="/sys/class/devfreq/scene-frequency/sprd_governor" file="scene_boost_dfs" value="max" />
+        </scene>
+        <scene name="video_sync" >
+            <set path="/sys/devices/system/cpu/cpuhotplug" file="cluster0_core_min_limit" value="2" />
+        </scene>
+        <scene name="screenof_mp3_playback" >
+            <set path="subsys" file="cpufreq" value="conf_2" />
+        </scene>
+        <scene name="video_1080p" >
+            <set path="/sys/devices/system/cpu/cpuhotplug" file="cluster0_core_min_limit" value="3" />
+        </scene>
+        <scene name="performance_gts" >
+            <set path="/sys/devices/system/cpu/cpuhotplug" file="cluster0_core_min_limit" value="4" />
+            <set path="subsys" file="cpufreq" value="conf_4" />
+        </scene>
+        <scene name="performance_cts" >
+            <set path="/sys/devices/system/cpu/cpuhotplug" file="cluster0_core_min_limit" value="4" />
+            <set path="subsys" file="cpufreq" value="conf_4" />
+        </scene>
+        <scene name="screen_off" >
+            <set path="subsys" file="cpufreq" value="conf_1" />
+        </scene>
+        <scene name="radio_call" >
+            <set path="/sys/devices/system/cpu/cpuhotplug" file="cluster0_core_min_limit" value="4" />
+            <set path="subsys" file="cpufreq" value="conf_4" />
+        </scene>
+        <scene name="launch" >
+            <set path="/sys/devices/system/cpu/cpuhotplug" file="cluster0_core_min_limit" value="4" />
+            <set path="subsys" file="cpufreq" value="conf_4" />
+            <set path="/sys/class/devfreq/scene-frequency/sprd_governor" file="scene_boost_dfs" value="max" />
+        </scene>
+    </mode>
+    <mode name="low_power" />
+    <mode name="power_save" />
+    <mode name="ultra_power_save" />
+    <mode name="performance" />
+</power>

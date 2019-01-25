@@ -1,0 +1,3 @@
+#add for chipone fingerprint
+type fpsensor_fp_device, dev_type;
+

@@ -1,0 +1,243 @@
+LIBRARY tfa.dll
+EXPORTS
+	tfaContCreateContainer	@1
+	tfaContBin2Hdr	@3
+	tfa98xxCalcBiquadCoeff	@4
+	drc_generic_to_specific	@5
+	tfa98xxSaveFile @6
+	tfa98xx_cnt_loadfile
+	tfaContIni2Container
+	tfaContShowContainer
+	tfaVersions
+	tfa98xxCalibration
+	tfaCalibrationVerbose
+	tfa98xxCalibration_rdc
+    tfa98xxCalibration_alt
+	tfaLiveDataVerbose
+	tfa98xx_get_live_data_items
+	nxpTfa98xxOpenLiveDataSlaves
+	tfa_cont_write_verbose
+	tfaDiagnosticVerbose
+	tfa98xx_cnt_split
+	tfa98xxCalResetMTPEX
+	tfa98xxI2cSlave
+	tfa98xxPrintSpeakerModel
+	tfa98xxSaveFileWrapper
+	tfa98xxSetCalibrationImpedance
+	tfa98xxDiag
+	tfa98xxDiagGetLastErrorString
+	tfa98xxDiagGetLatest
+	tfa98xxDiagGroup
+	tfa98xxDiagGroupname
+	tfa98xxDiagPrintFeatures
+	tfa98xxDiagRegisterDump
+	tfa98xxDiagRegisterDumpInt
+	tfa98xxDiagRegisterDumpTdm
+	tfa98xxI2cSetSlave
+	tfaContGetHdr
+	tfa_cnt_get_spk_hdr
+	tfaGetDspFWAPIVersion
+	tfa98xx_dsp_get_calibration_impedance
+	tfa98xx_get_live_data
+	Tfa98xx_GetErrorString
+	tfa_cont_dev_type
+	Tfa98xx_ReadRegister16
+	Tfa98xx_WriteRegister16
+	Tfa98xx_Open
+	Tfa98xx_Close
+	Tfa98xx_DspWriteMem
+	tfaRunBitfieldDump
+	tfa_rw_bitfield
+	tfaReadFile
+	tfaRun_Sleepus
+	tfa98xxCalCheckMTPEX
+	tfaContWriteFileByname
+	tfaContCrcCheck
+	tfa_cnt_dump
+	tfa_cnt_hexdump
+	tfa98xxPrintMBDrcModel
+	tfa_probe_all
+	tfa_soft_probe_all
+	tfa98xxCompute_DRC_time_domain
+	tfa98xxGetWaveformValues
+	tfa98xxPrintSpeakerTable
+	tfa98xx_set_live_data
+	getProfileInfo
+	bitCount_subbands
+	tfa98xxGetAudioSource
+	free_gCont
+	tfa_print_speakermodel_from_speakerfile
+	tfa98xx_set_mute
+tfa98xx_dsp_system_stable
+tfa98xx_supported_dai
+tfa98xx_compare_features
+tfa98xx_dsp_read_mem
+tfa98xx_dsp_write_mem_word
+tfa98xx_write_data
+tfa98xx_read_register16
+tfa98xx_write_register16
+tfa98xx_convert_data2bytes
+tfa98xx_get_device_revision
+tfa98xx_dsp_write_tables
+tfa98xx_convert_bytes2data
+tfa_dsp_msg
+tfa98xx_select_mode
+tfa98xx_open
+tfa98xx_close
+tfa98xx_dsp_write_config
+Tfa98xx_DspPatch
+tfa_dsp_patch
+tfa98xx_dsp_reset
+tfa98xx_supported_speakers
+tfa98xx_dsp_get_memory
+tfa98xx_dsp_set_memory
+tfa98xx_powerdown
+tfa_cnt_verbose
+tfa98xx_cnt_max_device
+tfa_start
+tfa_stop
+tfa98xx_reset
+tfacont_get_max_vstep
+tfaContWriteFile
+tfaContDeviceName
+tfaContProfileName
+tfaContMaxProfile
+tfaContGetCalProfile
+tfaContGetSlave
+tfa_verbose
+tfaRunStartup
+tfaRunWriteBitfield
+tfaRunSpeakerBoost
+tfaRunSpeakerStartup
+tfaRunSpeakerCalibration
+tfaRunReadBitfield
+tfaRunColdStartup
+tfaRunStartDSP
+tfaRunColdboot
+tfaContWritePatch
+tfaContShowHeader
+tfaContProfile
+tfaContNextProfile
+tfaContNextLiveData
+tfaContGetString
+tfaContGetDevProfList
+tfaContGetDevList
+tfaContGet1stProfList
+tfaContGet1stLiveDataList
+tfaContDevice
+tfaContCrcCheckContainer
+tfa98xx_set_volume_level
+tfa98xx_max_devices
+tfa98xx_init
+tfa98xx_dsp_write_preset
+tfa98xx_dev_family
+tfa98xx_dev_revision
+tfa98xx_cnt_slave2idx
+tfa98xx_read_data
+tfacont_getfiledata
+tfaContGetDevLiveDataList
+tfa_dsp_cmd_id_write
+tfa_dsp_cmd_id_write_read
+tfa_dsp_cmd_id_coefs
+tfa_dsp_cmd_id_MBDrc_dynamics
+tfa_load_cnt
+tfa_deinit
+tfa_reset
+tfa98xx_get_cnt
+tfaContClose
+tfaContOpen
+tfa98xx_set_spkr_select
+tfa_get_bf
+tfa_set_bf
+tfa_set_bf_volatile
+tfa_write_reg
+tfaRunWaitCalibration
+tfaContDsName
+tfaContBfName
+tfaContBitName
+tfaContBfEnum
+tfaContBfEnumAny
+crc32_le
+tfa_cnt_get_devid
+tfa98xx_dev2family
+tfa98xx_get_device_dai
+tfa98xx_cnt_slave2revid
+tfa98xx_key2
+tfa98xx_set_mtp
+tfaContWriteFilesProf
+tfaContWriteFiles
+tfa98xx_dsp_write_speaker_parameters
+tfa_cnt_get_app_name
+tfa_probe
+tfa_soft_probe
+tfaContGetCommandString
+tfa_dsp_get_calibration_impedance
+tfa_get_calibration_info
+tfa98xx_dsp_get_state_info
+tfa98xx_dsp_support_drc
+tfa98xx_supported_saam
+tfa_set_swprof
+tfa_get_swprof
+tfa98xx_cf_enabled
+tfa_dsp_msg_id
+tfa_dsp_msg_read
+tfa_reset
+tfa_dsp_msg_write
+Tfa98xx_SetMute
+Tfa98xx_DspBiquad_SetCoeff
+Tfa98xx_DspReadMem
+Tfa98xx_SetSampleRate
+Tfa98xx_SelectChannel
+Tfa98xx_SetVolume
+Tfa98xx_DspGetParam
+Tfa98xx_DspSupportDrc
+tfa98xx_dsp_write_drc
+tfa98xx_get_error_string
+individual_calibration_results
+tfaContWriteProfile
+tfa_mock_probe
+tfaContWriteItem
+tfa_set_filters
+dsp_msg
+reg_write
+reg_read
+mem_write
+mem_read
+tfa_dsp_msg_register
+tfa_dsp_reg_register
+tfa_dsp_mem_register
+tfa_get_verbose
+tfa_is_cold
+tfaSetCalibrationValues
+msleep_interruptible
+tfa98xx_set_boost_trip_level
+tfa_ext_register
+NXP_I2C_WriteRead
+NXP_I2C_BufferSize
+NXP_I2C_Trace
+NXP_UDP_Trace
+NXP_I2C_Trace_file
+NXP_I2C_Version
+NXP_I2C_GetPin
+NXP_I2C_SetPin
+NXP_I2C_Close
+NXP_I2C_Open
+NXP_I2C_StartPlayback
+NXP_I2C_StopPlayback
+NXP_I2C_Error_string
+NXP_I2C_Scribo_Name
+NXP_I2C_Interface_Type
+lxScriboVerbose
+lxDummyVerbose
+lxScriboNrHidDevices
+lxScriboWaitOnPinEvent
+lxScriboGetName
+NXP_TFADSP_Execute
+NXP_UDP_Trace
+tfaContWriteRegsProf
+tfa_ext_set_ext_dsp
+tfa_tib_dsp_msgblob
+multi_message_extract
+tfa_cf_enabled
+start_timer
+extern_msleep_interruptible

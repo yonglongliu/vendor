@@ -1,0 +1,15 @@
+#add for fpsensor fingerprint
+allow hal_fingerprint_default fpsensor_fp_device:chr_file {open read write ioctl};
+allow hal_fingerprint_default fuse:dir {search};
+allow hal_fingerprint_default mnt_user_file:dir {search};
+allow hal_fingerprint_default mnt_user_file:lnk_file {read};
+allow hal_fingerprint_default storage_file:lnk_file {read};
+allow hal_fingerprint_default system_data_file:dir {write read add_name remove_name};
+#allow hal_fingerprint_default system_data_file:sock_file {create setattr unlink};
+allow hal_fingerprint_default teetz_device:chr_file {open ioctl read write};
+#add for fpsensor test socket connection
+allow untrusted_app fpsensor_fp_device:chr_file {open write read ioctl};
+allow hal_fingerprint_default fpsensor_test_file:sock_file {create setattr unlink};
+allow hal_fingerprint_default fpsensor_test_file:dir {write read add_name remove_name search};
+#add for gesture
+allow fingerprintd uhid_device:chr_file {open ioctl write read};

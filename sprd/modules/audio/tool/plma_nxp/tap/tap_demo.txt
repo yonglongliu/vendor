@@ -1,0 +1,61 @@
+tap demo GUI + dummy input driver
+
+
+
+folders/files:
+	audio-ui: audio-ui main pygtk python script of GUI 
+				line 133 has the name of the input device : "wimtaptest"
+			  bash scripts called by GUI 
+	dummy_button_driver: "wimtaptest"
+			  simple Linux input device driver that outputs BTN_1..4 keys every 1 second
+				
+	tools:    Android tools with small adapations to run on Linux pc.
+	
+	uinput_tap_simulation.c: user mode implementation to control uinput to send keys
+	
+	
+running:
+	load module: sudo insmod dummy_button_driver/tfatap.ko
+	find input device: 	sudo tools/getevent -i |more #look for wimtaptest
+	show input device:  sudo tools/getevent /dev/input/event13 -i 
+			add device 1: /dev/input/event13
+			  bus:      0018
+			  vendor    0000
+			  product   0000
+			  version   0000
+			  name:     "wimtaptest"
+			  location: "tfatap-keys/input0"
+			  id:       ""
+			  version:  1.0.1
+			  events:
+			    KEY (0001): 0100  0101  0102  0103  0104 
+			  input props:
+			    <none>
+	show reported keys: sudo tools/getevent /dev/input/event13
+			0001 0104 00000001 >>every second
+			0001 0104 00000000
+			0000 0000 00000000
+			0001 0100 00000001
+			0001 0100 00000000
+			0000 0000 00000000
+			0001 0101 00000001
+			0001 0101 00000000
+			0000 0000 00000000
+			0001 0102 00000001
+			0001 0102 00000000
+			0000 0000 00000000
+			0001 0103 00000001
+			0001 0103 00000000
+			0000 0000 00000000
+			0001 0104 00000001
+			0001 0104 00000000
+			0000 0000 00000000
+		
+	running GUI: 	 cd audio-ui
+					 sudo ./audio-ui
+					 push "Enable tap detection" button
+					 detections 1-4 should turn green
+					 ?application crashes after some time
+					  
+					  
+		

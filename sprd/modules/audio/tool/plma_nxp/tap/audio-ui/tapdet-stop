@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# stop background record
+sudo pkill arecord
+
+amixer cset name='devkit Profile' swval
+
+# Add minimal sleep time to allow cleanup of alsa kernel threads.
+# Without this, following type of errors can be reported:
+#  arecord: pcm_read:2031: read error: No such device
+# also various kernel crashes linked to locks (dapm widgets related)
+#sleep 1
+
+

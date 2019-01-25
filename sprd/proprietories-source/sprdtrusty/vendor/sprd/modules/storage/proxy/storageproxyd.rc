@@ -1,0 +1,16 @@
+# property is ok means real data partition mounted
+on property:vold.realdata.mount=ok
+    mkdir /data/ss 0770 system system
+    start rpmbproxyd
+    start storagensproxyd
+
+#service name must be < 16
+service rpmbproxyd /system/bin/sprdstorageproxyd -f rpmb -d /dev/trusty-ipc-dev0 -p /data/ss -r /dev/block/mmcblk0rpmb
+    class core
+    group system
+    seclabel u:r:tee:s0
+
+
+service storagensproxyd /system/bin/sprdstorageproxyd -f ns -d /dev/trusty-ipc-dev0 -p /data/ss -r /dev/block/mmcblk0rpmb
+    group system
+    seclabel u:r:tee:s0

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Function Implementation">
+      <UniqueIdentifier>{567a5e1e-0d5a-4ff2-975f-390acba62c88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="USB">
+      <UniqueIdentifier>{74d432d3-a2bb-46e8-ab61-33e465482ebd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tusb_cls_hid.h">
+      <Filter>USB</Filter>
+    </ClInclude>
+    <ClInclude Include="tusb_spec.h">
+      <Filter>USB</Filter>
+    </ClInclude>
+    <ClInclude Include="libbase.h" />
+    <ClInclude Include="tbase_al.h" />
+    <ClInclude Include="tbase_dlist.h" />
+    <ClInclude Include="tbase_pack1.h" />
+    <ClInclude Include="tbase_packrestore.h" />
+    <ClInclude Include="tbase_platform.h" />
+    <ClInclude Include="tbase_swap.h" />
+    <ClInclude Include="tbase_trace.h" />
+    <ClInclude Include="tbase_types.h" />
+    <ClInclude Include="tbase_unaligned.h" />
+    <ClInclude Include="tbase_utils.h" />
+    <ClInclude Include="tstatus_codes.h" />
+    <ClInclude Include="tbase_al_impl_generic.h" />
+    <ClInclude Include="tusb_spec_30.h">
+      <Filter>USB</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tbase_func_TbAssertionFailed.inc">
+      <Filter>Function Implementation</Filter>
+    </None>
+    <None Include="tbase_func_TbTrace.inc">
+      <Filter>Function Implementation</Filter>
+    </None>
+    <None Include="tbase_func_TbTraceVPrintf.inc">
+      <Filter>Function Implementation</Filter>
+    </None>
+    <None Include="tbase_func_TStatusString.inc">
+      <Filter>Function Implementation</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,2 @@
+#add for fpsensor fingerprint test
+type fpsensor_service,      service_manager_type;

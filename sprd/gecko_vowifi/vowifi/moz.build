@@ -1,0 +1,116 @@
+# -*- Mode: python; c-basic-offset: 4; indent-tabs-mode: nil; tab-width: 40 -*-
+# vim: set filetype=python:
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
+XPIDL_SOURCES += [
+    'nsIImsConnManInterfaceLayer.idl',
+    'nsIVowifiInterfaceLayer.idl'
+]
+
+XPIDL_MODULE = 'dom_vowifi'
+
+UNIFIED_SOURCES += [
+    'adapter/VowifiAdapterControl.cpp',
+    'adapter/VowifiCallManager.cpp',
+    'adapter/VowifiInterfaceLayer.cpp',
+    'adapter/VowifiRegisterManager.cpp',
+    'adapter/VowifiSecurityManager.cpp',
+    'adapter/VowifiSmsManager.cpp',
+    'json/json_reader.cpp',
+    'json/json_value.cpp',
+    'json/json_writer.cpp',
+    'socket/VowifiArguments.cpp',
+    'socket/VowifiConnClient.cpp',
+    'socket/VowifiConnServer.cpp',
+    'socket/VowifiLocalConn.cpp',
+    'socket/VowifiMsgHandler.cpp',
+]
+
+EXPORTS.mozilla.dom.vowifiadapter += [
+    'adapter/VowifiAdapterCommon.h',
+    'adapter/VowifiAdapterControl.h',
+    'adapter/VowifiCallManager.h',
+    'adapter/VowifiInterfaceLayer.h',
+    'adapter/VowifiRegisterManager.h',
+    'adapter/VowifiSecurityManager.h',
+    'adapter/VowifiSmsManager.h',
+    'json/assertions.h',
+    'json/autolink.h',
+    'json/config.h',
+    'json/features.h',
+    'json/forwards.h',
+    'json/json.h',
+    'json/json_batchallocator.h',
+    'json/json_tool.h', 
+    'json/reader.h',
+    'json/value.h',
+    'json/writer.h',
+    'socket/VowifiArguments.h',
+    'socket/VowifiConnClient.h',
+    'socket/VowifiConnServer.h',
+    'socket/VowifiLocalConn.h',
+    'socket/VowifiMsgHandler.h',
+    'socket/VowifiUtilLog.h',
+]
+
+UNIFIED_SOURCES += [
+    'imsconnman/HplmnUtils.cpp',
+    'imsconnman/ImsConnManController.cpp',
+    'imsconnman/ImsConnManDefaultPolicy.cpp',
+    'imsconnman/ImsConnManIccListener.cpp',
+    'imsconnman/ImsConnManMonitor.cpp',
+    'imsconnman/ImsConnManPolicy.cpp',
+    'imsconnman/ImsConnManReliancePolicy.cpp',
+    'imsconnman/ImsConnManService.cpp',
+    'imsconnman/ImsConnManShutdownListener.cpp',
+    'imsconnman/ImsConnManStateInfo.cpp',
+    'imsconnman/ImsConnManTelephonyListener.cpp',
+    'imsconnman/ImsConnManUtils.cpp',
+    'imsconnman/ImsRegisterServiceListener.cpp',
+    'imsconnman/ImsServiceCallbackListener.cpp',
+    'imsconnman/NetworkUtils.cpp',
+    'imsconnman/TextUtils.cpp',
+    'portinglayer/ImsConnManInterfaceLayer.cpp',
+    'portinglayer/Message.cpp',
+    'portinglayer/MessageAsyncTask.cpp',
+    'portinglayer/MessageHandler.cpp',
+    'portinglayer/PortingInterface.cpp',
+]
+
+EXPORTS.mozilla.dom.vowifi += [
+    'imsconnman/Constants.h',
+    'imsconnman/HplmnUtils.h',
+    'imsconnman/ImsConnManController.h',
+    'imsconnman/ImsConnManDefaultPolicy.h',
+    'imsconnman/ImsConnManIccListener.h',
+    'imsconnman/ImsConnManMonitor.h',
+    'imsconnman/ImsConnManPolicy.h',
+    'imsconnman/ImsConnManReliancePolicy.h',
+    'imsconnman/ImsConnManService.h',
+    'imsconnman/ImsConnManShutdownListener.h',
+    'imsconnman/ImsConnManStateInfo.h',
+    'imsconnman/ImsConnManTelephonyListener.h',
+    'imsconnman/ImsConnManUtils.h',
+    'imsconnman/ImsRegisterServiceListener.h',
+    'imsconnman/ImsServiceCallbackListener.h',
+    'imsconnman/NetworkUtils.h',
+    'imsconnman/TextUtils.h',
+    'imsconnman/VersionInfo.h',
+    'portinglayer/ImsConnManInterfaceLayer.h',
+    'portinglayer/Message.h',
+    'portinglayer/MessageAsyncTask.h',
+    'portinglayer/MessageHandler.h',
+    'portinglayer/PortingConstants.h',
+    'portinglayer/PortingInterface.h',
+    'portinglayer/PortingLog.h',
+    'portinglayer/PortingMacro.h',
+]
+
+
+include('/ipc/chromium/chromium-config.mozbuild')
+
+
+FINAL_LIBRARY ='xul'

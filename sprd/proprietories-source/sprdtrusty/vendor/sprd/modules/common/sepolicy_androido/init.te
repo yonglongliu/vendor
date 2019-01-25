@@ -1,0 +1,2 @@
+# for rpmb socket server
+allow init rpmb_socket:sock_file {write};

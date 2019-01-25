@@ -1,0 +1,28 @@
+#ifneq ( $(TARGET_BUILD_VARIANT),user)
+LOCAL_PATH:= $(call my-dir)
+
+include $(CLEAR_VARS)
+#include $(BUILD_SHARED_LIBRARY)
+
+ifeq ($(TARGET_BUILD_VARIANT),userdebug)
+   LOCAL_CFLAGS += -DOPEN_MODEM_LOG
+endif
+
+LOCAL_CFLAGS += -DBUILD_ENG
+LOCAL_SRC_FILES:= xmlparse.cpp tinyxmlparser.cpp tinyxmlerror.cpp tinyxml.cpp myxmltest.cpp tinystr.cpp
+#eng_appclient_lib.c
+
+LOCAL_C_INCLUDES    += xmlparse.h
+LOCAL_C_INCLUDES    += tinyxml.h
+LOCAL_C_INCLUDES    += tinystr.h
+
+LOCAL_MODULE := xmllib
+LOCAL_STATIC_LIBRARIES := libcutils
+#LOCAL_SHARED_LIBRARIES := libstlport libatchannel liblog
+#zsw LOCAL_SHARED_LIBRARIES := libatchannel liblog
+LOCAL_SHARED_LIBRARIES := libatci liblog
+#libengclient
+LOCAL_MODULE_TAGS := optional
+#include external/stlport/libstlport.mk
+include $(BUILD_EXECUTABLE)
+#endif

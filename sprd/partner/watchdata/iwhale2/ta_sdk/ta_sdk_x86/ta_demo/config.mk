@@ -1,0 +1,6 @@
+CSRC := ta_config.c
+CSRC += wdta_debug_main.c 
+
+INCLUDE_DIRS := .
+#ta_uuid = "534D4152-542D-4353-4C542D54412D4552"
+ta_uuid = "11111111-2222-3333-4444444444444444"

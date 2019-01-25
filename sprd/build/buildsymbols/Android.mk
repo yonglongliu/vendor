@@ -1,0 +1,2 @@
+#droid:buildsymbols
+#buildsymbols: gecko

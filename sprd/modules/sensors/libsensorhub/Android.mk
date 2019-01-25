@@ -1,0 +1,53 @@
+# Copyright (C) 2008 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+LOCAL_PATH := $(call my-dir)
+ifeq ($(USE_SPRD_SENSOR_HUB),true)
+
+# HAL module implemenation, not prelinked, and stored in
+# hw/<SENSORS_HARDWARE_MODULE_ID>.<ro.product.board>.so
+include $(CLEAR_VARS)
+LOCAL_PRELINK_MODULE := false
+LOCAL_MODULE_RELATIVE_PATH := hw
+
+CONFIG_SENSORS := ConfigSensor
+CONFIG_FEATURE := ConfigFeature
+
+LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libutils libsensorsdrvcfg libsensorlistcfg
+LOCAL_SRC_FILES := \
+                sensors.cpp 			\
+                SensorBase.cpp			\
+                SensorHubInputSensor.cpp	\
+                SensorHubDynamicLogel.cpp	\
+                InputEventReader.cpp
+
+LOCAL_C_INCLUDES += \
+		$(LOCAL_PATH)/include	\
+		$(LOCAL_PATH)/$(CONFIG_SENSORS)/include	\
+		$(LOCAL_PATH)/$(CONFIG_FEATURE)/include/
+
+LOCAL_MODULE := sensors.$(TARGET_BOARD_PLATFORM)
+LOCAL_MODULE_TAGS := optional
+LOCAL_PROPRIETARY_MODULE := true
+LOCAL_CFLAGS := -DLOG_TAG=\"SensorHub\"
+
+ifeq ($(SENSOR_HUB_FEATURE),nohub)
+LOCAL_CFLAGS += -DSENSORHUB_EXIST_OR_NOT
+endif
+
+include $(BUILD_SHARED_LIBRARY)
+
+include $(call all-makefiles-under,$(LOCAL_PATH))
+endif # USE_SPRD_SENSOR_HUB

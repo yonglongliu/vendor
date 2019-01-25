@@ -1,0 +1,4 @@
+allow nfc system_data_file:dir { read };
+allow nfc system_data_file:file { read };
+allow nfc nfc_data_file:dir { write };
+allow untrusted_app nfc:unix_stream_socket { connectto };

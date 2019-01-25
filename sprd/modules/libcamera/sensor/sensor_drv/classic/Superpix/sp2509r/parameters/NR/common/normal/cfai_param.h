@@ -1,0 +1,4002 @@
+/*versionid=0x00070005*/
+/*maxGain=0.00*/
+/*param0.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x7F,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x01F4,
+		/*smooth_tr*/
+		0x00000000,
+		/*uni_dir_intplt_tr*/
+		0x0014,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param1.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param2.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param3.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param4.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param5.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param6.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param7.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param8.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param9.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param10.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param11.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param12.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param13.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param14.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param15.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param16.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param17.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param18.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param19.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param20.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param21.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param22.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param23.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,
+/*param24.&BasePoint=1&*/
+/*v21_sensor_cfa_param_level*/
+{
+	/*cfai_intplt_level*/
+	{
+		/*min_grid_new*/
+		0x000017FA,
+		/*grid_gain_new*/
+		0x01,
+		/*str_edge_tr*/
+		0x3C,
+		/*cdcr_adj_factor*/
+		0x08,
+		/*reserved*/
+		{
+			0x00,0x00,0x00/*0-2*/
+		},
+		/*grid_tr*/
+		0x0090,
+		/*smooth_tr*/
+		0x000002BC,
+		/*uni_dir_intplt_tr*/
+		0x0064,
+		/*rb_high_sat_thr*/
+		0x0118,
+		/*gref_thr*/
+		{
+			/*round_diff_03_thr*/
+			0x0064,
+			/*lowlux_03_thr*/
+			0x0064,
+			/*round_diff_12_thr*/
+			0x00C8,
+			/*lowlux_12_thr*/
+			0x00C8,
+
+		},
+		/*cfai_dir_intplt*/
+		{
+			/*wgtctrl_bypass*/
+			0x01,
+			/*grid_dir_wgt1*/
+			0x08,
+			/*grid_dir_wgt2*/
+			0x08,
+			/*reversed*/
+			0x00,
+
+		},
+		/*cfa_bypass*/
+		0x00000000,
+
+	},
+	/*cfai_css_level*/
+	{
+		/*css_comm_thr*/
+		{
+			/*css_edge_thr*/
+			0x0096,
+			/*css_weak_egde_thr*/
+			0x0064,
+			/*css_txt1_thr*/
+			0x0014,
+			/*css_txt2_thr*/
+			0x0005,
+			/*uv_val_thr*/
+			0x000F,
+			/*uv_diff_thr*/
+			0x001E,
+			/*gray_thr*/
+			0x0028,
+			/*pix_similar_thr*/
+			0x00C8,
+
+		},
+		/*css_skin_uv*/
+		{
+			/*skin_u1*/
+			{
+				/*skin_top*/
+				0x01FC,
+				/*skin_down*/
+				0x0134,
+
+			},
+			/*skin_v1*/
+			{
+				/*skin_top*/
+				0x027C,
+				/*skin_down*/
+				0x0214,
+
+			},
+			/*skin_u2*/
+			{
+				/*skin_top*/
+				0x01FF,
+				/*skin_down*/
+				0x01CD,
+
+			},
+			/*skin_v2*/
+			{
+				/*skin_top*/
+				0x022D,
+				/*skin_down*/
+				0x0205,
+
+			}
+		},
+		/*css_green_thr*/
+		{
+			/*green_edge_thr*/
+			0x0000,
+			/*green_weak_edge_thr*/
+			0x0000,
+			/*green_txt1_thr*/
+			0x0000,
+			/*green_txt2_thr*/
+			0x0005,
+			/*green_flat_thr*/
+			0x00000000,
+
+		},
+		/*r_ratio*/
+		{
+			/*edge_ratio*/
+			0x78,
+			/*weak_edge_ratio*/
+			0x64,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*b_ratio*/
+		{
+			/*edge_ratio*/
+			0x50,
+			/*weak_edge_ratio*/
+			0x3C,
+			/*txt1_ratio*/
+			0x00,
+			/*txt2_ratio*/
+			0x32,
+			/*flat_ratio*/
+			0x00000000,
+
+		},
+		/*css_alpha_for_txt2*/
+		0x0008,
+		/*css_bypass*/
+		0x0001,
+
+	}
+}
+,

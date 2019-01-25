@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Test|Win32">
+      <Configuration>Test</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Test|x64">
+      <Configuration>Test</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>tfa</ProjectName>
+    <ProjectGuid>{50EA056E-A456-8644-E0D3-1C8FB23A34E8}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Test|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Test|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)$(Configuration)_$(Platform)\</IntDir>
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_WINDOWS;_USRDLL;TFA_DLL_EXPORTS;TFA98XX_FULL;TFA_DEBUG;HAL_HID;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../../srv/inc;../../../../srv/src/inifile;../../../../tfa/inc;../../../../tfa/windows-inc;../../../../tfa/osal-inc;../../../../hal/src/lxScribo;../../../../hal/inc;../../../../hal/inc/usb_gio;../../../../hal/inc/usb_gio/libbase;../../../../utl/inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>../../../../hal/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>usbgio_api.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>tfa.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\..\..\hal\lib\usbgio_api_x64.dll $(OutDir);
+copy ..\..\..\..\hal\lib\tfasc_api_x64.dll $(OutDir)</Command>
+      <Message>copy dll for use in host app</Message>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>((echo #ifndef _VERSIONS_H &amp; echo.#define _VERSIONS_H&amp;echo.#endif) &gt;..\..\..\..\tfa\inc\versions.h) &amp; FOR /F %%a in ('git describe --tags --dirty --match "v[0-9]*.[0-9]*.[0-9]*"') do (echo #ifndef _VERSIONS_H &amp; echo.#define _VERSIONS_H&amp;echo.#define TFA98XX_GIT_VERSIONS "%%a"&amp;echo.#endif )&gt;..\..\..\..\tfa\inc\versions.h</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>generate versions.h file</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>_X64;_CRT_SECURE_NO_WARNINGS;_DEBUG;_WINDOWS;_USRDLL;TFA_DLL_EXPORTS;TFA98XX_FULL;TFA_DEBUG;HAL_HID;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../../srv/inc;../../../../srv/src/inifile;../../../../tfa/inc;../../../../tfa/windows-inc;../../../../tfa/osal-inc;../../../../hal/src/lxScribo;../../../../hal/inc;../../../../hal/inc/usb_gio;../../../../hal/inc/usb_gio/libbase;../../../../utl/inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>../../../../hal/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>usbgio_api_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>tfa.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\..\..\hal\lib\usbgio_api_x64.dll $(OutDir);
+copy ..\..\..\..\hal\lib\tfasc_api_x64.dll $(OutDir)</Command>
+      <Message>copy dll for use in host app</Message>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>((echo #ifndef _VERSIONS_H &amp; echo.#define _VERSIONS_H&amp;echo.#endif) &gt;..\..\..\..\tfa\inc\versions.h) &amp; FOR /F %%a in ('git describe --tags --dirty --match "v[0-9]*.[0-9]*.[0-9]*"') do (echo #ifndef _VERSIONS_H &amp; echo.#define _VERSIONS_H&amp;echo.#define TFA98XX_GIT_VERSIONS "%%a"&amp;echo.#endif )&gt;..\..\..\..\tfa\inc\versions.h</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>generate versions.h file</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;TFA_DLL_EXPORTS;TFA98XX_FULL;TFA_DEBUG;HAL_HID;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../../tfa/windows-inc;../../../../srv/src/iniFile;../../../../srv/inc;../../../../tfa/osal-inc;../../../../tfa/inc;../../../../hal/inc/usb_gio;../../../../hal/inc/usb_gio/libbase;../../../../hal/src/lxScribo;../../../../hal/inc;../../../../utl/inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../../hal/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>usbgio_api.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>tfa.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\..\..\hal\lib\usbgio_api_x64.dll $(OutDir);
+copy ..\..\..\..\hal\lib\tfasc_api_x64.dll $(OutDir)</Command>
+      <Message>copy dll for use in host app</Message>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>((echo #ifndef _VERSIONS_H &amp; echo.#define _VERSIONS_H&amp;echo.#endif) &gt;..\..\..\..\tfa\inc\versions.h) &amp; FOR /F %%a in ('git describe --tags --dirty --match "v[0-9]*.[0-9]*.[0-9]*"') do (echo #ifndef _VERSIONS_H &amp; echo.#define _VERSIONS_H&amp;echo.#define TFA98XX_GIT_VERSIONS "%%a"&amp;echo.#endif )&gt;..\..\..\..\tfa\inc\versions.h</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>generate versions.h file</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;TFA_DLL_EXPORTS;TFA98XX_FULL;TFA_DEBUG;HAL_HID;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../../tfa/windows-inc;../../../../srv/src/iniFile;../../../../srv/inc;../../../../tfa/osal-inc;../../../../tfa/inc;../../../../hal/inc/usb_gio;../../../../hal/inc/usb_gio/libbase;../../../../hal/src/lxScribo;../../../../hal/inc;../../../../utl/inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../../hal/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>usbgio_api.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>tfa.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\..\..\hal\lib\usbgio_api_x64.dll $(OutDir);
+copy ..\..\..\..\hal\lib\tfasc_api_x64.dll $(OutDir)</Command>
+      <Message>copy dll for use in host app</Message>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>((echo #ifndef _VERSIONS_H &amp; echo.#define _VERSIONS_H&amp;echo.#endif) &gt;..\..\..\..\tfa\inc\versions.h) &amp; FOR /F %%a in ('git describe --tags --dirty --match "v[0-9]*.[0-9]*.[0-9]*"') do (echo #ifndef _VERSIONS_H &amp; echo.#define _VERSIONS_H&amp;echo.#define TFA98XX_GIT_VERSIONS "%%a"&amp;echo.#endif )&gt;..\..\..\..\tfa\inc\versions.h</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>generate versions.h file</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>_X64;_CRT_SECURE_NO_WARNINGS;NDEBUG;_WINDOWS;_USRDLL;TFA_DLL_EXPORTS;TFA98XX_FULL;TFA_DEBUG;HAL_HID;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../../tfa/windows-inc;../../../../srv/inc;../../../../srv/src/iniFile;../../../../tfa/osal-inc;../../../../tfa/inc;../../../../hal/src/lxScribo;../../../../hal/inc;../../../../hal/inc/usb_gio/libbase;../../../../hal/inc/usb_gio;../../../../utl/inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../../hal/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>tfasc_api_x64.lib;usbgio_api_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>tfa.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\..\..\hal\lib\usbgio_api_x64.dll $(OutDir);
+copy ..\..\..\..\hal\lib\tfasc_api_x64.dll $(OutDir)</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>copy dll for use in host app</Message>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>((echo #ifndef _VERSIONS_H &amp; echo.#define _VERSIONS_H&amp;echo.#endif) &gt;..\..\..\..\tfa\inc\versions.h) &amp; FOR /F %%a in ('git describe --tags --dirty --match "v[0-9]*.[0-9]*.[0-9]*"') do (echo #ifndef _VERSIONS_H &amp; echo.#define _VERSIONS_H&amp;echo.#define TFA98XX_GIT_VERSIONS "%%a"&amp;echo.#endif )&gt;..\..\..\..\tfa\inc\versions.h</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>generate versions.h file</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>_X64;_CRT_SECURE_NO_WARNINGS;NDEBUG;_WINDOWS;_USRDLL;TFA_DLL_EXPORTS;TFA98XX_FULL;TFA_DEBUG;HAL_HID;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../../tfa/windows-inc;../../../../srv/inc;../../../../srv/src/iniFile;../../../../tfa/osal-inc;../../../../tfa/inc;../../../../hal/src/lxScribo;../../../../hal/inc;../../../../hal/inc/usb_gio/libbase;../../../../hal/inc/usb_gio;../../../../utl/inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../../hal/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>tfasc_api_x64.lib;usbgio_api_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>tfa.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\..\..\hal\lib\usbgio_api_x64.dll $(OutDir);
+copy ..\..\..\..\hal\lib\tfasc_api_x64.dll $(OutDir)</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>copy dll for use in host app</Message>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>((echo #ifndef _VERSIONS_H &amp; echo.#define _VERSIONS_H&amp;echo.#endif) &gt;..\..\..\..\tfa\inc\versions.h) &amp; FOR /F %%a in ('git describe --tags --dirty --match "v[0-9]*.[0-9]*.[0-9]*"') do (echo #ifndef _VERSIONS_H &amp; echo.#define _VERSIONS_H&amp;echo.#define TFA98XX_GIT_VERSIONS "%%a"&amp;echo.#endif )&gt;..\..\..\..\tfa\inc\versions.h</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>generate versions.h file</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\hal\src\lxScribo\hal_utils.c" />
+    <ClCompile Include="..\..\..\..\hal\src\lxscribo\lxDummy.c" />
+    <ClCompile Include="..\..\..\..\hal\src\lxscribo\lxHid.c" />
+    <ClCompile Include="..\..\..\..\hal\src\lxscribo\lxScribo.c" />
+    <ClCompile Include="..\..\..\..\hal\src\lxscribo\lxScriboProtocol.c" />
+    <ClCompile Include="..\..\..\..\hal\src\lxscribo\lxScriboProtocolUdp.c" />
+    <ClCompile Include="..\..\..\..\hal\src\lxscribo\lxScriboWinsock.c" />
+    <ClCompile Include="..\..\..\..\hal\src\lxscribo\lxScriboWinsockUdp.c" />
+    <ClCompile Include="..\..\..\..\hal\src\lxscribo\lxWindows.c" />
+    <ClCompile Include="..\..\..\..\hal\src\NXP_I2C.c" />
+    <ClCompile Include="..\..\..\..\srv\src\inifile\minIni.c" />
+    <ClCompile Include="..\..\..\..\srv\src\Tfa98API.c" />
+    <ClCompile Include="..\..\..\..\srv\src\tfa98xxCalculations.c" />
+    <ClCompile Include="..\..\..\..\srv\src\tfa98xxCalibration.c" />
+    <ClCompile Include="..\..\..\..\srv\src\tfa98xxDiagnostics.c" />
+    <ClCompile Include="..\..\..\..\srv\src\tfa98xxDRC.c" />
+    <ClCompile Include="..\..\..\..\srv\src\tfa98xxFilterCalculations.c" />
+    <ClCompile Include="..\..\..\..\srv\src\tfa98xxLiveData.c" />
+    <ClCompile Include="..\..\..\..\srv\src\tfaContainerWrite.c" />
+    <ClCompile Include="..\..\..\..\srv\src\tfaContUtil.c" />
+    <ClCompile Include="..\..\..\..\tfa\src\tfa_container.c" />
+    <ClCompile Include="..\..\..\..\tfa\src\tfa_container_crc32.c" />
+    <ClCompile Include="..\..\..\..\tfa\src\tfa_debug.c" />
+    <ClCompile Include="..\..\..\..\tfa\src\tfa_dsp.c" />
+    <ClCompile Include="..\..\..\..\tfa\src\tfa_hal.c" />
+    <ClCompile Include="..\..\..\..\tfa\src\tfa_init.c" />
+    <ClCompile Include="..\..\..\..\tfa\src\tfa_osal.c" />
+    <ClCompile Include="..\..\..\..\utl\src\tfaOsal.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\hal\src\lxScribo\hal_utils.h" />
+    <ClInclude Include="..\..\..\..\hal\src\lxscribo\lxScriboWinsockUdp.h" />
+    <ClInclude Include="..\..\..\..\hal\src\lxscribo\Scribo.h" />
+    <ClInclude Include="..\..\..\..\hal\src\lxscribo\scribosrv\i2cserver.h" />
+    <ClInclude Include="..\..\..\..\hal\src\lxscribo\tfa9888n1a12_genregs_por.h" />
+    <ClInclude Include="..\..\..\..\hal\src\lxscribo\tfa9888n1b_genregs_por.h" />
+    <ClInclude Include="..\..\..\..\srv\src\inifile\minGlue.h" />
+    <ClInclude Include="..\..\..\..\srv\src\inifile\minIni.h" />
+    <ClInclude Include="..\..\..\..\tfa\src\tfa_internal.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tfa.def" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

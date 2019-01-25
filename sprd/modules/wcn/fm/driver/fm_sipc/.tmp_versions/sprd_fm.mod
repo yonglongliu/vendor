@@ -1,0 +1,2 @@
+/home/workspace/work/kaios_gitServer/idh.code/vendor/sprd/modules/wcn/fm/driver/fm_sipc/sprd_fm.ko
+/home/workspace/work/kaios_gitServer/idh.code/vendor/sprd/modules/wcn/fm/driver/fm_sipc/fmdrv_main.o /home/workspace/work/kaios_gitServer/idh.code/vendor/sprd/modules/wcn/fm/driver/fm_sipc/fmdrv_ops.o /home/workspace/work/kaios_gitServer/idh.code/vendor/sprd/modules/wcn/fm/driver/fm_sipc/fmdrv_rds_parser.o

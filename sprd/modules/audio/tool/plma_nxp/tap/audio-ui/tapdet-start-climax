@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#CL='sudo /home/ubuntu/climax -dsysfs -l /lib/firmware/mono_tap.cnt'
+
+#$CL --start -Pswval
+#$CL --start -Ptaptrigger
+
+
+# configure device in tap detection mode
+#$CL PWDN=0
+
+#sleep 0.1
+
+#$CL -r0x04 -w0x881b
+#$CL -r0x22 -w0x27
+#$CL -r0x11 -w0x50
+#$CL -r0x70 -w0x1
+#$CL -r0x10 -w0x40
+#$CL -r0x09 -w0x8a4c
+#$CL -r0x0a -w0x3ed2
+
+#$CL -p /home/ubuntu/TapLiteIP-48.patch -b # load tap patch
+#sleep 0.1
+#$CL SBSL=1
+#sleep 0.1
+#$CL RST=1 RST=0
+
+#reduce PGA gain
+#sudo bash -c "echo 5 > /sys/kernel/debug/tfa98xx-36/pga_gain"
+
+#echo "device configured for tap-detection (through climax)"

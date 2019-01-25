@@ -1,0 +1,13 @@
+#add for fpsensor fingerprint
+allow fingerprintd fpsensor_fp_device:chr_file {open read write ioctl};
+allow fingerprintd fuse:dir {search};
+allow fingerprintd mnt_user_file:dir {search};
+allow fingerprintd mnt_user_file:lnk_file {read};
+allow fingerprintd storage_file:lnk_file {read};
+allow fingerprintd system_data_file:dir {write read add_name remove_name};
+#allow fingerprintd system_data_file:sock_file {create setattr unlink};
+allow fingerprintd teetz_device:chr_file {open ioctl read write};
+#add for fpsensor test socket connection
+allow untrusted_app fpsensor_fp_device:chr_file {open write read ioctl};
+allow fingerprintd fpsensor_test_file:sock_file {create setattr unlink};
+allow fingerprintd fpsensor_test_file:dir {write read add_name remove_name search};

@@ -1,0 +1,19 @@
+#!/bin/bash
+echo "Starting tap detection script"
+
+# reload driver with tap-deteciton container
+#modprobe -r snd-soc-bbb-5102
+#modprobe -r snd-soc-tfa98xx
+#modprobe snd-soc-tfa98xx fw_name=tapdet-demo.cnt dftl_prof_name=play
+#modprobe snd-soc-bbb-5102
+
+# trigger a dummy playback for init
+# aplay -D hw:0,0 /home/ubuntu/demo/silence.wav
+
+# start a background record
+# arecord -D hw:0,0 -c3 -r 48000 -f S16_LE /dev/null &
+
+#dummy sleep to emulate all these actions
+sleep 3
+
+echo "Ending tap detection start script"

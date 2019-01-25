@@ -1,0 +1,5 @@
+# access TA
+allow engpc teetz_device:chr_file { open read write ioctl };
+# for rpmb socket server
+allow engpc tee:unix_stream_socket {connectto};
+set_prop(engpc, storageproxyd_default_prop)

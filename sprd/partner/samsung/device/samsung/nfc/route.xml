@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RoutingTable>
+<!-- ESE & UICC Contactless C/E (seID == 0x00 , Default) -->
+<Route Type="SecElemSelectedRoutes" Index="0">
+<Proto Id="T3T" SecElem="00" SwitchOn="true" SwitchOff="false" BatteryOff="false"/>
+<Proto Id="IsoDep" SecElem="03" SwitchOn="true" SwitchOff="true" BatteryOff="false"/>
+<Tech Id="NfcA" SecElem="03" SwitchOn="true" SwitchOff="true" BatteryOff="false"/>
+<Tech Id="NfcB" SecElem="03" SwitchOn="true" SwitchOff="true" BatteryOff="false"/>
+<Tech Id="NfcF" SecElem="00" SwitchOn="true" SwitchOff="false" BatteryOff="false"/>
+</Route>
+<!-- PUSH Target Only (seID == 0x00 , PUSH only) -->
+<Route Type="SecElemSelectedRoutes" Index="1">
+<Proto Id="T3T" SecElem="00" SwitchOn="true" SwitchOff="false" BatteryOff="false"/>
+<Tech Id="NfcF" SecElem="00" SwitchOn="true" SwitchOff="false" BatteryOff="false"/>
+</Route>
+<!-- Only ESE -->
+<Route Type="SecElemSelectedRoutes" Index="2">
+<Proto Id="T3T" SecElem="02" SwitchOn="true" SwitchOff="false" BatteryOff="false"/>
+<Tech Id="NfcF" SecElem="02" SwitchOn="true" SwitchOff="false" BatteryOff="false"/>
+</Route>
+<!-- Only UICC -->
+<Route Type="SecElemSelectedRoutes" Index="3">
+<Proto Id="IsoDep" SecElem="03" SwitchOn="true" SwitchOff="true" BatteryOff="false"/>
+<Tech Id="NfcA" SecElem="03" SwitchOn="true" SwitchOff="true" BatteryOff="false"/>
+<Tech Id="NfcB" SecElem="03" SwitchOn="true" SwitchOff="true" BatteryOff="false"/>
+</Route>
+</RoutingTable>

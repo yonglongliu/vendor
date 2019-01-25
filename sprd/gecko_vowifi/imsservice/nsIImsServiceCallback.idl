@@ -1,0 +1,111 @@
+#include "nsISupports.idl"
+
+[scriptable, uuid(60e76895-665b-45d1-99aa-aa90b6e6c976)]
+interface nsIImsServiceCallback : nsISupports
+{
+  const unsigned short IMS_OPERATION_SWITCH_TO_VOWIFI = 0;
+  const unsigned short IMS_OPERATION_SWITCH_TO_VOLTE = 1;
+  const unsigned short IMS_OPERATION_HANDOVER_TO_VOWIFI = 2;
+  const unsigned short IMS_OPERATION_HANDOVER_TO_VOLTE = 3;
+  const unsigned short IMS_OPERATION_SET_VOWIFI_UNAVAILABLE = 4;
+  const unsigned short IMS_OPERATION_CANCEL_CURRENT_REQUEST = 5;
+  const unsigned short IMS_OPERATION_CP_REJECT_SWITCH_TO_VOWIFI = 6;
+  const unsigned short IMS_OPERATION_CP_REJECT_HANDOVER_TO_VOWIFI = 7;
+
+  /**
+   * Notifies the result of operation.
+   *
+   * @param aId
+   *        Request id.
+   * @param aType
+   *        IMS operation type.
+   */
+  void operationSuccessed(in short aId,
+                          in unsigned short aType);
+
+  /**
+   * Notifies the result of operation.
+   *
+   * @param aId
+   *        Request id.
+   * @param aReason
+   *        Reason of operation failure.
+   * @param aType
+   *        IMS operation type.
+   */
+  void operationFailed(in short aId,
+                       in AString aReason,
+                       in unsigned short aType);
+
+  /**
+   * Notify the call end event of IMS.
+   *
+   * @param aType
+   *        IMS feature type.
+   * FEATURE_TYPE_VOICE_OVER_LTE = 0;
+   * FEATURE_TYPE_VOICE_OVER_WIFI = 2;
+   */
+  void imsCallEnd(in unsigned short aType);
+
+  /**
+   * Notify the call end event of IMS.
+   *
+   * @param aState
+   *        IMS PDN state.
+   * IMS_PDN_ACTIVE_FAILED = 0;
+   * IMS_PDN_READY = 1;
+   * IMS_PDN_START = 2;
+   */
+  void imsPdnStateChange(in short aState);
+
+ /**
+  * Notify the DPD disconnect event.
+  */
+  void onDPDDisconnected();
+
+ /**
+  * Notify no RTP event.
+  */
+  void onNoRtpReceived(in boolean isVideo);
+
+ /**
+  * Notify WiFi error.
+  */
+  void onVoWiFiError(in unsigned short statusCode);
+
+ /**
+  * Notify RTP received.
+  */
+  void onRtpReceived(in boolean isVideo);
+
+ /**
+  * Notify Media changed.
+  */
+  void onMediaQualityChanged(in boolean isVideo,
+                             in short lose,
+                             in short jitter,
+                             in short rtt);
+
+ /**
+  * Notify SRVCC Faild.
+  */
+  void onSrvccFaild();
+
+ /**
+  * Notify videostate changed.
+  */
+  void onVideoStateChanged(in unsigned short videoState);
+
+ /**
+  * Notify Vowifi register action
+  * para action
+  * 0 de-register before start call
+  * 1 register after call end
+  */
+  void onSetVowifiRegister(in unsigned short action);
+
+ /**
+  * Notify ims capability change
+  */
+  void onImsCapabilityChange(in short aCapability);
+};

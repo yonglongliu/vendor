@@ -1,0 +1,925 @@
+/*
+ * Copyright (C) 2012 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * V1.0
+ */
+ /*History
+ *Date                  Modification                                 Reason
+ *
+ */
+
+#include <utils/Log.h>
+#include "sensor.h"
+#include "jpeg_exif_header.h"
+#include "sensor_drv_u.h"
+#include "sensor_raw.h"
+
+#include "parameters/sensor_imx135_raw_param_main.c"
+
+//#define FEATURE_OTP
+
+//#define NOT_SUPPORT_VIDEO
+
+#define VENDOR_NUM 1
+#define SENSOR_NAME				"imx135_mipi_raw"
+#define I2C_SLAVE_ADDR			0x20 //0x6c
+
+#define imx135_PID_ADDR			0x0016
+#define imx135_PID_VALUE		0x01
+#define imx135_VER_ADDR			0x0017
+#define imx135_VER_VALUE		0x35
+
+
+/* sensor parameters begin */
+/* effective sensor output image size */
+#define VIDEO_WIDTH				1280
+#define VIDEO_HEIGHT			720 //1170
+
+
+#define PREVIEW_WIDTH			2096
+
+
+#define PREVIEW_HEIGHT			1560
+#define SNAPSHOT_WIDTH			4208 
+#define SNAPSHOT_HEIGHT			3120
+
+/*Raw Trim parameters*/
+#define VIDEO_TRIM_X			0
+#define VIDEO_TRIM_Y			0
+#define VIDEO_TRIM_W			VIDEO_WIDTH
+#define VIDEO_TRIM_H			VIDEO_HEIGHT
+#define PREVIEW_TRIM_X			0
+#define PREVIEW_TRIM_Y			0
+#define PREVIEW_TRIM_W			PREVIEW_WIDTH
+#define PREVIEW_TRIM_H			PREVIEW_HEIGHT
+#define SNAPSHOT_TRIM_X			0
+#define SNAPSHOT_TRIM_Y			0
+#define SNAPSHOT_TRIM_W			SNAPSHOT_WIDTH
+#define SNAPSHOT_TRIM_H			SNAPSHOT_HEIGHT
+
+/*Mipi output*/
+#define LANE_NUM			4
+#define RAW_BITS			10
+
+#define VIDEO_MIPI_PER_LANE_BPS	  	  857  /* 2*Mipi clk */
+#define PREVIEW_MIPI_PER_LANE_BPS	  554  /* 2*Mipi clk */
+#define SNAPSHOT_MIPI_PER_LANE_BPS	  1080  /* 2*Mipi clk */
+
+/*line time unit: 0.1ns*/
+#define VIDEO_LINE_TIME		  	  13330
+#define PREVIEW_LINE_TIME		  20625
+#define SNAPSHOT_LINE_TIME		  10583
+
+/* frame length*/
+#define VIDEO_FRAME_LENGTH			1250
+#define PREVIEW_FRAME_LENGTH		1616
+#define SNAPSHOT_FRAME_LENGTH		3148
+
+/* please ref your spec */
+#define FRAME_OFFSET			4
+#define SENSOR_MAX_GAIN			240
+#define SENSOR_BASE_GAIN		0x80
+#define SENSOR_MIN_SHUTTER		8
+
+/* please ref your spec
+ * 1 : average binning
+ * 2 : sum-average binning
+ * 4 : sum binning
+ */
+#define BINNING_FACTOR			1
+
+/* please ref spec
+ * 1: sensor auto caculate
+ * 0: driver caculate
+ */
+#define SUPPORT_AUTO_FRAME_LENGTH	0
+
+/*delay 1 frame to write sensor gain*/
+//#define GAIN_DELAY_1_FRAME
+
+/* sensor parameters end */
+
+/* isp parameters, please don't change it*/
+#define ISP_BASE_GAIN			0x80
+
+/* please don't change it */
+#define EX_MCLK				24
+
+
+/*==============================================================================
+ * Description:
+ * register setting
+ *============================================================================*/
+
+static const SENSOR_REG_T imx135_init_setting[] = {
+	{0x0100,0x00},
+	{0x0101,0x00},
+	{0x0105,0x01},
+	{0x0110,0x00},
+	{0x0220,0x01},
+	{0x3302,0x11},
+	{0x3833,0x20},
+	{0x3893,0x00},
+	{0x3906,0x08},
+	{0x3907,0x01},
+	{0x391B,0x01},
+	{0x3C09,0x01},
+	{0x600A,0x00},
+	{0x3008,0xB0},
+	{0x320A,0x01},
+	{0x320D,0x10},
+	{0x3216,0x2E},
+	{0x322C,0x02},
+	{0x3409,0x0C},
+	{0x340C,0x2D},
+	{0x3411,0x39},
+	{0x3414,0x1E},
+	{0x3427,0x04},
+	{0x3480,0x1E},
+	{0x3484,0x1E},
+	{0x3488,0x1E},
+	{0x348C,0x1E},
+	{0x3490,0x1E},
+	{0x3494,0x1E},
+	{0x3511,0x8F},
+	{0x364F,0x2D},
+	{0x380A,0x00},
+	{0x380B,0x00},
+	{0x4103,0x00},
+	{0x4243,0x9A},
+	{0x4330,0x01},
+	{0x4331,0x90},
+	{0x4332,0x02},
+	{0x4333,0x58},
+	{0x4334,0x03},
+	{0x4335,0x20},
+	{0x4336,0x03},
+	{0x4337,0x84},
+	{0x433C,0x01},
+	{0x4340,0x02},
+	{0x4341,0x58},
+	{0x4342,0x03},
+	{0x4343,0x52},
+	{0x4364,0x0B},
+	{0x4368,0x00},
+	{0x4369,0x0F},
+	{0x436A,0x03},
+	{0x436B,0xA8},
+	{0x436C,0x00},
+	{0x436D,0x00},
+	{0x436E,0x00},
+	{0x436F,0x06},
+	{0x4281,0x21},
+	{0x4282,0x18},
+	{0x4283,0x04},
+	{0x4284,0x08},
+	{0x4287,0x7F},
+	{0x4288,0x08},
+	{0x428B,0x7F},
+	{0x428C,0x08},
+	{0x428F,0x7F},
+	{0x4297,0x00},
+	{0x4298,0x7E},
+	{0x4299,0x7E},
+	{0x429A,0x7E},
+	{0x42A4,0xFB},
+	{0x42A5,0x7E},
+	{0x42A6,0xDF},
+	{0x42A7,0xB7},
+	{0x42AF,0x03},
+	{0x4207,0x03},
+	{0x4216,0x08},
+	{0x4217,0x08},
+	{0x4218,0x00},
+	{0x421B,0x20},
+	{0x421F,0x04},
+	{0x4222,0x02},
+	{0x4223,0x22},
+	{0x422E,0x54},
+	{0x422F,0xFB},
+	{0x4230,0xFF},
+	{0x4231,0xFE},
+	{0x4232,0xFF},
+	{0x4235,0x58},
+	{0x4236,0xF7},
+	{0x4237,0xFD},
+	{0x4239,0x4E},
+	{0x423A,0xFC},
+	{0x423B,0xFD},
+	{0x4300,0x00},
+	{0x4316,0x12},
+	{0x4317,0x22},
+	{0x4318,0x00},
+	{0x4319,0x00},
+	{0x431A,0x00},
+	{0x4324,0x03},
+	{0x4325,0x20},
+	{0x4326,0x03},
+	{0x4327,0x84},
+	{0x4328,0x03},
+	{0x4329,0x20},
+	{0x432A,0x03},
+	{0x432B,0x20},
+	{0x432C,0x01},
+	{0x432D,0x01},
+	{0x4338,0x02},
+	{0x4339,0x00},
+	{0x433A,0x00},
+	{0x433B,0x02},
+	{0x435A,0x03},
+	{0x435B,0x84},
+	{0x435E,0x01},
+	{0x435F,0xFF},
+	{0x4360,0x01},
+	{0x4361,0xF4},
+	{0x4362,0x03},
+	{0x4363,0x84},
+	{0x437B,0x01},
+	{0x4401,0x3F},
+	{0x4402,0xFF},
+	{0x4404,0x13},
+	{0x4405,0x26},
+	{0x4406,0x07},
+	{0x4408,0x20},
+	{0x4409,0xE5},
+	{0x440A,0xFB},
+	{0x440C,0xF6},
+	{0x440D,0xEA},
+	{0x440E,0x20},
+	{0x4410,0x00},
+	{0x4411,0x00},
+	{0x4412,0x3F},
+	{0x4413,0xFF},
+	{0x4414,0x1F},
+	{0x4415,0xFF},
+	{0x4416,0x20},
+	{0x4417,0x00},
+	{0x4418,0x1F},
+	{0x4419,0xFF},
+	{0x441A,0x20},
+	{0x441B,0x00},
+	{0x441D,0x40},
+	{0x441E,0x1E},
+	{0x441F,0x38},
+	{0x4420,0x01},
+	{0x4444,0x00},
+	{0x4445,0x00},
+	{0x4446,0x1D},
+	{0x4447,0xF9},
+	{0x4452,0x00},
+	{0x4453,0xA0},
+	{0x4454,0x08},
+	{0x4455,0x00},
+	{0x4456,0x0F},
+	{0x4457,0xFF},
+	{0x4458,0x18},
+	{0x4459,0x18},
+	{0x445A,0x3F},
+	{0x445B,0x3A},
+	{0x445C,0x00},
+	{0x445D,0x28},
+	{0x445E,0x01},
+	{0x445F,0x90},
+	{0x4460,0x00},
+	{0x4461,0x60},
+	{0x4462,0x00},
+	{0x4463,0x00},
+	{0x4464,0x00},
+	{0x4465,0x00},
+	{0x446C,0x00},
+	{0x446D,0x00},
+	{0x446E,0x00},
+	{0x452A,0x02},
+	{0x0712,0x01},
+	{0x0713,0x00},
+	{0x0714,0x01},
+	{0x0715,0x00},
+	{0x0716,0x01},
+	{0x0717,0x00},
+	{0x0718,0x01},
+	{0x0719,0x00},
+	{0x4500,0x1F},
+	
+	{0x3314,0x00}, //Disable Embeded lines
+};
+
+static const SENSOR_REG_T imx135_preview_setting[] = {
+	/*
+	MCLK= 24 Mhz
+	PCLK= 221670000 hz
+	MIPI DataRate= 554.18 Mbps/lane
+	LineLength= 4572
+	Framelength= 1616
+	ImageWidth= 2104
+	ImageHeight= 1560
+	AcropWidth= 4208
+	AcropHeight= 3120
+	Htime= 0.0206 ms
+	Vblank= 1.155 ms
+	FrameRate= 30 fps
+	*/
+	{0x011E,0x18},
+	{0x011F,0x00},
+	{0x0301,0x05},
+	{0x0303,0x01},
+	{0x0305,0x0B},
+	{0x0309,0x05},
+	{0x030B,0x01},
+	{0x030C,0x00},
+	{0x030D,0xFE},
+	{0x030E,0x01},
+	{0x3A06,0x11},
+	
+	{SENSOR_WRITE_DELAY, 20},
+	
+	{0x0108,0x03},
+	{0x0112,0x0A},
+	{0x0113,0x0A},
+	{0x0381,0x01},
+	{0x0383,0x01},
+	{0x0385,0x01},
+	{0x0387,0x01},
+	{0x0390,0x01},
+	{0x0391,0x22},
+	{0x0392,0x00},
+	{0x0401,0x00},
+	{0x0404,0x00},
+	{0x0405,0x10},
+	{0x4082,0x01},
+	{0x4083,0x01},
+	{0x7006,0x04},
+	{0x0700,0x00},
+	{0x3A63,0x00},
+	{0x4100,0xF8},
+	{0x4203,0xFF},
+	{0x4344,0x00},
+	{0x441C,0x01},
+	{0x0340,0x06},
+	{0x0341,0x50},
+	{0x0342,0x11},
+	{0x0343,0xDC},
+	{0x0344,0x00},
+	{0x0345,0x08},//00
+	{0x0346,0x00},
+	{0x0347,0x00},
+	{0x0348,0x10},
+	{0x0349,0x67},//6f
+	{0x034A,0x0C},
+	{0x034B,0x2F},
+
+	{0x034C,0x08},
+	{0x034D,0x30},
+	{0x034E,0x06},
+	{0x034F,0x18},
+	{0x0350,0x00},
+	{0x0351,0x00},
+	{0x0352,0x00},
+	{0x0353,0x00},
+	{0x0354,0x08},
+	{0x0355,0x30},
+	{0x0356,0x06},
+	{0x0357,0x18},
+	{0x301D,0x30},
+	{0x3310,0x08},
+	{0x3311,0x30},//38
+	{0x3312,0x06},
+	{0x3313,0x18},	
+
+	{0x331C,0x04},
+	{0x331D,0x4c},//ce
+	{0x4084,0x00},
+	{0x4085,0x00},
+	{0x4086,0x00},
+	{0x4087,0x00},
+	{0x4400,0x00},
+	{0x0830,0x6F},
+	{0x0831,0x27},
+	{0x0832,0x47},
+	{0x0833,0x2F},
+	{0x0834,0x27},
+	{0x0835,0x27},
+	{0x0836,0x97},
+	{0x0837,0x37},
+	{0x0839,0x1F},
+	{0x083A,0x17},
+	{0x083B,0x02},
+	{0x0202,0x06},
+	{0x0203,0x4C},
+	{0x0205,0x00},
+	{0x020E,0x01},
+	{0x020F,0x00},
+	{0x0210,0x01},
+	{0x0211,0x00},
+	{0x0212,0x01},
+	{0x0213,0x00},
+	{0x0214,0x01},
+	{0x0215,0x00},
+	{0x0230,0x00},
+	{0x0231,0x00},
+	{0x0233,0x00},
+	{0x0234,0x00},
+	{0x0235,0x40},
+	{0x0238,0x00},
+	{0x0239,0x04},
+	{0x023B,0x00},
+	{0x023C,0x01},
+	{0x33B0,0x04},
+	{0x33B1,0x00},
+	{0x33B3,0x00},
+	{0x33B4,0x01},
+	{0x3800,0x00},
+	{0x3314,0x00}, //Disable Embeded lines
+};
+
+static const SENSOR_REG_T imx135_snapshot_setting[] = {
+	/*
+	MCLK= 24 Mhz
+	PCLK= 432000000 hz
+	MIPI DataRate= 1080 Mbps/lane
+	LineLength= 4572
+	Framelength= 3148
+	ImageWidth= 4208
+	ImageHeight= 3120
+	AcropWidth= 4208
+	AcropHeight= 3120
+	Htime= 0.0106 ms
+	Vblank= 0.2963 ms
+	FrameRate= 30.02 fps
+	*/
+	{0x011E,0x18},
+	{0x011F,0x00},
+	{0x0301,0x05},
+	{0x0303,0x01},
+	{0x0305,0x0B},
+	{0x0309,0x05},
+	{0x030B,0x01},
+	{0x030C,0x01},
+	{0x030D,0xEF},
+	{0x030E,0x01},
+	{0x3A06,0x11},
+
+	{SENSOR_WRITE_DELAY, 20},
+
+	{0x0108,0x03},
+	{0x0112,0x0A},
+	{0x0113,0x0A},
+	{0x0381,0x01},
+	{0x0383,0x01},
+	{0x0385,0x01},
+	{0x0387,0x01},
+	{0x0390,0x00},
+	{0x0391,0x11},
+	{0x0392,0x00},
+	{0x0401,0x00},
+	{0x0404,0x00},
+	{0x0405,0x10},
+	{0x4082,0x01},
+	{0x4083,0x01},
+	{0x7006,0x04},
+	{0x0700,0x00},
+	{0x3A63,0x00},
+	{0x4100,0xF8},
+	{0x4203,0xFF},
+	{0x4344,0x00},
+	{0x441C,0x01},
+	{0x0340,0x0C},
+	{0x0341,0x4C},
+	{0x0342,0x11},
+	{0x0343,0xDC},
+	{0x0344,0x00},
+	{0x0345,0x00},
+	{0x0346,0x00},
+	{0x0347,0x00},
+	{0x0348,0x10},
+	{0x0349,0x6F},
+	{0x034A,0x0C},
+	{0x034B,0x2F},
+	{0x034C,0x10},
+	{0x034D,0x70},
+	{0x034E,0x0C},
+	{0x034F,0x30},
+	{0x0350,0x00},
+	{0x0351,0x00},
+	{0x0352,0x00},
+	{0x0353,0x00},
+	{0x0354,0x10},
+	{0x0355,0x70},
+	{0x0356,0x0C},
+	{0x0357,0x30},
+	{0x301D,0x30},
+	{0x3310,0x10},
+	{0x3311,0x70},
+	{0x3312,0x0C},
+	{0x3313,0x30},
+	{0x331C,0x01},
+	{0x331D,0x68},
+	{0x4084,0x00},
+	{0x4085,0x00},
+	{0x4086,0x00},
+	{0x4087,0x00},
+	{0x4400,0x00},
+	{0x0830,0x8F},
+	{0x0831,0x47},
+	{0x0832,0x7F},
+	{0x0833,0x4F},
+	{0x0834,0x47},
+	{0x0835,0x5F},
+	{0x0836,0xFF},
+	{0x0837,0x4F},
+	{0x0839,0x1F},
+	{0x083A,0x17},
+	{0x083B,0x02},
+	{0x0202,0x0C},
+	{0x0203,0x48},
+	{0x0205,0x00},
+	{0x020E,0x01},
+	{0x020F,0x00},
+	{0x0210,0x01},
+	{0x0211,0x00},
+	{0x0212,0x01},
+	{0x0213,0x00},
+	{0x0214,0x01},
+	{0x0215,0x00},
+	{0x0230,0x00},
+	{0x0231,0x00},
+	{0x0233,0x00},
+	{0x0234,0x00},
+	{0x0235,0x40},
+	{0x0238,0x00},
+	{0x0239,0x04},
+	{0x023B,0x00},
+	{0x023C,0x01},
+	{0x33B0,0x04},
+	{0x33B1,0x00},
+	{0x33B3,0x00},
+	{0x33B4,0x01},
+	{0x3800,0x00},
+	{0x3314,0x00}, //Disable Embeded lines
+
+};
+
+static const SENSOR_REG_T imx135_video_setting[] = {
+	
+	/*
+	MCLK= 24 Mhz
+	PCLK= 342980000 hz
+	MIPI DataRate= 857.45 Mbps/lane
+	LineLength= 4572
+	Framelength= 1250
+	ImageWidth= 1280
+	ImageHeight= 1170
+	AcropWidth= 4160
+	AcropHeight= 2340
+	Htime= 0.0133 ms
+	Vblank= 1.0664 ms
+	FrameRate= 60.01 fps
+	*/
+	{0x011E,0x18},
+	{0x011F,0x00},
+	{0x0301,0x05},
+	{0x0303,0x01},
+	{0x0305,0x0B},
+	{0x0309,0x05},
+	{0x030B,0x01},
+	{0x030C,0x01},
+	{0x030D,0x89},
+	{0x030E,0x01},
+	{0x3A06,0x11},
+	
+	{SENSOR_WRITE_DELAY, 20},
+
+	{0x0108,0x03},
+	{0x0112,0x0A},
+	{0x0113,0x0A},
+	{0x0381,0x01},
+	{0x0383,0x01},
+	{0x0385,0x01},
+	{0x0387,0x01},
+	{0x0390,0x01},
+	{0x0391,0x22},
+	{0x0392,0x00},
+	{0x0401,0x02},
+	{0x0404,0x00},
+	{0x0405,0x1A},
+	{0x4082,0x00},
+	{0x4083,0x00},
+	{0x7006,0x04},
+	{0x0700,0x00},
+	{0x3A63,0x00},
+	{0x4100,0xF8},
+	{0x4203,0xFF},
+	{0x4344,0x00},
+	{0x441C,0x01},
+	{0x0340,0x04},
+	{0x0341,0xE2},
+	{0x0342,0x11},
+	{0x0343,0xDC},
+	{0x0344,0x00},
+	{0x0345,0x18},
+	{0x0346,0x01},
+	{0x0347,0x88},
+	{0x0348,0x10},
+	{0x0349,0x57},
+	{0x034A,0x0A},
+	{0x034B,0xAB},
+	{0x034C,0x05},
+	{0x034D,0x00},
+	{0x034E,0x02},
+	{0x034F,0xD0},
+	{0x0350,0x00},
+	{0x0351,0x00},
+	{0x0352,0x00},
+	{0x0353,0x00},
+	{0x0354,0x08},
+	{0x0355,0x20},
+	{0x0356,0x04},
+	{0x0357,0x92},
+	{0x301D,0x30},
+	{0x3310,0x05},
+	{0x3311,0x00},
+	{0x3312,0x02},
+	{0x3313,0xD0},
+	{0x331C,0x03},
+	{0x331D,0xE8},
+	{0x4084,0x05},
+	{0x4085,0x00},
+	{0x4086,0x02},
+	{0x4087,0xD0},
+	{0x4400,0x00},
+	{0x0830,0x7F},
+	{0x0831,0x37},
+	{0x0832,0x67},
+	{0x0833,0x3F},
+	{0x0834,0x3F},
+	{0x0835,0x47},
+	{0x0836,0xDF},
+	{0x0837,0x47},
+	{0x0839,0x1F},
+	{0x083A,0x17},
+	{0x083B,0x02},
+	{0x0202,0x04},
+	{0x0203,0xDE},
+	{0x0205,0x00},
+	{0x020E,0x01},
+	{0x020F,0x00},
+	{0x0210,0x01},
+	{0x0211,0x00},
+	{0x0212,0x01},
+	{0x0213,0x00},
+	{0x0214,0x01},
+	{0x0215,0x00},
+	{0x0230,0x00},
+	{0x0231,0x00},
+	{0x0233,0x00},
+	{0x0234,0x00},
+	{0x0235,0x40},
+	{0x0238,0x00},
+	{0x0239,0x04},
+	{0x023B,0x00},
+	{0x023C,0x01},
+	{0x33B0,0x04},
+	{0x33B1,0x00},
+	{0x33B3,0x00},
+	{0x33B4,0x01},
+	{0x3800,0x00},
+	{0x3314,0x00}, //Disable Embeded lines
+};
+
+static struct sensor_res_tab_info s_imx135_resolution_tab_raw[VENDOR_NUM] = {
+	{
+      .module_id = MODULE_SUNNY,
+      .reg_tab = {
+        {ADDR_AND_LEN_OF_ARRAY(imx135_init_setting), PNULL, 0,
+        .width = 0, .height = 0,
+        .xclk_to_sensor = EX_MCLK, .image_format = SENSOR_IMAGE_FORMAT_RAW},
+#ifndef NOT_SUPPORT_VIDEO
+		{ADDR_AND_LEN_OF_ARRAY(imx135_video_setting), PNULL, 0,
+        .width = VIDEO_WIDTH, .height = VIDEO_HEIGHT,
+        .xclk_to_sensor = EX_MCLK, .image_format = SENSOR_IMAGE_FORMAT_RAW},
+#endif		
+        {ADDR_AND_LEN_OF_ARRAY(imx135_preview_setting), PNULL, 0,
+        .width = PREVIEW_WIDTH, .height = PREVIEW_HEIGHT,
+        .xclk_to_sensor = EX_MCLK, .image_format = SENSOR_IMAGE_FORMAT_RAW},
+
+        {ADDR_AND_LEN_OF_ARRAY(imx135_snapshot_setting), PNULL, 0,
+        .width = SNAPSHOT_WIDTH, .height = SNAPSHOT_HEIGHT,
+        .xclk_to_sensor = EX_MCLK, .image_format = SENSOR_IMAGE_FORMAT_RAW}
+		}
+	},
+
+	/*If there are multiple modules,please add here*/
+};
+
+static SENSOR_TRIM_T s_imx135_resolution_trim_tab[VENDOR_NUM] = {
+	{
+     .module_id = MODULE_SUNNY,
+     .trim_info = {
+       {0, 0, 0, 0, 0, 0, 0, {0, 0, 0, 0}},
+#ifndef NOT_SUPPORT_VIDEO	   
+	   {.trim_start_x = VIDEO_TRIM_X, .trim_start_y = VIDEO_TRIM_Y,
+        .trim_width = VIDEO_TRIM_W,   .trim_height = VIDEO_TRIM_H,
+        .line_time = VIDEO_LINE_TIME, .bps_per_lane = VIDEO_MIPI_PER_LANE_BPS,
+        .frame_line = VIDEO_FRAME_LENGTH,
+        .scaler_trim = {.x = VIDEO_TRIM_X, .y = VIDEO_TRIM_Y, .w = VIDEO_TRIM_W, .h = VIDEO_TRIM_H}},
+#endif		   
+	   {.trim_start_x = PREVIEW_TRIM_X, .trim_start_y = PREVIEW_TRIM_Y,
+        .trim_width = PREVIEW_TRIM_W,   .trim_height = PREVIEW_TRIM_H,
+        .line_time = PREVIEW_LINE_TIME, .bps_per_lane = PREVIEW_MIPI_PER_LANE_BPS,
+        .frame_line = PREVIEW_FRAME_LENGTH,
+        .scaler_trim = {.x = PREVIEW_TRIM_X, .y = PREVIEW_TRIM_Y, .w = PREVIEW_TRIM_W, .h = PREVIEW_TRIM_H}},
+       
+	   {
+        .trim_start_x = SNAPSHOT_TRIM_X, .trim_start_y = SNAPSHOT_TRIM_Y,
+        .trim_width = SNAPSHOT_TRIM_W,   .trim_height = SNAPSHOT_TRIM_H,
+        .line_time = SNAPSHOT_LINE_TIME, .bps_per_lane = SNAPSHOT_MIPI_PER_LANE_BPS,
+        .frame_line = SNAPSHOT_FRAME_LENGTH,
+        .scaler_trim = {.x = SNAPSHOT_TRIM_X, .y = SNAPSHOT_TRIM_Y, .w = SNAPSHOT_TRIM_W, .h = SNAPSHOT_TRIM_H}},
+       }
+	},
+
+    /*If there are multiple modules,please add here*/
+
+};
+
+static SENSOR_REG_T imx135_shutter_reg[] = {
+	{0x0104, 0x01}, 
+    {0x0202, 0}, 
+	{0x0203, 0}, 
+	{0x0104, 0x00}, 
+
+};
+
+static struct sensor_i2c_reg_tab imx135_shutter_tab = {
+    .settings = imx135_shutter_reg, 
+	.size = ARRAY_SIZE(imx135_shutter_reg),
+};
+
+static SENSOR_REG_T imx135_again_reg[] = {
+    //{0x0204, 0x00}, 
+	{0x0104, 0x01}, 
+	{0x0205, 0x00}, 
+	{0x0104, 0x00}, 
+ 
+};
+
+static struct sensor_i2c_reg_tab imx135_again_tab = {
+    .settings = imx135_again_reg, 
+	.size = ARRAY_SIZE(imx135_again_reg),
+};
+
+static SENSOR_REG_T imx135_dgain_reg[] = {
+   
+};
+
+static struct sensor_i2c_reg_tab imx135_dgain_tab = {
+    .settings = imx135_dgain_reg, 
+	.size = ARRAY_SIZE(imx135_dgain_reg),
+};
+
+static SENSOR_REG_T imx135_frame_length_reg[] = {
+	{0x0104, 0x01}, 
+    {0x0340, 0x0c}, 
+	{0x0341, 0x4c},
+	{0x0104, 0x00}, 
+};
+
+static struct sensor_i2c_reg_tab imx135_frame_length_tab = {
+    .settings = imx135_frame_length_reg,
+    .size = ARRAY_SIZE(imx135_frame_length_reg),
+};
+
+static struct sensor_aec_i2c_tag imx135_aec_info = {
+    .slave_addr = (I2C_SLAVE_ADDR >> 1),
+    .addr_bits_type = SENSOR_I2C_REG_16BIT,
+    .data_bits_type = SENSOR_I2C_VAL_8BIT,
+    .shutter = &imx135_shutter_tab,
+    .again = &imx135_again_tab,
+    .dgain = &imx135_dgain_tab,
+    .frame_length = &imx135_frame_length_tab,
+};
+
+
+static SENSOR_STATIC_INFO_T s_imx135_static_info[VENDOR_NUM] = {
+    {.module_id = MODULE_SUNNY,
+     .static_info = {
+        .f_num = 200,
+        .focal_length = 354,
+        .max_fps = 0,
+        .max_adgain = 15 * 2,
+        .ois_supported = 0,
+        .pdaf_supported = 0,
+        .exp_valid_frame_num = 1,
+        .clamp_level = 64,
+        .adgain_valid_frame_num = 1,
+        .fov_info = {{4.614f, 3.444f}, 4.222f}}
+    }
+    /*If there are multiple modules,please add here*/
+};
+
+static SENSOR_MODE_FPS_INFO_T s_imx135_mode_fps_info[VENDOR_NUM] = {
+    {.module_id = MODULE_SUNNY,
+       {.is_init = 0,
+         {{SENSOR_MODE_COMMON_INIT, 0, 1, 0, 0},
+         {SENSOR_MODE_PREVIEW_ONE, 0, 1, 0, 0},
+         {SENSOR_MODE_SNAPSHOT_ONE_FIRST, 0, 1, 0, 0},
+         {SENSOR_MODE_SNAPSHOT_ONE_SECOND, 0, 1, 0, 0},
+         {SENSOR_MODE_SNAPSHOT_ONE_THIRD, 0, 1, 0, 0},
+         {SENSOR_MODE_PREVIEW_TWO, 0, 1, 0, 0},
+         {SENSOR_MODE_SNAPSHOT_TWO_FIRST, 0, 1, 0, 0},
+         {SENSOR_MODE_SNAPSHOT_TWO_SECOND, 0, 1, 0, 0},
+         {SENSOR_MODE_SNAPSHOT_TWO_THIRD, 0, 1, 0, 0}}}
+    }
+    /*If there are multiple modules,please add here*/
+};
+
+static struct sensor_module_info s_imx135_module_info_tab[VENDOR_NUM] = {
+    {.module_id = MODULE_SUNNY,
+     .module_info = {
+         .major_i2c_addr = I2C_SLAVE_ADDR >> 1,
+         .minor_i2c_addr = I2C_SLAVE_ADDR >> 1,
+
+         .reg_addr_value_bits = SENSOR_I2C_REG_16BIT | SENSOR_I2C_VAL_8BIT |
+                                SENSOR_I2C_FREQ_400,
+
+         .avdd_val = SENSOR_AVDD_2800MV,
+         .iovdd_val = SENSOR_AVDD_1800MV,
+         .dvdd_val = SENSOR_AVDD_1000MV,
+
+         .image_pattern = SENSOR_IMAGE_PATTERN_RAWRGB_R,
+
+         .preview_skip_num = 1,
+         .capture_skip_num = 1,
+         .flash_capture_skip_num = 6,
+         .mipi_cap_skip_num = 0,
+         .preview_deci_num = 0,
+         .video_preview_deci_num = 0,
+
+         .threshold_eb = 0,
+         .threshold_mode = 0,
+         .threshold_start = 0,
+         .threshold_end = 0,
+
+         .sensor_interface = {
+              .type = SENSOR_INTERFACE_TYPE_CSI2,
+              .bus_width = LANE_NUM,
+              .pixel_width = RAW_BITS,
+              .is_loose = 0,
+          },
+         .change_setting_skip_num = 1,
+         .horizontal_view_angle = 65,
+         .vertical_view_angle = 60
+      }
+    }
+
+/*If there are multiple modules,please add here*/
+};
+
+static struct sensor_ic_ops s_imx135_ops_tab;
+struct sensor_raw_info *s_imx135_mipi_raw_info_ptr = &s_imx135_mipi_raw_info;
+
+SENSOR_INFO_T g_imx135_mipi_raw_info = {
+    .hw_signal_polarity = SENSOR_HW_SIGNAL_PCLK_P | SENSOR_HW_SIGNAL_VSYNC_P |
+                          SENSOR_HW_SIGNAL_HSYNC_P,
+    .environment_mode = SENSOR_ENVIROMENT_NORMAL | SENSOR_ENVIROMENT_NIGHT,
+    .image_effect = SENSOR_IMAGE_EFFECT_NORMAL |
+                    SENSOR_IMAGE_EFFECT_BLACKWHITE | SENSOR_IMAGE_EFFECT_RED |
+                    SENSOR_IMAGE_EFFECT_GREEN | SENSOR_IMAGE_EFFECT_BLUE |
+                    SENSOR_IMAGE_EFFECT_YELLOW | SENSOR_IMAGE_EFFECT_NEGATIVE |
+                    SENSOR_IMAGE_EFFECT_CANVAS,
+
+    .wb_mode = 0,
+    .step_count = 7,
+    .reset_pulse_level = SENSOR_LOW_PULSE_RESET,
+    .reset_pulse_width = 50,
+    .power_down_level = SENSOR_LOW_LEVEL_PWDN,
+    .identify_count = 1,
+    .identify_code =
+        {{ .reg_addr = imx135_PID_ADDR, .reg_value = imx135_PID_VALUE},
+         { .reg_addr = imx135_VER_ADDR, .reg_value = imx135_VER_VALUE}},
+
+    .source_width_max = SNAPSHOT_WIDTH,
+    .source_height_max = SNAPSHOT_HEIGHT,
+    .name = (cmr_s8 *)SENSOR_NAME,
+    .image_format = SENSOR_IMAGE_FORMAT_RAW,
+
+    .module_info_tab = s_imx135_module_info_tab,
+    .module_info_tab_size = ARRAY_SIZE(s_imx135_module_info_tab),
+
+    .resolution_tab_info_ptr = s_imx135_resolution_tab_raw,
+    .sns_ops = &s_imx135_ops_tab,
+    .raw_info_ptr = &s_imx135_mipi_raw_info_ptr,
+
+    .video_tab_info_ptr = NULL,
+    .sensor_version_info = (cmr_s8 *)"imx135_v1",
+};

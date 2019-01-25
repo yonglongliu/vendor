@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "Stpoping tap detection script"
+
+# stop recording (send SIGTERM)
+# pkill arecord
+
+# reload default container file
+
+# playback a dummy sound
+
+# dummy sleep to emualte all these commands
+sleep 3
+
+echo "Ending tap detection stop script"

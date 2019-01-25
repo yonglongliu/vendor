@@ -1,0 +1,79 @@
+
+LOCAL_PATH:= $(call my-dir)
+
+$(warning  "GPU: MALI_PLATFORM_NAME: $(MALI_PLATFORM_NAME)")
+$(warning  "GPU: TARGET_BOARD_PLATFORM: $(TARGET_BOARD_PLATFORM)")
+
+
+ifeq ($(strip $(MALI_PLATFORM_NAME)),)
+$(error  "GPU: MALI_PLATFORM_NAME:$(MALI_PLATFORM_NAME)")
+endif
+
+ifeq ($(strip $(TARGET_BOARD_PLATFORM)),)
+$(error  "GPU: TARGET_BOARD_PLATFORM: $(TARGET_BOARD_PLATFORM)")
+endif
+
+ifeq ($(strip $(TARGET_ARCH)),)
+$(error  "GPU: TARGET_ARCH: $(TARGET_ARCH)")
+endif
+
+
+BUILD_BOTH_32_AND_64 := false;
+
+ifeq ($(strip $(TARGET_ARCH)),x86_64)
+  BUILD_BOTH_32_AND_64 := true
+endif
+
+ifeq ($(strip $(TARGET_ARCH)),arm64)
+  BUILD_BOTH_32_AND_64 := true
+endif
+
+$(warning  "GPU: TARGET_ARCH:$(TARGET_ARCH), BUILD_BOTH_32_AND_64: $(BUILD_BOTH_32_AND_64)")
+
+#libGLES_mali
+include $(CLEAR_VARS)
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE := libGLES_mali.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+
+ifeq ($(strip $(BUILD_BOTH_32_AND_64)), true)
+  LOCAL_MODULE_PATH_32 := $(TARGET_OUT_VENDOR)/lib/egl
+  LOCAL_MODULE_PATH_64 := $(TARGET_OUT_VENDOR)/lib64/egl
+  LOCAL_MULTILIB := both
+  LOCAL_SRC_FILES_32 :=  usr/$(MALI_PLATFORM_NAME)/libGLES_mali.so
+  LOCAL_SRC_FILES_64 :=  usr/$(MALI_PLATFORM_NAME)/libGLES_mali_64.so
+else
+  LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR)/lib/egl
+  LOCAL_SRC_FILES := usr/$(MALI_PLATFORM_NAME)/libGLES_mali.so
+  $(warning  "GPU MALI: 32 LOCAL_MODULE: $(LOCAL_MODULE)")
+  $(warning  "GPU MALI: 32 LOCAL_SRC_FILES: $(LOCAL_SRC_FILES)")
+endif
+
+include $(BUILD_PREBUILT)
+
+#gralloc.xxxx.so
+include $(CLEAR_VARS)
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE := gralloc.$(TARGET_BOARD_PLATFORM).so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+
+ifeq ($(strip $(BUILD_BOTH_32_AND_64)), true)
+  LOCAL_MODULE_PATH_32 := $(TARGET_OUT_VENDOR)/lib/hw
+  LOCAL_MODULE_PATH_64 := $(TARGET_OUT_VENDOR)/lib64/hw
+  LOCAL_MULTILIB := both
+  LOCAL_SRC_FILES_32 :=  usr/$(MALI_PLATFORM_NAME)/gralloc.midgard.so
+  LOCAL_SRC_FILES_64 :=  usr/$(MALI_PLATFORM_NAME)/gralloc.midgard_64.so
+
+  $(warning  "GPU: 64 TARGET_OUT_VENDOR: $(TARGET_OUT_VENDOR)")
+  $(warning  "GPU: 64 LOCAL_MODULE: $(LOCAL_MODULE)")
+  $(warning  "GPU: 64 LOCAL_SRC_FILES_64: $(LOCAL_SRC_FILES_64)")
+else
+  LOCAL_MODULE_RELATIVE_PATH := hw
+  LOCAL_MULTILIB := both
+  LOCAL_SRC_FILES :=  usr/$(MALI_PLATFORM_NAME)/gralloc.midgard.so
+  $(warning  "GPU: 32 LOCAL_MODULE: $(LOCAL_MODULE)")
+  $(warning  "GPU: 32 LOCAL_SRC_FILES: $(LOCAL_SRC_FILES)")
+endif
+
+include $(BUILD_PREBUILT)
+

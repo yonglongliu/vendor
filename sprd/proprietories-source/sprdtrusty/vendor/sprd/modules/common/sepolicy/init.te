@@ -1,0 +1,4 @@
+#spreadtrum trusty add by fpsensor
+allow init fpsensor_fp_device:chr_file {write};
+# for rpmb socket server
+allow init rpmb_socket:sock_file {write};

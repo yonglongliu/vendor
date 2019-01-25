@@ -1,0 +1,17 @@
+# for keystore
+/dev/trusty-ipc-dev0			u:object_r:teetz_device:s0
+/dev/block/mmcblk0rpmb			u:object_r:mmcblk_device:s0
+/system/bin/sprdstorageproxyd	u:object_r:tee_exec:s0
+/data/sprd_ss(/.*)?				u:object_r:ss_file:s0
+# Add for chiponeic fingerprint
+/dev/fpsensor           u:object_r:fpsensor_fp_device:s0
+
+# for Fingerprint feature
+/data/sprd/applock(/.*)?  u:object_r:fp_file:s0
+/data/sprd/launchappdata(/.*)?  u:object_r:fp_launchapp_file:s0
+
+# Add for chipone fingerprint test
+/data/fpsensor(/.*)?           u:object_r:fpsensor_test_file:s0
+# for rpmb server
+/dev/socket/rpmbserver u:object_r:rpmb_socket:s0
+/system/bin/rpmbserver u:object_r:tee_exec:s0

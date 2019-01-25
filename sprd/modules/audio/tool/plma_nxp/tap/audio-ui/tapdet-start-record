@@ -1,0 +1,6 @@
+#!/bin/bash
+
+CL='sudo /home/ubuntu/climax -dsysfs -l /lib/firmware/tfa9891-mono-demo.cnt --slave=0x36'
+
+# start record to enable clock
+sudo arecord -v -Dhw:0,0 -c 2 -r 48000 -f S16_LE /dev/null

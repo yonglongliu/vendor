@@ -1,0 +1,10 @@
+type ss_file, file_type, data_file_type;
+
+# for Fingerprint feature
+type fp_file, file_type, data_file_type;
+type fp_launchapp_file, file_type, data_file_type;
+
+#add for chipone fingerprint test
+type fpsensor_test_file, file_type, data_file_type;
+# for rpmb server
+type rpmb_socket, file_type, mlstrustedobject;

@@ -1,0 +1,47 @@
+#include "nsISupports.idl"
+
+interface nsIVowifiCallback;
+interface nsITelephonyCallback;
+#include "nsIRadioInterfaceLayer.idl"
+[scriptable, uuid(263ed1ba-5cc1-11db-9673-00e08161165f)]
+interface nsIVowifiInterfaceLayer : nsISupports
+{
+    void registerCallback(in nsIVowifiCallback Callback);
+    void unregisterCallback();
+    void resetAll(in unsigned short wifiState, in unsigned long delayMillis);
+    void attach();
+    void deattach();
+    void deattachHandover(in boolean forHandover);
+    void imsRegister();
+    void imsReregister(in short networkType, in AString networkInfo);
+    void imsDeregister();
+    void dial(in AString peerNumber, in boolean isEmergency, in nsIRilSendWorkerMessageCallback callback);
+    void hungUpCall(in unsigned long callIndex, in nsIRilSendWorkerMessageCallback callback);
+    void switchActiveCall(in nsIRilSendWorkerMessageCallback callback);
+    void hangUpForeground(in nsIRilSendWorkerMessageCallback callback);
+    void hangUpBackground(in nsIRilSendWorkerMessageCallback callback);
+    void reject(in nsIRilSendWorkerMessageCallback callback);
+    void answerCall(in nsIRilSendWorkerMessageCallback callback);
+    void conferenceCall(in nsIRilSendWorkerMessageCallback callback);
+    void separateCall(in unsigned long callIndex, in nsIRilSendWorkerMessageCallback callback);
+    void setMute(in boolean isMute);
+    void sendSMS(in jsval message, in nsIRilSendWorkerMessageCallback callback);
+    void setSmscAddress(in jsval message, in nsIRilSendWorkerMessageCallback callback);
+    void getSmscAddress(in jsval message, in nsIRilSendWorkerMessageCallback callback);
+    void ackSms(in jsval message, in nsIRilSendWorkerMessageCallback callback);
+    AString getCurLocalAddress();
+    AString getCurPcscfAddress();
+    short getCallCount();
+    short getAliveCallLose();
+    short getAliveCallJitter();
+    short getAliveCallRtt();
+    void updateDataRouterState(in unsigned long dataRouterState);
+    void setVolteUsedLocalAddr(in AString addr);
+};
+
+%{C++
+#define NS_VOWIFIINTERFACELAYER_CID { 0x67a1c8b7, 0x2dc9, 0x474f, \
+  { 0x94, 0xf6, 0xf6, 0xdc, 0x7f, 0xda, 0x21, 0xd4 } }
+
+#define VOWIFIINTERFACELAYER_CONTRACTID "@mozilla.org/VowifiInterfaceLayer;1"
+%}

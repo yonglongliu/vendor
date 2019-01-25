@@ -1,0 +1,12 @@
+ifeq ($(strip $(BOARD_FINGERPRINT_CONFIG)), chipone)
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := fpExtensionService
+LOCAL_MODULE_TAG := optional
+LOCAL_SRC_FILES := $(LOCAL_MODULE).apk
+LOCAL_MODULE_CLASS := APPS
+LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
+LOCAL_CERTIFICATE := platform
+include $(BUILD_PREBUILT)
+endif

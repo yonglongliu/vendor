@@ -1,0 +1,19 @@
+#!/bin/bash
+
+amixer cset name='devkit Profile' taptrigger
+
+#CL='sudo /home/ubuntu/climax -dsysfs -l /lib/firmware/tfa9891-mono-demo.cnt --slave=0x36'
+
+# un-load driver
+# try loading both modules (5102 and nxp_tfa) to support both setups
+#sudo modprobe -r snd_soc_bbb_5102
+#sudo modprobe -r snd_soc_bbb_nxp_tfa
+#sudo modprobe -r snd_soc_tfa98xx;
+
+# load driver in bypass mode
+#sudo modprobe snd_soc_tfa98xx trace_level=1 fw_name=mono_tap.cnt
+#sudo modprobe snd_soc_bbb_nxp_tfa
+#sudo modprobe snd_soc_bbb_5102
+
+#echo "driver module loaded"
+

@@ -1,0 +1,196 @@
+plma_sw_3.x.x
+  - HostSDK updates v3.x.x (see releasenotes.txt)
+  - artf173613 : fix kernel crash when data size field in container file is 0
+  - artf173657 : Linux driver 96/97 support
+  - artf171508 : device support for tfa9896 added
+
+  Limitations:
+  - Tested on ...
+  - Driver assumes that samples are calibrated
+  - only 1 set of controls for both devices when using a stereo configuration
+  - requires clean signals on I2S/TDM interface
+
+
+plma_sw_3.0.5
+  - HostSDK updates v3.0.5 (see releasenotes.txt)
+  - artf164475 : 88 test: AssertionError: tfa: swvstep should have been changed
+  - artf164464 : add stop mixer control for TFA1 devices
+  - artf168089 : TFA9872: mixer control to write calibration value to MTP
+  - artf168691 : Remove the plop noise by setting I2CR when getting a NOCLK interrupt on the 72
+  - artf148151 : Monitor function usage
+  - artf170271 : crash on corrupt container file
+
+  Limitations:
+  - Tested on TFA9888 N1C and TFA9891 mono.
+  - Driver assumes that samples are calibrated
+  - only 1 set of controls for both devices when using a stereo configuration
+  - requires clean signals on I2S/TDM interface
+
+plma_sw_2.10.1
+  - artf158830 : fix volume controls: translate mixer profile supplied by control 
+       to container profile, instead of always using the active container profile
+  - artf158852 : not able to change volume when no clock on TFA2 devices
+  - artf109128 : Switch profile with internal clock (osc1m)
+  - artf155387 : also check sample rate of profiles without vstep
+  - HostSDK updates v2.10.1 (see releasenotes.txt)
+
+  Limitations:
+  - Tested on TFA9888 N1C
+  - Driver assumes that samples are calibrated
+  - only 1 set of controls for both devices when using a stereo configuration
+  - requires clean signals on I2S/TDM interface
+
+
+plma_sw_2.9.2
+   - define DEBUG in linux_driver/Makefile to enable debugging 
+     (including trace_printk)
+
+  - HostSDK updates v2.9.2 (see releasenotes.txt)
+
+  Limitations:
+  - Tested on TFA9888 N1C and TFA9891 mono.
+  - only 1 set of controls for both devices when using a stereo configuration
+  - requires clean signals on I2S/TDM interface
+
+plma_sw_2.9.0
+
+  - use BTN_0 for Unrecognized and unsupported tap patterns
+  - detect taptrigger profile by ".tap" extensions
+  - map profiles with sample rate extensions (e.g. music.48000, music.32000)
+    to 1 profile (e.g. music)
+  - remove extensions from profile names
+
+  - HostSDK updates v2.9.0 (see releasenotes.txt)
+
+  Limitations:
+  - Tested on TFA9888 N1C, TFA9891 mono and TFA9890 stereo
+  - only 1 set of controls for both devices when using a stereo configuration
+  - requires clean signals on I2S/TDM interface
+
+
+plma_sw_2.8.2-b
+  - fix VDDS status check in monitor
+  - Support for Linux kernel version 3.18
+  - add bus index to stream widget name, dai and stream names
+  - tap-detection polling mode if no interrupt available
+  - add sample rate check at stream startup
+  - clean-up jobs on codec un-register
+
+  - Integrated HostSDK updates:
+    - artf122694]: New flow for profile switching max1/max2
+
+  Limitations:
+  - Build for Linux kernel version 3.18 not tested
+  - Tested on TFA9891 and TFA9890 mono
+  - stereo configurations are not tested and not supported
+  - Not tested for TFA9888
+  - requires clean signals on I2S/TDM interface
+
+plma_sw_2.8.2
+   Changes:
+  - Linux input device support for tap trigger for TFA9891 devices
+  - SaaM for TFA9891 devices
+  - Support for TFA9890 and TFA9891 devices
+  - Integrated HostSDK v2.8.2
+
+  Limitations:
+  - Tested on TFA9891 mono and TFA9890 mono/stereo
+  - not tested for TFA9888
+  - requires clean signals on I2S/TDM interface
+
+
+plma_sw_2.8.0 (not released)
+  Changes:
+  - [artf105341] check for an invalid profile mixer value
+  - [artf105223] use tfa98xx_profile instead of calling tfaContGetCurrentProfile() to keep track of the profile
+  - Integrated HostSDK v2.8.0
+
+  Limitations:
+  - requires clean signals on I2S/TDM interface
+
+plma_sw_2.7.0
+  Changes:
+  - cleanups
+  - Integrated HostSDK v2.7.0
+
+  Limitations:
+  - requires clean signals on I2S/TDM interface
+
+plma_sw_2.5.7
+
+  Changes:
+  - When leaving the Wait4Src state then call tfa_start()
+  - Change interrupt handler to deal with Wait4Src interrupts 
+  - clockless start 88 after container file is loaded
+  - Import changes from v2.5-mute-robust and din/v2.5 branch
+  - Integrated HostSDK v2.5.7+ (see releasenotes.txt for details)
+
+  Limitations:
+  - building climax is broken, please use hostsdk 2.5.7 release for this
+  - requires clean signals on I2S/TDM interface
+
+plma_sw_2.5.4
+
+  Changes:
+  - Integrated HostSDK v2.5.4
+
+plma_sw_2.5.3
+
+  Changes:
+  - Integrated HostSDK v2.5.3
+  - add debugfs entry for dsp control
+  - add driver version information
+  - protect dsp programming
+  - re-enable monitor task
+
+plma_sw_2.5.0
+
+  Changes:
+  - Integrated HostSDK v2.5.0
+  - default build for N1B
+
+plma_sw_2.4.2
+
+First version of Linux kernel driver for TFA9888N1A:
+
+- based on HostSDK 2.4.2 (see releasenotes-HostSDK.txt)
+- limited to 48 KHz, 16 bit, stereo, 32xFs
+- 1 mixer control to select the profile
+- a mixer control for each profile with volume steps to set the volume for that profile
+- support for accessing the device with climax via sysfs (e.g. for calibration, debugging)
+- Container file and artifacts to create container file available in kernel tree: linux-3.14/firmware/tfa98/88N1A/stereo_samsung.cnt
+- platform support for Beaglebone Black: linux-3.14/sound/soc/davinci/bbb-max2.c
+
+--------------------------------------------------------------------------------
+
+Build instructions for the Beaglebone black platform:
+
+git clone ssh://username@www.collabnet.nxp.com:29418/linux_3v10 linux
+cd linux
+git checkout plma_sw_2.8.2-b
+
+export ARCH=arm
+export CROSS_COMPILE=arm-linux-gnueabihf-
+
+make bbb-tfa_defconfig
+make -j12 zImage dtbs
+
+rm -rf mods_install/
+make INSTALL_MOD_PATH=mods_install -j12 modules && make INSTALL_MOD_PATH=mods_install modules_install
+
+scp arch/arm/boot/zImage root@bbb:/boot/uboot
+scp arch/arm/boot/dts/am335x-boneblack-tfa98xx.dtb root@bbb:/boot/uboot/dtbs/am335x-boneblack.dtb
+rsync -r mods_install/lib root@bbb:/
+
+scp firmware/tfa98/91/i2s_mono.cnt  root@bbb:/lib/firmware/tfa98xx.cnt
+
+git clone ssh://username@www.collabnet.nxp.com:29418/plma_din_hostsw plma_hostsw
+cd plma_hostsw
+git checkout plma_sw_2.8.2-b
+cd linux_driver
+make KDIR=$PWD/../../linux
+
+scp snd-soc-tfa98xx.ko root@bbb:/lib/modules/3.14.19/kernel/sound/soc/codecs/
+ssh root@bbb "/sbin/depmod -a"
+
+

@@ -1,0 +1,604 @@
+*** Settings ***
+Suite Teardown    teardown Climax
+Library           ../../climaxinfo.py
+Library           Collections
+Library           ../../patchDetect.py
+Library           OperatingSystem
+
+*** Variables ***
+
+*** Test Cases ***
+Global Setup
+    [Documentation]    This sets up all needed external variables for the test suite and checks if they are added properly.
+    ...    It gets the path of the container file, device ID and OS.
+    ...    It also sets up the proper device address or a dummy device if no device is found/connected.
+    [Tags]    setup
+    [Timeout]    1 minute
+    ${deviceId}=    get device ID    ${cnt}
+    set global variable    ${deviceId}
+    ${IsWindows}=    is windows operating system
+    set global variable    ${IsWindows}
+    ${usbDevice}=    get device interface    ${deviceClass}    ${climaxLoc}    ${cnt}    ${deviceId}
+    set global variable    ${usbDevice}
+    ${os}=    get operating system
+    set global variable    ${os}
+    ${plmaConfigsPath}=    get PlmaConfig Path    ${cnt}
+    set global variable    ${plmaConfigsPath}
+    ${rtfConfigsPath}=    get relative path    ${plmaConfigsPath}    /RTF
+    set global variable    ${rtfConfigsPath}
+    ${path}=    get relative path    ${plmaConfigsPath}    /${deviceId}/
+    set global variable    ${path}
+
+--reset
+    [Documentation]    This test resets the device using the reset user keyword.
+    ...    After that it performs the reset check corresponding to either the MAX1 or MAX2.
+    [Tags]    reset
+    [Timeout]    1 minute
+    Reset
+    Reset check
+
+--resetMtpEx
+    [Documentation]    This test runs climax with the --resetMtpEx option and checks wether or not the MTPEX register has been set to zero
+    [Tags]    resetMtpEx
+    [Timeout]    1 minute
+    start
+    ResetMtpEx
+    ResetMtpEx check
+
+--start
+    [Documentation]    This test starts the device on the given address(es) using the start user keyword.
+    ...    It checks if climax doesn't print messages
+    ...    After that it performs the startup check corresponding to either the MAX1 or MAX2.
+    [Tags]    start
+    [Setup]
+    [Timeout]    60 seconds
+    ${returnMessage}=    start
+    quiet should be empty    ${returnMessage}
+    Startup check
+
+--register
+    [Documentation]    This test checks if all register names can be returned properly by climax
+    [Tags]    register
+    [Timeout]    5 minutes
+    Reset
+    Run Climax    -l ${cnt}    --start
+    Check Registers
+
+--calibrate once
+    [Documentation]    This checks if climax with the --calibrate=once option generates and prints the right calibration value(s).
+    ...    It does this by first resetting the MTPEX register and then running the calibrate operation twice.
+    ...    It also tests if it doesn't calibrate twice and tests if "DSP already calibrated" is returned on the second calibrate operation.
+    [Tags]    calibrate:once
+    [Timeout]    1 minute
+    ResetMtpEx
+    set global variable    ${runNumber}    1
+    ${returnMessage1}=    Run Climax    -l ${cnt}    --calibrate=once
+    validate Calibration Message    ${returnMessage1}    ${deviceId}    ${runNumber}
+    set global variable    ${runNumber}    2
+    ${returnMessage2}=    Run Climax    -l ${cnt}    --calibrate=once
+    validate Calibration Message    ${returnMessage2}    ${deviceId}    ${runNumber}
+
+--calibrate always
+    [Documentation]    This checks if climax with the --calibrate=always option generates and prints the right calibration value(s)
+    [Tags]    calibrate:always
+    [Setup]
+    [Timeout]    60 seconds
+    ${returnMessage}=    Run Climax    -l ${cnt}    --calibrate=always
+    validate Calibration Message    ${returnMessage}    ${deviceId}    1
+
+--calshow
+    [Documentation]    This test runs climax with the calshow message 3 times:
+    ...    Once with the speaker option set to default ( both ).
+    ...    Once with speaker=L (Left).
+    ...    Once with speaker=R (Right).
+    ...    For each run it validates of the right calibration values are returned in the validate Calshow Message function.
+    [Tags]    calshow
+    [Setup]
+    [Timeout]    60 seconds
+    start
+    ${returnMessage}=    Run Climax    -l ${cnt}    --calshow
+    validate Calshow Message    ${returnMessage}    ${deviceId}    B
+    ${returnMessage}=    Run Climax    -l ${cnt}    --calshow    --speaker=L
+    validate Calshow Message    ${returnMessage}    ${deviceId}    L
+    ${returnMessage}=    Run Climax    -l ${cnt}    --calshow    --speaker=R
+    validate Calshow Message    ${returnMessage}    ${deviceId}    R
+
+--versions
+    [Documentation]    Tests if version starts with 2 for max2 and if DSP rev: string is not empty.
+    ...    It does this by first using climax with the start option and then running climax with the version option. Then versionCheck checks the returned climax version numbers and hardware ID's.
+    [Tags]    version
+    [Timeout]    1 minute
+    start
+    ${returnMessage}=    Run Climax    -l ${cnt}    --versions
+    versionCheck    ${returnMessage}
+
+--trace
+    [Documentation]    Tests if the climax --trace option returns a trace message that shows at least four I2C write/read operations
+    [Tags]    trace
+    [Timeout]    1 minute
+    start
+    ${returnMessage}=    Run Climax    -l ${cnt}    -r0x00    -t
+    Check Trace Lines    ${returnMessage}
+
+--diag
+    [Documentation]    Tests if the climax --diag option returns a message containing "code=0" (confirming all tests passed)
+    ...    If this is not found in the returned message the test fails
+    [Tags]    diag
+    [Timeout]    5 minutes
+    ${returnMessage}=    Run Climax    -l ${cnt}    --diag
+    validate Diag Message    ${returnMessage}    ${deviceId}
+
+--record
+    [Documentation]    Checks if the number of trackable items matches the number of items that are printed by the record function
+    [Tags]    record
+    [Timeout]    2 minutes
+    ${rtfConfigsPath}=    get relative path    ${plmaConfigsPath}    /RTF/record
+    @{cntFiles}=    get record test files    ${rtfConfigsPath}    ${deviceId}
+    : FOR    ${cntFile}    IN    @{cntFiles}
+    \    Check Record on cnt file    ${cntFile}
+    Check Record on cnt file    ${cnt}
+
+--dumpmodel
+    [Documentation]    Checks if the climax --dumpmodel=x and --dumpmodel=z options correctly print the right excursion or impedance values and if these are within the specified bounds
+    [Tags]    dumpmodel
+    [Timeout]    1 minute
+    ${returnMessage}=    Run Climax    -l ${cnt}    --dumpmodel=x
+    validate Dumpmodel Message    ${returnMessage}    ${deviceId}    x
+    ${returnMessage}=    Run Climax    -l ${cnt}    --dumpmodel=z
+    validate Dumpmodel Message    ${returnMessage}    ${deviceId}    z
+
+bitfield
+    [Documentation]    Checks if the climax <bitfield> command correctly prints the right bitfields. Also checks if climax correctly prints multiple bitfields with a climax <bitfield> <bitfield> command
+    ...    After that, it checks if it can set the bitfield for one specific device with --slave=<index> (0 or 1) and with --slave=<slaveaddress>
+    [Tags]    bitfield
+    [Timeout]    1 minute
+    run keyword if    '${deviceId}'!='88'    Check Bitfield Dump    PWDN SBSL ACS powerdown reset
+    run keyword if    '${deviceId}'=='88'    Check Bitfield Dump    PWDN SBSL MANSCONF MANOPER ACS powerdown reset
+    ${returnMessageCntLoad}=    Run Climax    -l ${cnt}    -b
+    @{addresses}=    get Addresses from ini file    ${returnMessageCntLoad}
+    ${returnMessage}=    Run Climax    -l ${cnt}    --slave=-1
+    : FOR    ${devAddr}    IN    @{addresses}
+    \    Check Display Slaves    ${returnMessage}    ${devAddr}    ${deviceId}
+    Run Climax    -l ${cnt}    VOL=0
+    run keyword if    '${deviceId}'!='88'    Run Climax    -l ${cnt}    --slave=0x36    VOL=3
+    run keyword if    '${deviceId}'!='88'    Run Climax    -l ${cnt}    --slave=0x37    VOL=5
+    run keyword if    '${deviceId}'=='88'    Run Climax    -l ${cnt}    --slave=0x34    VOL=5
+    ${returnMessage}=    Run Climax    -l ${cnt}    VOL
+    run keyword if    '${deviceId}'!='88'    Check Vol Bitfield    ${returnMessage}    ${deviceId}    3    5
+    run keyword if    '${deviceId}'=='88'    Check Vol Bitfield    ${returnMessage}    ${deviceId}    5    0
+
+--dump
+    [Documentation]    Checks if the climax --dump option correctly prints all the registers by comparing some register names with the printed dump
+    [Tags]    dump
+    [Timeout]    1 minute
+    start
+    ${returnMessage}=    Run Climax    -l ${cnt}    --dump
+    validate Dump Message    ${returnMessage}    ${deviceId}
+
+--profile
+    [Documentation]    Switches 20 times between all possible profiles in a random order.
+    ...    Checking if the device starts back up as expected: PWDN, MANSCONF, CLKS, AMPS, MANOPER and SBSL should have correct values.
+    ...    Also check if all bitfields from profile are set and if all bitfields from currentprof default section are set.
+    [Tags]    profile
+    [Timeout]    5 minutes
+    set global variable    ${i}    0
+    set global variable    ${profile}    0
+    set global variable    ${currentprof}    0
+    ${returnMessage}=    Run Climax    -l ${cnt}    -b
+    reset
+    Run Climax    -l ${cnt}    --start    --profile=${profile}
+    Startup check
+    : FOR    ${i}    IN RANGE    1    20
+    \    ${profile}=    get random profile    ${returnMessage}    ${deviceId}
+    \    Run Climax    -l ${cnt}    --start    --profile=${profile}
+    \    Startup check
+    \    Verify profile settings    ${returnMessage}    ${climaxLoc}    ${usbDevice}    -l ${cnt}    ${profile}
+    \    ...    ${currentprof}
+    \    set global variable    ${currentprof}    ${profile}
+
+--xmem
+    [Documentation]    Checks if the xmem part of memory can succesfully be written and read back.
+    [Tags]    xmem
+    [Timeout]    1 minute
+    reset
+    start
+    run keyword if    '${deviceId}'=='88'    Check xmem Max2
+    run keyword if    '${deviceId}'!='88'    Check xmem Max1
+
+--ymem
+    [Documentation]    Checks if the ymem part of memory can succesfully be written and read back. To do so, DSP is first set in reset.
+    [Tags]    ymem
+    [Timeout]    1 minute
+    start
+    Run Climax    -l ${cnt}    RST=1
+    ${returnMessage}=    Run Climax    -l ${cnt}    --ymem=0x20031f    -w0x112233
+    ${returnMessage}=    Run Climax    -l ${cnt}    --ymem=0x20031f
+    memory should contain    ${returnMessage}    ymem
+    Run Climax    -l ${cnt}    RST=0
+
+--iomem
+    [Documentation]    Checks if the iomem part of memory can succesfully be written and read back. To do so, DSP is first set in reset.
+    [Tags]    iomem
+    [Timeout]    1 minute
+    start
+    Run Climax    -l ${cnt}    RST=1
+    run keyword if    '${deviceId}'=='88'    Check iomem Max2
+    run keyword if    '${deviceId}'!='88'    Check iomem Max1
+    Run Climax    -l ${cnt}    RST=0
+
+--load
+    [Documentation]    Checks if the load option properly dumps the container file after loading by checking if it prints at least 10 lines to the command line
+    [Tags]    load
+    [Timeout]    1 minute
+    ${returnMessage}=    Run Climax    -l ${cnt}    -b
+    validate Container Dump    ${returnMessage}    ${deviceId}
+
+--params
+    [Documentation]    Checks if all the separate parameter files can be loaded with the --param option in climax.
+    ...    First it tests if climax is reset and started properly. Then for each type of parameter file it checks if the parameter file can be loaded and climax has started properly after that. This is done by checking the registers which should be set after startup and confirming that no error message has been returned.
+    [Tags]    params
+    [Timeout]    1 minute
+    ${returnMessageCntLoad}=    Run Climax    -l ${cnt}    -b
+    @{addresses}=    getAddresses    ${returnMessageCntLoad}
+    : FOR    ${devAddr}    IN    @{addresses}
+    \    Reset
+    \    Run Climax    -l ${cnt}    --start
+    \    Startup check
+    \    Check Load param file    ${returnMessageCntLoad}    vstep    ${devAddr}
+    \    Check Load param file    ${returnMessageCntLoad}    speaker    ${devAddr}
+    \    Check Load param file    ${returnMessageCntLoad}    patch    ${devAddr}
+
+--volume
+    [Documentation]    Checks if the --volume option and switching vsteps properly works.
+    ...    First climax is reset and it checks if climax has started correctly with the right register values. Then it finds the vstep files in the vstep folder. Then it loops through the files to find the first vstep file that actually contains more then one vstep (needed to perform the rest of the test). If no correct file is available return with an error.
+    ...    After that loop through all devices to test the vstep switching with the Check Vsteps per Address check. This checks if changing vsteps can be performed in two different ways and checks if the VOL register has been changed after that.
+    [Tags]    volume
+    [Timeout]    5 minutes
+    ${returnMessageCntLoad}=    Run Climax    -l ${cnt}    -b
+    Reset
+    Start
+    Startup check
+    set global variable    ${NrOfVsteps}    0
+    @{vstepFiles}=    get file list from location    ${returnMessageCntLoad}    ${path}    vstep
+    : FOR    ${vstepFile}    IN    @{vstepFiles}
+    \    ${vstepInformation}=    Run Climax    -l ${vstepFile}    -b
+    \    Verify return message    ${vstepInformation}
+    \    ${NrOfVsteps}=    get nr of steps    ${vstepInformation}
+    \    Exit For Loop If    ${NrOfVsteps}>2
+    Check Vsteps - Method Profile    ${NrOfVsteps}    ${vstepFile}    ${vstepInformation}
+    Check Vsteps - Method Params    ${NrOfVsteps}    ${vstepFile}    ${vstepInformation}
+    ${rtfConfigsPath}=    get relative path    ${plmaConfigsPath}    /RTF/volume
+    @{cntFiles}=    get Files With Extension    ${rtfConfigsPath}    cnt
+    : FOR    ${cntFile}    IN    @{cntFiles}
+    \    ${vstepInformation}=    Run Climax    -l ${vstepFile}    -b
+    \    Verify return message    ${vstepInformation}
+    \    ${NrOfVsteps}=    get nr of steps    ${vstepInformation}
+    \    Exit For Loop If    ${NrOfVsteps}>2
+    Check Vsteps - Method Profile    ${NrOfVsteps}    ${vstepFile}    ${vstepInformation}
+    Check Vsteps - Method Params    ${NrOfVsteps}    ${vstepFile}    ${vstepInformation}
+
+--ini2cnt
+    [Documentation]    checks if the ini2cnt option in climax succesfully creates a container file out of an ini file.
+    ...    First it deletes all container files in config/88/RTF. Then it loops throug all ini files in config/88/RTF.
+    ...    For each ini file it checks if the right error/status messages are printed by climax. It checks if the container file is created correctly when it should and checks if the resulting container file is in the right format.
+    ...    Then it tests with the main ini file (stereo.ini) if it can be converted to a container file. First it is backed up, then after ini2cnt the container dump is compared to the ini file. After this test the backup is restored.
+    [Tags]    ini2cnt
+    [Timeout]    5 minutes
+    Run keyword if    ${deviceId}=='88'    Check ini2cnt Max2
+    ${ini}=    replace Filename Extension    ${cnt}    ini
+    backup and remove file    ${cnt}
+    Run Climax    --ini2cnt    ${ini}
+    ${cntDump}=    Run Climax    -l ${cnt}    -b
+    compare ini to cnt    ${ini}    ${cntDump}
+    [Teardown]    Restore Container file
+
+--bin2hdr
+    [Documentation]    Checks if climax with the bin2hdr option succesfully replaces the header of the given file. This is done by first obtaining obtaining the container file dump to search for the available parameter files. Then it runs the Check Bin2Hdr on file keyword to do the actual checking on three different types of files: vstep, speaker and patch.
+    [Tags]    bin2hdr
+    [Timeout]    1 minute
+    ${returnMessageCntLoad}=    Run Climax    -l ${cnt}    -b
+    @{addresses}=    getAddresses    ${returnMessageCntLoad}
+    : FOR    ${devAddr}    IN    @{addresses}
+    \    Check Bin2Hdr on file    ${returnMessageCntLoad}    ${devAddr}    vstep
+    \    Check Bin2Hdr on file    ${returnMessageCntLoad}    ${devAddr}    speaker
+    \    Check Bin2Hdr on file    ${returnMessageCntLoad}    ${devAddr}    patch
+
+--splitparms
+    [Documentation]    Tests if the climax splitparams option properly created a splitparams folder that contains a file for each category of parameters in the .ini file.
+    ...    This test failes when the folder is not created or when a file is not created/modified.
+    ...    The files that should be created are files obtained from the .ini file.
+    ...    The possible categories of paramfiles is: "patch", "speaker", "vstep", "msg", "config", "preset", "drc", "eq", "volstep", "ini"
+    [Tags]    splitparms
+    [Timeout]    1 minute
+    ${returnMessage}=    Run Climax    -l ${cnt}    -b
+    Run Climax    -l ${cnt}    --splitparms=splitparms
+    validate splitparms    ${returnMessage}    ${deviceId}    ${cnt}
+
+--save
+    [Documentation]    Tests the climax --save option for different kinds of files: [speaker, drc, vstep, preset, config]. Creates a save folder where the files are stored and deletes this folder at teardown. On every save file a compare is done with the original file present in the config folder to check if save succeeded.
+    [Tags]    save
+    create new Directory    ${rtfConfigsPath}    /save
+    ${saveConfigsPath}=    get relative path    ${path}    ../RTF/save/
+    ${returnMessageCntLoad}=    Run Climax    -l ${cnt}    -b
+    @{addresses}=    getAddresses    ${returnMessageCntLoad}
+    : FOR    ${devAddr}    IN    @{addresses}
+    \    Reset
+    \    Start
+    \    ${tfa}=    Set Variable If    '${deviceId}'=='88'    2    1
+    \    Check Save on Speaker file    ${tfa}    ${saveConfigsPath}    ${devAddr}
+    \    run keyword if    '${deviceId}'=='12'    Check Save on DRC file    ${tfa}    ${saveConfigsPath}    ${devAddr}
+    \    run keyword if    '${tfa}'=='2'    Check Save on DRC file    ${tfa}    ${saveConfigsPath}    ${devAddr}
+    \    run keyword if    '${tfa}'=='2'    Check Save on Vstep file    ${tfa}    ${saveConfigsPath}    ${devAddr}
+    \    run keyword if    '${tfa}'=='1'    Check Save on Preset file    ${tfa}    ${saveConfigsPath}    ${devAddr}
+    \    run keyword if    '${tfa}'=='1'    Check Save on Config file    ${tfa}    ${saveConfigsPath}    ${devAddr}
+    [Teardown]    cleanup Directory    ${saveConfigsPath}
+
+*** Keywords ***
+Startup check
+    [Documentation]    Executes the device specific startup check
+    run keyword if    '${deviceId}'!='88'    Max1 startup check
+    run keyword if    '${deviceId}'=='88'    Max2 startup check
+
+Max1 startup check
+    [Documentation]    Checks wether or not the registers are set to their correct values after startup. \ This checks if they are correct for (at least) the TFA9890 device.
+    Bitfield should contain    PWDN    0
+    Bitfield should contain    CLKS    1
+    Bitfield should contain    AMPS    1
+    Bitfield should contain    SBSL    1
+    Bitfield should contain    ACS    0
+    Bitfield should contain    AREFS    1
+
+Max2 startup check
+    [Documentation]    Checks wether or not the registers are set to their correct values after startup.
+    Bitfield should contain    PWDN    0
+    Bitfield should contain    CLKS    1
+    Bitfield should contain    AMPS    1
+    Bitfield should contain    SBSL    1
+    Bitfield should contain    MANSCONF    1
+    Bitfield should contain    MANOPER    1
+
+Validate DSN
+    [Arguments]    ${addr}
+    [Documentation]    This user keyword checks if the register has the right value
+    ${regData}=    Run Climax    -l ${cnt}    -r${addr}    -b
+    Validate DatasheetNames    ${regData}    ${deviceId}
+
+Run Climax
+    [Arguments]    @{args}
+    [Documentation]    This user keyword runs climax.
+    ${result}=    climax    ${climaxLoc}    ${usbDevice}    @{args}
+    printLines    ${result}
+    [Return]    ${result}
+
+Reset
+    [Documentation]    This user keyword performs the climax reset option.
+    Run Climax    -l ${cnt}    --reset
+
+ResetMtpEx
+    [Documentation]    This user keyword is used to reset the MtpEx register with climax.
+    Run Climax    -l ${cnt}    --resetMtpEx
+
+Reset check
+    [Documentation]    Executes the device specific reset check
+    run keyword if    '${deviceId}'=='90'    90 reset check
+    run keyword if    '${deviceId}'!='90'    good reset check
+
+90 Reset check
+    [Documentation]    Checks wether or not the registers are reset to their correct values. This checks if they are correct for (at least) the TFA9890 device.
+    Bitfield should contain    PWDN    1
+    Bitfield should contain    CLKS    1
+    Bitfield should contain    AMPS    0
+
+Good Reset check
+    [Documentation]    Checks wether or not the registers are reset to their correct values.
+    Bitfield should contain    PWDN    1
+    Bitfield should contain    CLKS    0
+    Bitfield should contain    AMPS    0
+
+ResetMtpEx check
+    [Documentation]    Checks wether or not the MTPEX register has been set to zero.
+    Bitfield should contain    MTPEX    0
+
+start
+    [Documentation]    This user keyword performs the climax start option.
+    ${returnValue}=    Run Climax    -l ${cnt}    --start
+    [Return]    ${returnValue}
+
+Bitfield should contain
+    [Arguments]    ${dsn}    ${result}
+    [Documentation]    Checks if a bitfield contains the same value as the expected value (parameter result).
+    ${bitData}=    Run Climax    -l ${cnt}    ${dsn}
+    should contain ignore spaces    ${bitData}    ${result}
+
+Register should contain
+    [Arguments]    ${addr}    ${result}
+    [Documentation]    Checks if a register contains the same value as the expected value (parameter result).
+    ${regData}=    Run Climax    -l ${cnt}    -r${addr}
+    should contain ignore spaces    ${regData}    ${result}
+
+Register should contain either
+    [Arguments]    ${addr}    ${result}    ${result2}
+    [Documentation]    Checks if a bitfield contains the same value as one of the expected values (parameters result and result2).
+    ${regData}=    Run Climax    -l ${cnt}    -r${addr}
+    should contain either    ${regData}    ${result}    ${result2}
+
+Check Registers
+    [Documentation]    This user keyword runs through all register addresses of the device and check if it contains a (datasheet)name. If so, it checks wether this name is correct.
+    : FOR    ${i}    IN RANGE    0x00    0xFF
+    \    ${CheckDSN} =    hasDatasheetNames    ${i}    ${deviceId}
+    \    Run keyword if    ${CheckDSN}    Validate DSN    ${i}
+
+Check Load param file
+    [Arguments]    ${returnMessageCntLoad}    ${fileType}    ${devAddr}
+    [Documentation]    Checks if a parameter file of type <fileType> can be loaded and climax has started properly after that. This is done by checking the registers which should be set after startup and confirming that no error message has been returned.
+    ${patchLoc}=    get files from location    ${returnMessageCntLoad}    ${path}    ${fileType}
+    ${returnMessage}=    Run Climax    -p ${patchLoc}    ${devAddr}    -b
+    Startup check
+    Verify return message    ${returnMessage}
+
+Check Bitfield Dump
+    [Arguments]    ${bitFieldNames}
+    [Documentation]    Checks if the bitfields from bitFieldNames will be correctly printed by climax. First the total number of bitfields that should be tested is retrieved. Then it runs the climax command a number of times, each time adding an additional bitfield option. For each climax run the validate BitfieldDump Message function will check if all bitfields are correctly returned with their values
+    ${totalNrOfBitfields}=    count Words In String    ${bitFieldNames}
+    : FOR    ${i}    IN RANGE    1    (${totalNrOfBitfields} +1)
+    \    ${selectedBitFieldNames}=    getFirstXNames    ${bitFieldNames}    ${i}
+    \    ${returnMessage}=    Run Climax    -l ${cnt}    ${selectedBitFieldNames}
+    \    validate BitfieldDump Message    ${returnMessage}    ${selectedBitFieldNames}
+
+Check Vsteps - Method Params
+    [Arguments]    ${NrOfVsteps}    ${vstepFile}    ${vstepInformation}
+    [Documentation]    Checks if changing vsteps using the load vstep file method succeeds. It checks if a different vstep can be applied by loading a vstep param file and changing volume with the --volume option. Confirms if the action was successfull by checking if the VOL register has been changed.
+    : FOR    ${i}    IN RANGE    0    ${NrOfVsteps}
+    \    ${returnMessageMax2}=    run keyword if    '${deviceId}'=='88'    Run Climax    -p ${vstepFile}    --volume=${i}
+    \    ...    --slave=0x34    -b
+    \    ${returnMessageMax1}=    run keyword if    '${deviceId}'!='88'    Run Climax    -p ${vstepFile}    --volume=${i}
+    \    ...    --slave=0x36    -b
+    \    ${returnMessageMax1}=    run keyword if    '${deviceId}'!='88'    Run Climax    -p ${vstepFile}    --volume=${i}
+    \    ...    --slave=0x37    -b
+    \    Startup check
+    \    ${bitData}=    Run Climax    -l ${cnt}    VOL
+    \    Verify VOL register    ${vstepInformation}    ${bitData}    ${i}
+    \    run keyword if    '${deviceId}'=='88'    Verify return message    ${returnMessageMax2}
+    \    run keyword if    '${deviceId}'!='88'    Verify return message    ${returnMessageMax1}
+
+Check Vsteps - Method Profile
+    [Arguments]    ${NrOfVsteps}    ${vstepFile}    ${vstepInformation}
+    [Documentation]    Checks if changing vsteps using the --profile option succeeds. It checks if a different vstep can be applied by loading a container file, entering a profile and then changing the volume with the --volume option. Confirms if the action was successfull by checking if the VOL register has been changed.
+    Reset
+    ${cntDump}=    Run Climax    -l ${cnt}    -b
+    ${profile}=    get Profile for Vstep File    ${cntDump}    ${deviceId}    ${vstepFile}
+    : FOR    ${i}    IN RANGE    0    ${NrOfVsteps}
+    \    ${returnMessage}=    Run Climax    -l ${cnt}    --profile=${profile}    --volume=${i}    -b
+    \    ...    --start
+    \    Startup check
+    \    ${bitData}=    Run Climax    -l ${cnt}    VOL
+    \    Verify VOL register    ${vstepInformation}    ${bitData}    ${i}
+    \    ${bitData}=    run keyword if    '${deviceId}'=='88'    Run Climax    -l ${cnt}    VOLSEC
+    \    run keyword if    '${deviceId}'=='88'    Verify VOL register    ${vstepInformation}    ${bitData}    ${i}
+    \    Verify return message    ${returnMessage}
+    \    ${bitData}=    Run Climax    -l ${cnt}    SWVSTEP
+    \    verify Vstep Bitfields    ${bitData}    ${i}
+    \    ${bitData}=    Run Climax    -l ${cnt}    SWPROFIL
+    \    verify Vstep Bitfields    ${bitData}    ${profile}
+
+Check xmem Max1
+    Bitfield should contain    CLKS    1
+    ${returnMessage}=    Run Climax    -l ${cnt}    --xmem=0x0d7f    -w0x112233
+    ${returnMessage}=    Run Climax    -l ${cnt}    --xmem=0x0d7f
+    memory Should Contain    ${returnMessage}    xmem
+
+Check xmem Max2
+    ${returnMessage}=    Run Climax    -l ${cnt}    --xmem=0x101FFF    -w0x112233
+    ${returnMessage}=    Run Climax    -l ${cnt}    --xmem=0x101FFF
+    memory Should Contain    ${returnMessage}    xmem
+
+Check iomem Max1
+    Bitfield should contain    CLKS    1
+    Bitfield should contain    ACS    0
+    ${returnMessage}=    Run Climax    --slave=0x36    --iomem=0x8100    -w1    -b
+    ${returnMessage}=    Run Climax    --slave=0x37    --iomem=0x8100    -w1    -b
+    Bitfield should contain    ACS    1
+
+Check iomem Max2
+    Bitfield should contain    ACS    0
+    ${returnMessage}=    Run Climax    -l ${cnt}    --iomem=0x8100    -w1
+    Bitfield should contain    ACS    1
+
+Check Record on cnt file
+    [Arguments]    ${cntFile}
+    [Documentation]    Checks if the number of field names, number of values per line (for a given address) and number of lines printed by record is correct. This keyword test uses the cnt file entered as parameter to test with.
+    ${cntDump}=    Run Climax    -l ${cntFile}    -b
+    @{addresses}=    get Addresses from ini file    ${cntDump}
+    : FOR    ${devAddr}    IN    @{addresses}
+    \    start
+    \    ${returnMessage}=    Run Climax    -l ${cntFile}    -b
+    \    ${nrOfMemtrackItems}=    determine Memtrack Items    ${returnMessage}    ${deviceId}    ${devAddr}
+    \    set global variable    ${countValue}    10
+    \    ${returnMessage}=    Run Climax    -l ${cntFile}    --record    --count=${countValue}
+    \    validate Record Fieldnames    ${returnMessage}    ${nrOfMemtrackItems}    ${devAddr}
+    \    validate Record Value Count    ${returnMessage}    ${nrOfMemtrackItems}    ${devAddr}    ${countValue}
+
+Check ini2cnt Max2
+    @{cntFiles}=    get Files With Extension    ${rtfConfigsPath}    cnt
+    : FOR    ${cntFile}    IN    @{cntFiles}
+    \    remove File    ${cntFile}
+    @{iniFiles}=    get Files With Extension    ${rtfConfigsPath}    ini
+    : FOR    ${iniFile}    IN    @{iniFiles}
+    \    ${ini2CntMsg}=    Run Climax    --ini2cnt    ${iniFile}
+    \    verify ini2cnt message    ${iniFile}    ${ini2CntMsg}
+    \    ${cntFile}=    replace Filename Extension    ${iniFile}    cnt
+    \    verify cnt file created    ${iniFile}    ${cntFile}
+    \    ${cntDump}=    Run Climax    -l ${cntFile}    -b
+    \    verify ini2cnt dump message    ${cntFile}    ${cntDump}
+    \    remove File    ${cntFile}
+
+Check Bin2Hdr on file
+    [Arguments]    ${returnMessageCntLoad}    ${devAddr}    ${fileType}
+    [Documentation]    Checks if climax with the bin2hdr option succesfully replaces the header of the given file. First it obtains the paths to files of a given filetype. Then it gets the dump of that file and extracts the original size parameter from the file. After that it makes a backup of the file and does the bin2hdr operation to write "Robot Frame Work" to the file header. Then it prints the dump of the file again and checks if the changes are applied correctly. Finally the backup file is restored.
+    set global variable    ${originalSize}    0
+    ${fileLoc}=    get files from location    ${returnMessageCntLoad}    ${path}    ${fileType}
+    ${returnMessage}=    Run Climax    -l ${fileLoc}    -b
+    ${originalSize}=    get Original file size    ${returnMessage}
+    backup create and remove file    ${fileLoc}
+    run keyword if    '${deviceId}'!='88'    Run Climax    --bin2hdr=${fileLoc} Robot Frame Work    ${devAddr}    --tfa=1
+    run keyword if    '${deviceId}'=='88'    Run Climax    --bin2hdr=${fileLoc} Robot Frame Work    ${devAddr}    --tfa=2
+    ${returnMessage}=    Run Climax    -l ${fileLoc}    -b
+    Verify bin2hdr message    ${returnMessage}    ${originalSize}
+    cleanup and remove file    ${fileLoc}
+
+Check Save on Speaker file
+    [Arguments]    ${tfa}    ${saveConfigsPath}    ${devAddr}
+    ${returnMessage}=    Run Climax    -l ${cnt}    -b
+    ${speakerFilePath}=    get Used File path    ${returnMessage}    ${path}    speaker
+    ${returnMessage}=    Run Climax    ${devAddr}    --save=${saveConfigsPath}speakersave.speaker    --tfa=${tfa}
+    check save return message    ${returnMessage}
+    ${speakerHeaderDump}=    Run Climax    ${devAddr}    -l ${speakerFilePath}    -b
+    ${newSpeakerHeaderDump}=    Run Climax    ${devAddr}    -l ${saveConfigsPath}speakersave.speaker    -b
+    compare speaker headers    ${speakerHeaderDump}    ${newSpeakerHeaderDump}
+
+Check Save on DRC file
+    [Arguments]    ${tfa}    ${saveConfigsPath}    ${devAddr}
+    ${returnMessage}=    Run Climax    -l ${cnt}    -b
+    ${vstepFilePath}=    get Used File path    ${returnMessage}    ${path}    vstep
+    ${returnMessage}=    Run Climax    ${devAddr}    --save=${saveConfigsPath}drcsave.drc    --tfa=${tfa}
+    check save return message    ${returnMessage}
+    ${DrcHexString}=    get binary file as hex    ${saveConfigsPath}drcsave.drc
+    ${VstepHexString}=    get binary file as hex    ${vstepFilePath}
+    compare Hex Strings    ${DrcHexString}    ${VstepHexString}    drc
+
+Check Save on Vstep file
+    [Arguments]    ${tfa}    ${saveConfigsPath}    ${devAddr}
+    ${returnMessage}=    Run Climax    -l ${cnt}    -b
+    ${vstepFilePath}=    get Used File path    ${returnMessage}    ${path}    vstep
+    ${returnMessage}=    Run Climax    ${devAddr}    --save=${saveConfigsPath}vstepsave.vstep    --tfa=${tfa}
+    check save return message    ${returnMessage}
+    ${savedVstepHexString}=    get binary file as hex    ${saveConfigsPath}vstepsave.vstep.old
+    ${VstepHexString}=    get binary file as hex    ${vstepFilePath}
+    compare Hex Strings    ${savedVstepHexString}    ${VstepHexString}    vstep
+
+Check Save on Preset file
+    [Arguments]    ${tfa}    ${saveConfigsPath}    ${devAddr}
+    ${returnMessage}=    Run Climax    -l ${cnt}    -b
+    ${presetFilePath}=    get Used File path    ${returnMessage}    ${path}    preset
+    return from keyword if    '${presetFilePath}'=='None'
+    ${returnMessage}=    Run Climax    ${devAddr}    --save=${saveConfigsPath}presetsave.preset    --tfa=${tfa}
+    check save return message    ${returnMessage}
+    ${savedPresetHexString}=    get binary file as hex    ${saveConfigsPath}presetsave.preset
+    ${presetHexString}=    get binary file as hex    ${presetFilePath}
+    compare Hex Strings    ${savedPresetHexString}    ${presetHexString}    preset
+
+Check Save on Config file
+    [Arguments]    ${tfa}    ${saveConfigsPath}    ${devAddr}
+    ${returnMessage}=    Run Climax    -l ${cnt}    -b
+    ${configFilePath}=    get Used File path    ${returnMessage}    ${path}    config
+    return from keyword if    '${configFilePath}'=='None'
+    ${returnMessage}=    Run Climax    ${devAddr}    --save=${saveConfigsPath}configsave.config    --tfa=${tfa}
+    check save return message    ${returnMessage}
+    ${savedConfigHexString}=    get binary file as hex    ${saveConfigsPath}configsave.config
+    ${configHexString}=    get binary file as hex    ${configFilePath}
+    compare Hex Strings    ${savedConfigHexString}    ${configHexString}    config
+
+Restore Container file
+    [Documentation]    This keyword makes sure the container file that is used for testing is not corrupted (by ini2cnt).
+    Log    ${cnt}
+    cleanup and remove file    ${cnt}

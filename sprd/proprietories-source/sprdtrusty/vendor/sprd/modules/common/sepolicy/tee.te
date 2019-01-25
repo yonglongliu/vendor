@@ -1,0 +1,8 @@
+
+allow tee self:capability { dac_override dac_read_search sys_rawio setfcap setuid setgid };
+allow tee mmcblk_device:blk_file { open read write ioctl };
+allow tee ss_file:dir {  add_name write read open search };
+allow tee ss_file:file {  create read write open  };
+allow tee block_device:dir { open search read };
+allow tee teetz_device:chr_file {  ioctl open read write  };
+set_prop(tee, storageproxyd_default_prop)

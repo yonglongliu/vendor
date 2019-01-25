@@ -1,0 +1,9 @@
+
+For ARM(7731, 9630, 9832 ..)
+crash_arm -m phys_base=0x80000000 vmlinux sysdump.core --cpus 8
+
+For ARM64(9850, 9860)
+crash_arm64 -m phys_offset=0x80000000 vmlinux sysdump.core --cpus 8
+
+For X86_64(9851, 9861, iSharkL2)
+crash_x86_64 -m phys_base=0x34200000 vmlinux sysdump.core --cpus 8

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Copyright (C) 2012 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ -->
+
+<resources>
+    <file path="subsys" file="cpufreq" >
+        <attr name="comp_func"    value="common_subsys_comp" />
+        <attr name="set_func"     value="common_subsys_set" />
+        <attr name="clear_func"   value="common_subsys_clear" />
+        <attr name="def_value"    value="conf_3" />
+    </file>
+    <file path="/sys/devices/system/cpu/cpuhotplug" file="cluster1_core_max_limit" >
+        <attr name="comp_func"    value="common_comp_ascend_order" />
+        <attr name="set_func"     value="common_set" />
+        <attr name="clear_func"   value="common_clear" />
+        <attr name="def_value"    value="4" />
+    </file>
+    <file path="/sys/class/devfreq/scene-frequency/sprd_governor" file="scene_boost_dfs" no_has_def="1" >
+        <attr name="comp_func"    value="common_comp_ascend_order" />
+        <attr name="set_func"     value="devfreq_ddr_set" />
+        <attr name="clear_func"   value="devfreq_ddr_clear" />
+    </file>
+    <file path="/sys/devices/system/cpu/cpu0/cpuidle/state2" file="residency" >
+        <attr name="comp_func"    value="common_comp_ascend_order" />
+        <attr name="set_func"     value="common_set" />
+        <attr name="clear_func"   value="common_clear" />
+    </file>
+    <file path="/sys/devices/system/cpu/cpu0/cpuidle/state3" file="residency" >
+        <attr name="comp_func"    value="common_comp_ascend_order" />
+        <attr name="set_func"     value="common_set" />
+        <attr name="clear_func"   value="common_clear" />
+    </file>
+    <subsys name="cpufreq" >
+        <inode path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="target_loads" />
+        <inode path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="hispeed_freq" />
+        <inode path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="boost" def_value="0" />
+        <inode path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="above_hispeed_delay" />
+        <inode path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="timer_slack" />
+        <inode path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="min_sample_time" />
+        <inode path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="io_is_busy" def_value="0" />
+        <inode path="/sys/devices/system/cpu/cpufreq/policy4/interactive" file="target_loads" />
+        <inode path="/sys/devices/system/cpu/cpufreq/policy4/interactive" file="hispeed_freq" />
+        <inode path="/sys/devices/system/cpu/cpufreq/policy4/interactive" file="boost" def_value="0" />
+        <inode path="/sys/devices/system/cpu/cpufreq/policy4/interactive" file="above_hispeed_delay" />
+        <inode path="/sys/devices/system/cpu/cpufreq/policy4/interactive" file="timer_slack" />
+        <inode path="/sys/devices/system/cpu/cpufreq/policy4/interactive" file="min_sample_time" />
+        <conf name="conf_1" priority="1" >
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="hispeed_freq" value="624000" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="target_loads" value="90 624000:200" />
+        </conf>
+        <conf name="conf_2" >
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="hispeed_freq" value="1560000" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="target_loads" value="90 1560000:200" />
+        </conf>
+        <conf name="conf_3" >
+        </conf>
+        <conf name="conf_4" >
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="hispeed_freq" value="1560000"/>
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="boost" value="1" />
+        </conf>
+        <conf name="conf_5" >
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="target_loads" value="90" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="hispeed_freq" value="2028000" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="above_hispeed_delay" value="20000" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="timer_slack" value="80000" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="min_sample_time" value="80000" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="io_is_busy" value="0" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy4/interactive" file="target_loads" value="90" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy4/interactive" file="hispeed_freq" value="2028000" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy4/interactive" file="above_hispeed_delay" value="20000" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy4/interactive" file="timer_slack" value="80000" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy4/interactive" file="min_sample_time" value="80000" />
+        </conf>
+        <conf name="conf_6" >
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="hispeed_freq" value="2028000" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="boost" value="1" />
+        </conf>
+        <conf name="conf_7" >
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="hispeed_freq" value="2028000" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy0/interactive" file="boost" value="1" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy4/interactive" file="hispeed_freq" value="2028000" />
+            <set path="/sys/devices/system/cpu/cpufreq/policy4/interactive" file="boost" value="1" />
+        </conf>
+    </subsys>
+</resources>

@@ -1,0 +1,45 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "climax", "climax.vcxproj", "{492D4FDC-7F02-4342-97DD-0ADB82B613C7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tfa", "..\tfa_dll\tfa_dll.vcxproj", "{50EA056E-A456-8644-E0D3-1C8FB23A34E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+		Test|Win32 = Test|Win32
+		Test|x64 = Test|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{492D4FDC-7F02-4342-97DD-0ADB82B613C7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{492D4FDC-7F02-4342-97DD-0ADB82B613C7}.Debug|Win32.Build.0 = Debug|Win32
+		{492D4FDC-7F02-4342-97DD-0ADB82B613C7}.Debug|x64.ActiveCfg = Debug|x64
+		{492D4FDC-7F02-4342-97DD-0ADB82B613C7}.Debug|x64.Build.0 = Debug|x64
+		{492D4FDC-7F02-4342-97DD-0ADB82B613C7}.Release|Win32.ActiveCfg = Release|Win32
+		{492D4FDC-7F02-4342-97DD-0ADB82B613C7}.Release|Win32.Build.0 = Release|Win32
+		{492D4FDC-7F02-4342-97DD-0ADB82B613C7}.Release|x64.ActiveCfg = Release|x64
+		{492D4FDC-7F02-4342-97DD-0ADB82B613C7}.Release|x64.Build.0 = Release|x64
+		{492D4FDC-7F02-4342-97DD-0ADB82B613C7}.Test|Win32.ActiveCfg = Release|Win32
+		{492D4FDC-7F02-4342-97DD-0ADB82B613C7}.Test|Win32.Build.0 = Release|Win32
+		{492D4FDC-7F02-4342-97DD-0ADB82B613C7}.Test|x64.ActiveCfg = Release|x64
+		{492D4FDC-7F02-4342-97DD-0ADB82B613C7}.Test|x64.Build.0 = Release|x64
+		{50EA056E-A456-8644-E0D3-1C8FB23A34E8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{50EA056E-A456-8644-E0D3-1C8FB23A34E8}.Debug|Win32.Build.0 = Debug|Win32
+		{50EA056E-A456-8644-E0D3-1C8FB23A34E8}.Debug|x64.ActiveCfg = Debug|x64
+		{50EA056E-A456-8644-E0D3-1C8FB23A34E8}.Debug|x64.Build.0 = Debug|x64
+		{50EA056E-A456-8644-E0D3-1C8FB23A34E8}.Release|Win32.ActiveCfg = Release|Win32
+		{50EA056E-A456-8644-E0D3-1C8FB23A34E8}.Release|Win32.Build.0 = Release|Win32
+		{50EA056E-A456-8644-E0D3-1C8FB23A34E8}.Release|x64.ActiveCfg = Release|x64
+		{50EA056E-A456-8644-E0D3-1C8FB23A34E8}.Release|x64.Build.0 = Release|x64
+		{50EA056E-A456-8644-E0D3-1C8FB23A34E8}.Test|Win32.ActiveCfg = Test|Win32
+		{50EA056E-A456-8644-E0D3-1C8FB23A34E8}.Test|Win32.Build.0 = Test|Win32
+		{50EA056E-A456-8644-E0D3-1C8FB23A34E8}.Test|x64.ActiveCfg = Test|x64
+		{50EA056E-A456-8644-E0D3-1C8FB23A34E8}.Test|x64.Build.0 = Test|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

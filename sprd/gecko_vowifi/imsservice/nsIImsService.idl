@@ -1,0 +1,572 @@
+#include "nsISupports.idl"
+#include "nsIRadioInterfaceLayer.idl"
+#include "nsIImsServiceCallback.idl"
+
+interface nsIImsServiceHandler;
+interface nsIImsPdnStateListener;
+
+%{C++
+#define NS_IMSSERVICE_CID { 0x80d6f9cc, 0xf16d, 0x40c3, { 0xa5, 0x2e, 0xc4, 0xe6, 0x56, 0xe3, 0x65, 0xaa } }
+#define IMSSERVICE_CONTRACTID "@mozilla.org/telephony/imsservice;1"
+%}
+
+[scriptable, uuid(ff2d93b2-565b-41e5-9313-240befae4856)]
+interface nsIImsPdnStateListener : nsISupports
+{
+  const unsigned short IMS_PDN_STATE_ACTIVE_FAILED = 0;
+  const unsigned short IMS_PDN_STATE_READY = 1;
+  const unsigned short IMS_PDN_STATE_START = 2;
+
+  /**
+   * Notifies the status of IMS PDN.
+   *
+   * @param status
+   * One of value of IMS_PDN_STATE_*;
+   */
+  void imsPdnStateChange(in unsigned short status);
+};
+
+[scriptable, uuid(ed49d15c-4419-4969-8038-345133e19664)]
+interface nsIImsService : nsISupports
+{
+  /**
+   * @param aServiceId
+   *         The ServiceId of the underlying radio interface.
+   *
+   * @return an instance of ImsServiceHandler or
+   *         null if IMS is not supported by this serviceId
+   *         according to the device configuration.
+   */
+  nsIImsServiceHandler getHandlerByServiceId(in unsigned long aServiceId);
+
+  const short FEATURE_TYPE_UNKNOWN = -1;
+
+  /**
+    * FEATURE_TYPE_VOLTE supports features defined in 3GPP and
+    * GSMA IR.92 over LTE.
+    */
+  const short FEATURE_TYPE_VOICE_OVER_LTE = 0;
+
+  /**
+    * FEATURE_TYPE_LVC supports features defined in 3GPP and
+    * GSMA IR.94 over LTE.
+    */
+  const short FEATURE_TYPE_VIDEO_OVER_LTE = 1;
+
+  /**
+    * FEATURE_TYPE_VOICE_OVER_WIFI supports features defined in 3GPP and
+    * GSMA IR.92 over WiFi.
+    */
+  const short FEATURE_TYPE_VOICE_OVER_WIFI = 2;
+
+  /**
+    * FEATURE_TYPE_VIDEO_OVER_WIFI supports features defined in 3GPP and
+    * GSMA IR.94 over WiFi.
+    */
+  const short FEATURE_TYPE_VIDEO_OVER_WIFI = 3;
+
+  /**
+    * FEATURE_TYPE_UT supports features defined in 3GPP and
+    * GSMA IR.92 over LTE.
+    */
+  const short FEATURE_TYPE_UT_OVER_LTE = 4;
+
+  /**
+    * FEATURE_TYPE_UT_OVER_WIFI supports features defined in 3GPP and
+    * GSMA IR.92 over WiFi.
+    */
+  const short FEATURE_TYPE_UT_OVER_WIFI = 5;
+
+  const short IMS_HANDOVER_ACTION_CONFIRMED = 999;
+
+  /**
+   * Used for switch IMS feature.
+   *
+   * @param type
+   * One of the value FEATURE_TYPE_*
+   *
+   * @return request id
+   */
+  short switchImsFeature(in short type);
+
+  /**
+   * Used for start IMS handover.
+   *
+   * @param targetType
+   * One of the value FEATURE_TYPE_*
+   *
+   * @return request id
+   */
+  short startHandover(in short targetType);
+
+  /**
+   * Used for notify network unavailable.
+   */
+  void notifyNetworkUnavailable();
+
+  /**
+   * Used for get IMS feature.
+   * @return
+   * One of the value FEATURE_TYPE_*
+   *
+   */
+  short getCurrentImsFeature();
+
+  /**
+   * Used for get incall handover feature.
+   * @return
+   * One of the value FEATURE_TYPE_*
+   *
+   */
+
+  short getInCallHandoverFeature();
+  /**
+   * Used for set IMS service listener.
+   *
+   * @param listener
+   * A nsIImsServiceCallback instance.
+   */
+  void setImsServiceListener(in nsIImsServiceCallback listener);
+
+  /**
+   * Used for get IMS register address.
+   *
+   * @return
+   * String of ims register address.
+   */
+  AString getImsRegAddress();
+
+  /**
+   * Used for set release VoWifi Resource.
+   *
+   * @return request id
+   */
+  short releaseVoWifiResource();
+
+  /**
+   * Used for set VoWifi unavailable.
+   *
+   * @param wifiState
+   * wifi_disabled = 0;
+   * wifi_enabled = 1;
+   *
+   * @param isOnlySendAT
+   *
+   * @return
+   * request id
+   */
+  short setVoWifiUnavailable(in unsigned short wifiState,
+                                     in boolean isOnlySendAT);
+
+  /**
+   * Used for cancel current switch or handover request.
+   *
+   * @return
+   * request id
+   */
+  short cancelCurrentRequest();
+
+  /**
+   * Used for terminate VoWifi calls.
+   *
+   * @param wifiState
+   * wifi_disabled = 0;
+   * wifi_enabled = 1;
+   */
+  void terminateCalls(in unsigned short wifiState);
+
+  /**
+   * Used for get P-CSCF address.
+   *
+   * @return
+   * P-CSCF address
+   */
+  AString getCurPcscfAddress();
+
+  /**
+   * Used for set monitor period millis.
+   */
+  void setMonitorPeriodForNoData(in unsigned short millis);
+
+  /**
+   * Used for vowifi unregist attention.
+   */
+  void showVowifiNotification();
+
+  /**
+   * Used for get local address.
+   */
+  AString getCurLocalAddress();
+
+  /**
+   * Get current IMS video state.
+   * @return
+   * One of the following video state.
+   * {VideoProfile#STATE_AUDIO_ONLY},
+   * {VideoProfile#STATE_BIDIRECTIONAL},
+   * {VideoProfile#STATE_TX_ENABLED},
+   * {VideoProfile#STATE_RX_ENABLED},
+   * {VideoProfile#STATE_PAUSED}.
+   */
+  short getCurrentImsVideoState();
+
+  /**
+   * Used for get alive call lose.
+   */
+  short getAliveCallLose();
+
+  /**
+   * Used for get alive call jitter.
+   */
+  short getAliveCallJitter();
+
+  /**
+   * Used for get alive call rtt.
+   */
+  short getAliveCallRtt();
+
+  /**
+   * Get Volte register state.
+   */
+  short getVolteRegisterState();
+
+  /**
+   * Get call type
+   * @return
+   * NO_CALL = -1;
+   * VOLTE_CALL = 0;
+   * WIFI_CALL = 2;
+   */
+   short getCallType();
+
+
+  /**
+   * notify SRVCC Call Info
+   */
+   void notifySrvccCallInfos(in AString srvccCallInfo);
+
+  /**
+   * Used for get local address.
+   */
+   AString getImsPcscfAddress();
+
+  /**
+   * used for set register or de-regesiter Vowifi
+   * @param action
+   * 0 de-register before start call
+   * 1 register after call end
+   */
+   void setVowifiRegister(in unsigned short action);
+
+  /**
+   * Used for add IMS PDN State Listener.
+   */
+   void addImsPdnStateListener(in unsigned short slotId,
+                               in nsIImsPdnStateListener listener);
+
+  /**
+   * Used for remove IMS PDN State Listener.
+   */
+   void removeImsPdnStateListener(in unsigned short slotId,
+                                  in nsIImsPdnStateListener listener);
+
+  /**
+   * used for get CLIR status for vowifi
+   * @param phone id
+   * return ut request id
+   **/
+   unsigned short getCLIRStatus(in unsigned short phoneId);
+
+  /**
+   * used for set CLIR status for vowifi
+   * @param action
+   * ImsUtInterface.OIR_PRESENTATION_NOT_RESTRICTED
+   * ImsUtInterface.OIR_PRESENTATION_RESTRICTED
+   */
+  unsigned short updateCLIRStatus(in unsigned short action);
+
+  /**
+   * Used to notify vowifi the network info.
+   * @param type
+   *          network type
+   * @param info
+   *          network info
+   **/
+  void notifyImsNetworkInfoChange(in short type, in AString info);
+
+  /**
+   * Used to notify imsService the wifi param.
+   * @param lose
+   * @param jitter
+   * @param rtt
+   * @parem timeout
+   **/
+  void notifyWifiParamEvent(in short lose,
+                            in short jitter,
+                            in short rtt,
+                            in short timeout);
+
+  /**
+   * Used to notify imsService the ims pdn state.
+   * @param pdnState
+   *            ims network pdn state
+   **/
+  void notifyImsPdnStatusChange(in short pdnState);
+
+  /**
+   * Used to notify imsService the ims handover state.
+   * @param allow
+   *            ims handover result
+   * @param state
+   *            ims handover state
+   **/
+  void notifyImsHandoverStateChange(in boolean allow, in short state);
+
+  /**
+   * Used to notify imsService the srvcc state.
+   * @param srvccState
+   *            srvcc state
+   **/
+  void notifySrvccState(in unsigned long aServiceId,
+                        in short srvccState);
+
+  /**
+   * Used to notify imsService the srvcc state.
+   * @param radioTech
+   *            call type
+   **/
+  void notifyCallEnded(in unsigned long aServiceId,
+                       in short radioTech);
+};
+
+[scriptable, uuid(17e64575-dea2-46ed-a3d0-fcaeef873655)]
+interface nsIImsServiceHandler : nsISupports {
+  /**
+   * @param aType
+   *         The request type to ImsService.
+   *
+   * @param message
+   *         The request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   * @return true if the request type is supported in Vowifi stack or
+   *         false if the request type is not supported in Vowifi stack.
+   */
+  boolean isWifiCallingSupported(in DOMString aType,
+                                 in jsval message,
+                                 in nsIRilSendWorkerMessageCallback aCallback);
+  /**
+   * @param message
+   *         The dial request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+  void dial(in jsval message, in nsIRilSendWorkerMessageCallback callback);
+  /**
+   * @param message
+   *         The dial request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+  void getCurrentCalls(in jsval message,
+                       in nsIRilSendWorkerMessageCallback callback);
+  /**
+   * @param message
+   *         The dial request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+  void hangUpCall(in jsval message,
+                  in nsIRilSendWorkerMessageCallback callback);
+  /**
+   * @param message
+   *         The dial request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+  void hangUpForeground(in jsval message,
+                        in nsIRilSendWorkerMessageCallback callback);
+  /**
+   * @param message
+   *         The dial request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+  void hangUpBackground(in jsval message,
+                        in nsIRilSendWorkerMessageCallback callback);
+  /**
+   * @param message
+   *         The dial request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+  void switchActiveCall(in jsval message,
+                        in nsIRilSendWorkerMessageCallback callback);
+  /**
+   * @param message
+   *         The dial request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+  void udub(in jsval message, in nsIRilSendWorkerMessageCallback callback);
+  /**
+   * @param message
+   *         The dial request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+  void answerCall(in jsval message,
+                  in nsIRilSendWorkerMessageCallback callback);
+  /**
+   * @param message
+   *         The dial request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+  void conferenceCall(in jsval message,
+                      in nsIRilSendWorkerMessageCallback callback);
+  /**
+   * @param message
+   *         The dial request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+  void separateCall(in jsval message,
+                    in nsIRilSendWorkerMessageCallback callback);
+  /**
+   * @param message
+   *         The dial request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+  void setMute(in jsval message,
+               in nsIRilSendWorkerMessageCallback callback);
+  /**
+   * @param message
+   *         The Send SMS message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+
+  void sendSMS(in jsval message,
+               in nsIRilSendWorkerMessageCallback callback);
+
+  /**
+   * @param message
+   *         The Set SMSC request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+
+  void setSmscAddress(in jsval message,
+                      in nsIRilSendWorkerMessageCallback callback);
+  /**
+   * @param message
+   *         The Get SMSC request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+
+  void getSmscAddress(in jsval message,
+                      in nsIRilSendWorkerMessageCallback callback);
+
+
+  /**
+   * @param message
+   *         The ACK SMS request message to ImsService.
+   *
+   * @param aCallback
+   *         The nsIRilSendWorkerMessageCallback for notifying the
+   *         result of request.
+   */
+
+  void ackSMS(in jsval message,
+                      in nsIRilSendWorkerMessageCallback callback);
+
+
+
+
+  /**
+   * @param regState
+   *         Notify the ims register state.
+   */
+  void notifyImsRegStateChanged(in short regState);
+
+  /**
+   * @param addr
+   *         Update the ims register address.
+   */
+  void setIMSRegAddress(in AString addr);
+
+  /**
+   * @return 
+   *      The ims register address.
+   */
+  AString getIMSRegAddress();
+
+  /**
+   * @return 
+   *      Boolean state of ims register state.
+   */
+  boolean isImsRegistered();
+
+  /**
+   * @return
+   *      State of volte register state.
+   */
+  short getVolteRegisterState();
+
+  /**
+   * @return
+   *      State of srvcc state.
+   */
+  short getSrvccState();
+
+  /**
+   * @param state
+   *        Update the srvcc state.
+   */
+  void setSrvccState(in short state);
+
+  /**
+   * @param addr
+   *        Update the ims pcscf address.
+   */
+  void updateImsPcscfAddress(in AString addr);
+
+  /**
+   * @param enabled
+   *          The ims enabled state.
+   */
+  void enableIms(in boolean enabled);
+};

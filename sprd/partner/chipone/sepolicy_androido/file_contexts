@@ -1,0 +1,5 @@
+# Add for chiponeic fingerprint
+/dev/fpsensor           u:object_r:fpsensor_fp_device:s0
+
+# Add for chipone fingerprint test
+/data/fpsensor(/.*)?           u:object_r:fpsensor_test_file:s0

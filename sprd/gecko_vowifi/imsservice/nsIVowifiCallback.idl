@@ -1,0 +1,63 @@
+#include "nsISupports.idl"
+
+[scriptable, uuid(ee0b189f-c895-4726-9b15-4d3b22794498)]
+interface nsIVowifiCallback : nsISupports
+{
+        void OnAttachFinished(in boolean success, in unsigned short errorCode);
+        void OnAttachStopped(in unsigned short stoppedReason);
+        void OnAttachStateChanged(in unsigned short state);
+        void OnDPDDisconnected();
+        void OnRegisterStateChanged(in unsigned short state, in unsigned short stateCode);
+        void OnReregisterFinished(in boolean isSuccess, in unsigned short errorCode);
+
+        /**
+         * release result callback
+         *
+         * @param result
+         * @param errorCode
+         */
+        void OnResetFinished(in unsigned short result, in unsigned short errorCode);
+
+        void OnUpdateDRStateFinished();
+
+        /**
+         * Call callback
+         *
+         * @param callId The only identity of the phone
+         * @param type   See the definition of ImsCallProfile
+         */
+        void OnCallIncoming(in unsigned long callIndex, in unsigned short type);
+
+        /**
+         * Call this interface after all calls end.
+         */
+        void OnAllCallsEnd();
+
+        /**
+         * Media quality callback
+         *
+         * @param lose:packet loss rate(Molecular value in percentage)
+         * @param jitter:jitter(millisecond)
+         * @param rtt:delay(millisecond)
+         */
+        void OnMediaQualityChanged(in boolean isVideo, in short lose, in short jitter, in short rtt);
+
+        /**
+         * 5 seconds no RTP package callback
+         *
+         * @param video:Whether it is video
+         */
+        void OnNoRtpReceived(in boolean isVideo);
+
+        void OnRtpReceived(in boolean isVideo);
+
+        void OnUnsolicitedUpdate(in unsigned short stateCode);
+};
+
+%{C++
+#define NS_VOWIFICALLBACK_CID { 0x3205a075, 0x7cad, 0x4335, \
+  { 0xa0, 0x76, 0x20, 0x65, 0x98, 0x11, 0xa3, 0x99 } }
+
+
+#define VOWIFICALLBACK_CONTRACTID "@mozilla.org/VowifiCallback;1"
+%}

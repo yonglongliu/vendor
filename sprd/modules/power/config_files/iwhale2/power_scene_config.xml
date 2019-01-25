@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Copyright (C) 2012 The Androscene Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ -->
+
+<power>
+    <mode name="normal">
+        <scene name="interaction_touch" >
+            <set path="subsys" file="cpufreq" value="conf_4" />
+        </scene>
+        <scene name="interaction_launch">
+            <set path="subsys" file="cpufreq" value="conf_7" />
+            <set path="/sys/devices/system/cpu/cpu0/cpuidle/state2" file="residency" value="2500" />
+            <set path="/sys/devices/system/cpu/cpu0/cpuidle/state3" file="residency" value="3000" />
+        </scene>
+        <scene name="interaction_fling">
+            <set path="subsys" file="cpufreq" value="conf_4" />
+        </scene>
+        <scene name="interaction_other">
+            <set path="subsys" file="cpufreq" value="conf_6" />
+        </scene>
+        <scene name="interaction_button">
+            <set path="subsys" file="cpufreq" value="conf_6" />
+        </scene>
+        <scene name="ddr">
+            <set path="/sys/class/devfreq/scene-frequency/sprd_governor" file="scene_boost_dfs" value="max" />
+        </scene>
+        <scene name="video_60fps" >
+            <set path="subsys" file="cpufreq" value="conf_6" />
+        </scene>
+        <scene name="mp4_playback" >
+            <set path="subsys" file="cpufreq" value="conf_2" />
+        </scene>
+        <scene name="screen_off" >
+            <set path="subsys" file="cpufreq" value="conf_1" />
+            <set path="/sys/devices/system/cpu/cpuhotplug" file="cluster1_core_max_limit" value="0" />
+        </scene>
+        <scene name="camera_perf">
+            <set path="subsys" file="cpufreq" value="conf_7" />
+        </scene>
+        <scene name="performance" >
+            <set path="subsys" file="cpufreq" value="conf_5" />
+            <set path="/sys/class/devfreq/scene-frequency/sprd_governor" file="scene_boost_dfs" value="max" />
+        </scene>
+        <scene name="launch" >
+            <set path="subsys" file="cpufreq" value="conf_7" />
+            <set path="/sys/class/devfreq/scene-frequency/sprd_governor" file="scene_boost_dfs" value="max" />
+            <set path="/sys/devices/system/cpu/cpu0/cpuidle/state2" file="residency" value="2500" />
+            <set path="/sys/devices/system/cpu/cpu0/cpuidle/state3" file="residency" value="3000" />
+        </scene>
+    </mode>
+    <mode name="low_power" />
+    <mode name="power_save" />
+    <mode name="ultra_power_save" />
+    <mode name="performance" />
+</power>

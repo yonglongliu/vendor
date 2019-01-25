@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<PROVISION>
+    <ACCOUNTINFO>
+        <StaticIp>epdg.epc.mnc005.mcc520.pub.3gppnetwork.org</StaticIp>
+        <PreTunnelIp1>www.bing.com</PreTunnelIp1>
+        <PreTunnelIp2>www.google.com</PreTunnelIp2>
+        <PreTunnelIp3>www.baidu.com</PreTunnelIp3>
+        <bUseIpv4Pri>0</bUseIpv4Pri>
+        <bSuptMobike>0</bSuptMobike>
+        <bSuptPrePing>0</bSuptPrePing>
+        <bDNSIpv4Pri>1</bDNSIpv4Pri>
+        <bDNSCache>1</bDNSCache>
+        <IkeDscp>48</IkeDscp>
+    </ACCOUNTINFO>
+    <AUTHINFO>
+        <EncrType>AES_CBC</EncrType>
+        <EncrKeyLen>128</EncrKeyLen>
+        <IntegType>HMAC_SHA1_96</IntegType>
+        <PrfType>HMAC_SHA1</PrfType>
+        <DHType>DHGROUP_1024</DHType>
+        <IpsecEncrType>AES_CBC</IpsecEncrType>
+        <IpsecEncrKeyLen>128</IpsecEncrKeyLen>
+        <IpsecIntegType>HMAC_SHA1_96</IpsecIntegType>
+        <AuthType>EAP_AKA</AuthType>
+    </AUTHINFO>
+    <PAYLOADINFO>
+        <Apn>ims</Apn>
+        <ConfigReq>RELIANCE</ConfigReq>
+    </PAYLOADINFO>
+    <TIMEINFO>
+        <IpsecRekeyTime>7200</IpsecRekeyTime>
+        <IkeRekeyTime>3600</IkeRekeyTime>
+        <RekeyJitter>300</RekeyJitter>
+        <ReauthTime>86400</ReauthTime>
+        <TriesTime>3</TriesTime>
+        <DpdTime>300</DpdTime>
+        <NatKeepAliveTime>100</NatKeepAliveTime>
+        <ResendTimerType>0</ResendTimerType>
+        <ResendTime>2</ResendTime>
+    </TIMEINFO>
+</PROVISION>

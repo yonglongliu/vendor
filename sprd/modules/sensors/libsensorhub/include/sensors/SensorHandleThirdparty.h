@@ -1,0 +1,147 @@
+/*
+ * Copyright (C) 2012 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#ifndef INCLUDE_SENSORS_SENSORHANDLETHIRDPARTY_H_
+#define INCLUDE_SENSORS_SENSORHANDLETHIRDPARTY_H_
+
+
+/**
+*   Description:
+*   Control Handle
+*/
+
+#define DISTANCE_CLOSE                      (0)
+#define DISTANCE_FAR                        (5)
+#define DISTANCE_NOCHANGE                   (-1)
+
+/**
+*   Description:
+*   Define All kind of Sensors
+**/
+
+typedef enum {
+    SENSORS_ID_START = 0,
+    ACCELEROMETER,
+    MAGNETIC_FIELD,
+    GYROSCOPE,
+    MOTION,  // N
+    LIGHT,
+    PROXIMITY,
+    PROXIMITY_GESTURE,  // N
+    PRESSURE,
+    RELATIVE_HUMIDITY,
+    AMBIENT_TEMPERATURE,
+    HEART_RATE,
+    ORIENTATION,
+    GRAVITY,
+    LINEAR_ACCELERATION,
+    ROTATION_VECTOR,
+    GAME_ROTATION_VECTOR,
+    MAGNETIC_FIELD_UNCALIBRATED,
+    GYROSCOPE_UNCALIBRATED,
+    SIGNIFICANT_MOTION,
+    STEP_DETECTOR,
+    STEP_COUNTER,
+    GEOMAGNETIC_ROTATION_VECTOR,
+    TILT_DETECTOR,
+    WAKE_GESTURE,
+    GLANCE_GESTURE,
+    PICK_UP_GESTURE,
+    WRIST_TILT_GESTURE,
+    SENSORS_ID_END
+}Sensor_ID;
+
+
+typedef enum {
+    WAKE_UP_SENSOR_ID_START = 1000,
+    WAKE_UP_ACCELEROMETER,
+    WAKE_UP_MAGNETIC_FIELD,
+    WAKE_UP_GYROSCOPE,
+    WAKE_UP_MOTION,
+    WAKE_UP_LIGHT,
+    WAKE_UP_PROXIMITY,
+    WAKE_UP_PROXIMITY_GESTURE,
+    WAKE_UP_PRESSURE,
+    WAKE_UP_RELATIVE_HUMIDITY,
+    WAKE_UP_AMBIENT_TEMPERATURE,
+    WAKE_UP_HEART_RATE,
+    WAKE_UP_ORIENTATION,
+    WAKE_UP_GRAVITY,
+    WAKE_UP_LINEAR_ACCELERATION,
+    WAKE_UP_ROTATION_VECTOR,
+    WAKE_UP_GAME_ROTATION_VECTOR,
+    WAKE_UP_MAGNETIC_FIELD_UNCALIBRATED,
+    WAKE_UP_GYROSCOPE_UNCALIBRATED,
+    WAKE_UP_SIGNIFICANT_MOTION,
+    WAKE_UP_STEP_DETECTOR,
+    WAKE_UP_STEP_COUNTER,
+    WAKE_UP_GEOMAGNETIC_ROTATION_VECTOR,
+    WAKE_UP_TILT_DETECTOR,
+    WAKE_UP_WAKE_GESTURE,
+    WAKE_UP_GLANCE_GESTURE,
+    WAKE_UP_PICK_UP_GESTURE,
+    WAKE_UP_WRIST_TILT_GESTURE,
+    WAKE_UP_SENSOR_ID_END
+}WakeUp_Sensor_ID;
+
+typedef enum {
+    CWM_SENSOR_ID_START = 2000,
+    CWM_SHAKE,
+    CWM_TAP,
+    CWM_FLIP,
+    CWM_TWIST,
+    CWM_POCKET_MODE,
+    CWM_HAND_UP,
+    CWM_HAND_DOWN,
+    CWM_FACE_UP,
+    CWM_FACE_DOWN,
+    CWM_PRIVATE_SENSOR_A,
+    CWM_CONTEXT_AWARENESS,
+    CWM_STATIC_DETECTOR,
+    CWM_VIRTUAL_GYRO,
+    CWM_AIR_RECOGNITION,
+    CWM_PDR,
+    CWM_SENSOR_ID_END,
+}Cwm_Sensor_ID;
+
+typedef enum {
+    CWM_WAKE_UP_SENSOR_ID_START = 3000,
+    CWM_WAKE_UP_SHAKE,
+    CWM_WAKE_UP_TAP,
+    CWM_WAKE_UP_FLIP,
+    CWM_WAKE_UP_TWIST,
+    CWM_WAKE_UP_POCKET_MODE,
+    CWM_WAKE_UP_HAND_UP,
+    CWM_WAKE_UP_HAND_DOWN,
+    CWM_WAKE_UP_FACE_UP,
+    CWM_WAKE_UP_FACE_DOWN,
+    CWM_WAKE_UP_PRIVATE_SENSOR_A,
+    CWM_WAKE_UP_CONTEXT_AWARENESS,
+    CWM_WAKE_UP_STATIC_DETECTOR,
+    CWM_WAKE_UP_VIRTUAL_GYRO,
+    CWM_WAKE_UP_AIR_RECOGNITION,
+    CWM_WAKE_UP_PDR,
+    CWM_WAKE_UP_SENSOR_ID_END,
+}Cwm_WakeUp_Sensor_ID;
+
+typedef enum {
+    SPECIAL_ID_START = 4000,
+    META_DATA,
+    SYNC_SYS_REAL_TIME,
+    MCU_REINITIAL,
+    SPECIAL_ID_END,
+}MCU_TO_CPU_EVENT_TYPE;
+#endif  // INCLUDE_SENSORS_SENSORHANDLETHIRDPARTY_H_

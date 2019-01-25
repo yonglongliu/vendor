@@ -1,0 +1,4 @@
+Audio Record = audio_record 3 channels
+     Start Audacity on recorded sample     = audacity_recorded
+Music audio playback start = audio_playback
+Music audio playback stop = audio_playback_stop

@@ -1,0 +1,14 @@
+#include "nsISupports.idl"
+
+[scriptable, uuid(2f92aff7-79df-438c-b805-44e3f3804c87)]
+interface nsIImsConnManInterfaceLayer : nsISupports
+{
+    void init();
+};
+
+%{C++
+#define NS_IMSCONNMANINTERFACELAYER_CID { 0x0fcc6a13, 0xc660, 0x48b8, \
+  { 0xae, 0x8d, 0xcf, 0x09, 0x93, 0x7b, 0x69, 0xe6 } }
+
+#define IMSCONNMANINTERFACELAYER_CONTRACTID "@mozilla.org/ImsConnManInterfaceLayer;1"
+%}

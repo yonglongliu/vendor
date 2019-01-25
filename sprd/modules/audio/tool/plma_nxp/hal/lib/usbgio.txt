@@ -1,0 +1,7 @@
+the file usbgio_api_x64.lib is the release x64 build in:
+ https://portal.thesycon.de/svn/nxp-plma/USBDevice_LPC43xx/trunk rev 98
+
+the file usbgio_api.lib is the release Win32 build in:
+ https://portal.thesycon.de/svn/nxp-plma/USBDevice_LPC43xx/trunk rev 165
+ 
+The sln file is: https://portal.thesycon.de/svn/nxp-plma/USBDevice_LPC43xx/trunk/UsbGio_PC_vs2010.sln

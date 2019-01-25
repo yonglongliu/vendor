@@ -1,0 +1,24 @@
+LIBRARY Tfa98xx_hal.dll
+EXPORTS
+NXP_I2C_WriteRead
+NXP_I2C_BufferSize
+NXP_I2C_Trace
+NXP_I2C_Trace_file
+NXP_I2C_rev
+NXP_I2C_Version
+NXP_I2C_GetPin
+NXP_I2C_SetPin
+NXP_I2C_Close
+NXP_I2C_Open
+NXP_I2C_StartPlayback
+NXP_I2C_StopPlayback
+NXP_I2C_Error_string
+NXP_I2C_Scribo_Name
+NXP_I2C_Interface_Type
+lxScriboVerbose
+lxDummyVerbose
+lxScriboNrHidDevices
+lxScriboWaitOnPinEvent
+lxScriboGetName
+NXP_TFADSP_Execute
+NXP_TFADSP_Init

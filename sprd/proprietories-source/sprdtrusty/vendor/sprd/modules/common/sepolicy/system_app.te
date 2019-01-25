@@ -1,0 +1,12 @@
+# for Fingerprint feature
+allow system_app fp_file:dir { create write add_name remove_name read open search getattr rmdir setattr };
+allow system_app fp_file:file { unlink getattr setattr create write open read rename };
+allow system_app fp_launchapp_file:dir { create write add_name remove_name read open search getattr rmdir setattr };
+allow system_app fp_launchapp_file:file { unlink getattr setattr create write open read rename };
+
+#add for fpsensor fingerprint test socket connection
+allow system_app fingerprintd:unix_stream_socket {connectto read write};
+allow system_app fpsensor_test_file:sock_file { write };
+allow system_app fpsensor_test_file:dir { search };
+allow system_app fingerprintd:fd {use};
+allow system_app fingerprint_service:service_manager {add};

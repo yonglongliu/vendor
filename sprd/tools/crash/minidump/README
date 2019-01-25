@@ -1,0 +1,8 @@
+Minidump
+1. Build symbols (symbols will put into "out/target/product/<board>/obj/objdir-gecko/dist/crashreporter-symbols/")
+make buildsymbols
+
+2. Pull raw file of minidump, dumpfile (xxx.dmp) and extra file will save under “/data/b2g/mozilla/Crash Reports/pending/” if you didn't send them to server
+ 
+3. Using minidump_stackwalk to parse dump raw file to readable dump_result.txt
+./minidump_stackwalk xxx.dmp objdir-gecko/dist/crashreporter-symbols/ > dump_result.txt

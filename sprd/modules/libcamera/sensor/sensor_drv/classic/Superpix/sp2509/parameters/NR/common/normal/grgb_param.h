@@ -1,0 +1,377 @@
+/*versionid=0x00080006*/
+/*maxGain=0.00*/
+/*param0.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x001A,
+	/*diff_thd*/
+	0x0050,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param1.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0028,
+	/*diff_thd*/
+	0x0078,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param2.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0028,
+	/*diff_thd*/
+	0x0078,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param3.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0028,
+	/*diff_thd*/
+	0x0078,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param4.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0028,
+	/*diff_thd*/
+	0x0078,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param5.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0028,
+	/*diff_thd*/
+	0x0078,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param6.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0028,
+	/*diff_thd*/
+	0x0078,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param7.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0028,
+	/*diff_thd*/
+	0x0078,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param8.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0028,
+	/*diff_thd*/
+	0x0078,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param9.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0028,
+	/*diff_thd*/
+	0x0078,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param10.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0028,
+	/*diff_thd*/
+	0x0078,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param11.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0028,
+	/*diff_thd*/
+	0x0078,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param12.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0028,
+	/*diff_thd*/
+	0x0078,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param13.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0028,
+	/*diff_thd*/
+	0x0078,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param14.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0028,
+	/*diff_thd*/
+	0x0078,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param15.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0014,
+	/*diff_thd*/
+	0x003C,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param16.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0014,
+	/*diff_thd*/
+	0x003C,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param17.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0014,
+	/*diff_thd*/
+	0x003C,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param18.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0014,
+	/*diff_thd*/
+	0x003C,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param19.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0014,
+	/*diff_thd*/
+	0x003C,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param20.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0014,
+	/*diff_thd*/
+	0x003C,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param21.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0014,
+	/*diff_thd*/
+	0x003C,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param22.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0014,
+	/*diff_thd*/
+	0x003C,
+	/*grid_thd*/
+	0x0FFF,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param23.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0000,
+	/*diff_thd*/
+	0x0000,
+	/*grid_thd*/
+	0x0000,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,
+/*param24.&BasePoint=1&*/
+/*sensor_grgb_v1_level*/
+{
+	/*edge_thd*/
+	0x0000,
+	/*diff_thd*/
+	0x0000,
+	/*grid_thd*/
+	0x0000,
+	/*reserved*/
+	0x0000,
+	/*bypass*/
+	0x00000000,
+}
+,

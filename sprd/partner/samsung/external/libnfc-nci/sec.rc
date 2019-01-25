@@ -1,0 +1,6 @@
+on post-fs-data
+    #Create for samsung nfc
+    chown nfc nfc /dev/sec-nfc
+    chmod 0770 /dev/sec-nfc
+    mkdir /data/nfc 0770 nfc nfc
+    setprop ro.hardware.nfc_nci sec

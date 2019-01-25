@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<PROVISION>
+    <ACCOUNTINFO>
+        <StaticIp>192.168.0.168</StaticIp>
+        <PreTunnelIp1>www.bing.com</PreTunnelIp1>
+        <PreTunnelIp2>www.google.com</PreTunnelIp2>
+        <PreTunnelIp3>www.baidu.com</PreTunnelIp3>
+        <bUseIpv4Pri>0</bUseIpv4Pri>
+        <bSuptMobike>1</bSuptMobike>
+        <bSuptPrePing>0</bSuptPrePing>
+        <bDNSIpv4Pri>0</bDNSIpv4Pri>
+        <bDNSCache>0</bDNSCache>
+        <IkeDscp>48</IkeDscp>
+    </ACCOUNTINFO>
+    <AUTHINFO>
+        <EncrType>AES_CBC</EncrType>
+        <EncrKeyLen>128</EncrKeyLen>
+        <IntegType>HMAC_SHA1_96</IntegType>
+        <PrfType>HMAC_SHA1</PrfType>
+        <DHType>DHGROUP_1024</DHType>
+        <IpsecEncrType>AES_CBC</IpsecEncrType>
+        <IpsecEncrKeyLen>128</IpsecEncrKeyLen>
+        <IpsecIntegType>HMAC_SHA1_96</IpsecIntegType>
+        <AuthType>EAP_AKA</AuthType>
+    </AUTHINFO>
+    <PAYLOADINFO>
+        <Apn>IMS</Apn>
+        <ConfigReq>SPIRENT</ConfigReq>
+    </PAYLOADINFO>
+    <TIMEINFO>
+        <IpsecRekeyTime>86400</IpsecRekeyTime>
+        <IkeRekeyTime>86400</IkeRekeyTime>
+        <RekeyJitter>1800</RekeyJitter>
+        <ReauthTime>86400</ReauthTime>
+        <TriesTime>5</TriesTime>
+        <DpdTime>120</DpdTime>
+        <NatKeepAliveTime>20</NatKeepAliveTime>
+        <ResendTimerType>0</ResendTimerType>
+        <ResendTime>2</ResendTime>
+    </TIMEINFO>
+</PROVISION>

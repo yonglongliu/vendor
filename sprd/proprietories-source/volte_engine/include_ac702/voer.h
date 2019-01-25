@@ -1,0 +1,26 @@
+/*
+ * THIS IS AN UNPUBLISHED WORK CONTAINING D2 TECHNOLOGIES, INC. CONFIDENTIAL
+ * AND PROPRIETARY INFORMATION.  IF PUBLICATION OCCURS, THE FOLLOWING NOTICE
+ * APPLIES: "COPYRIGHT 2004-2010 D2 TECHNOLOGIES, INC. ALL RIGHTS RESERVED"
+ *
+ * $D2Tech$ $Revision: 1381 $ $Date: 2006-12-05 14:44:53 -0800 (Tue, 05 Dec 2006) $
+ */
+
+#ifndef _VOER_H_
+#define _VOER_H_
+
+#ifndef INCLUDE_VOER
+
+#define VOER_init() (OSAL_SUCCESS)
+#define VOER_shutdown() 
+
+#else
+
+OSAL_Status VOER_init(
+    void);
+
+OSAL_Status VOER_shutdown(
+    void);
+
+#endif
+#endif

@@ -1,0 +1,26 @@
+# make sure that the environment variables ARCH and CROSS_COMPILE
+# are set for your architecture and cross compiler
+#
+# e.g. for Beaglebone black:
+# export ARCH := arm
+# export CROSS_COMPILE := arm-linux-gnueabihf-
+#
+# e.g. Samsung Galaxy S6:
+# export ARCH := arm64
+# export CROSS_COMPILE := aarch64-linux-android-
+
+# setup for Android
+ARCH=arm
+KDIR=$(AOSP)/kernel
+CROSS_COMPILE=$(AOSP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin/arm-eabi-
+
+obj-m += tfatap.o
+
+MAKEARCH := $(MAKE) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE)
+
+all:
+	$(MAKEARCH) -C $(KDIR) M=$(PWD) modules
+
+clean:
+	$(MAKEARCH) -C $(KDIR) M=$(PWD) clean
+

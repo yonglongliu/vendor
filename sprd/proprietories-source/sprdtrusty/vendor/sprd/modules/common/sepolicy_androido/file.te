@@ -1,0 +1,3 @@
+type ss_file, file_type, data_file_type;
+# for rpmb server
+type rpmb_socket, file_type, mlstrustedobject;

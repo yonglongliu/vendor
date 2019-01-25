@@ -1,0 +1,7 @@
+#add for fpsensor fingerprint test socket connection
+allow system_app hal_fingerprint_default:unix_stream_socket {connectto read write};
+allow system_app fpsensor_test_file:sock_file { write };
+allow system_app fpsensor_test_file:dir { search };
+allow system_app hal_fingerprint_default:fd {use};
+#allow system_app fingerprint_service:service_manager {add};
+allow system_app fpsensor_service:service_manager {add};

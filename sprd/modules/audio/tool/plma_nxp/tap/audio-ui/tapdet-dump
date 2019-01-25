@@ -1,0 +1,41 @@
+#!/bin/bash
+
+CL="sudo /home/ubuntu/climax -dsysfs -l /lib/firmware/tfa9891-mono-demo.cnt --slave=0x36"
+
+# erase previous dump if any
+#[ -e "dump.txt" ] && rm dump.txt
+
+# Dump all interesting registers
+
+# NewTapFlag
+#$CL --xmem=0x122
+
+# flagTapPattern
+#$CL --xmem=0x10f
+
+# getGlitchs
+#$CL --xmem=0x120 >> dump.txt
+
+# tapPatternTime
+# $CL --xmem=0x110 >> dump.txt
+# $CL --xmem=0x111 >> dump.txt
+# $CL --xmem=0x112 >> dump.txt
+# $CL --xmem=0x113 >> dump.txt
+# $CL --xmem=0x114 >> dump.txt
+#$CL --xmem=0x115 >> dump.txt
+#$CL --xmem=0x116 >> dump.txt
+#$CL --xmem=0x117 >> dump.txt
+
+# tapPatternAmp
+# $CL --xmem=0x118 >> dump.txt
+# $CL --xmem=0x119 >> dump.txt
+# $CL --xmem=0x11a >> dump.txt
+# $CL --xmem=0x11b >> dump.txt
+# $CL --xmem=0x11c >> dump.txt
+#$CL --xmem=0x11d >> dump.txt
+#$CL --xmem=0x11e >> dump.txt
+#$CL --xmem=0x11f >> dump.txt
+
+
+# clear NewTapFlag
+#$CL --xmem=0x122 -w0

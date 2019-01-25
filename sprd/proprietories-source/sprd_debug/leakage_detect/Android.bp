@@ -1,0 +1,7 @@
+cc_library_shared {
+
+    name: "libleakdetect",
+    shared_libs: ["libcutils"],
+    srcs: ["SocketInfo.cpp"],
+
+}

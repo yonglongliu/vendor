@@ -1,0 +1,4 @@
+service gnss_download /vendor/bin/gnss_download
+    class core
+    user system
+    group system shell

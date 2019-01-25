@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RoutingTable>
+<Route Type="SecElemSelectedRoutes">
+<Proto Id="IsoDep" SecElem="01" SwitchOn="true" SwitchOff="true" BatteryOff="false"/>
+<Tech Id="NfcA" SecElem="01" SwitchOn="true" SwitchOff="true" BatteryOff="false"/>
+<Tech Id="NfcB" SecElem="01" SwitchOn="true" SwitchOff="true" BatteryOff="false"/>
+</Route></RoutingTable>

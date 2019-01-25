@@ -1,0 +1,424 @@
+
+[artf168462] : The climax executable from our Android build is broken 
+﻿[artf163382] : [TAP] When cold start chip and go directly to tap profile, it would cause NULL pointer crash
+[artf168160] : 72: SWPROFIL not correctly being set
+
+v2.10.1 (2016-wk02)
+[artf127181]: Fix for volumestepping with vstep with messagetype 3 in it
+[artf155444]: Fixxed some errors/warnings found by cppcheck
+
+v2.10.0 (2016-wk02)
+[artf156576]: Applying filters (primary, secondary or both) for 88 did not work correct with calibrate and when switching profile
+
+v2.9.4 (2016-wk01)
+[artf156383]: Fix filterCalculations
+[artf156383]: Bug fix creating container files. The first item for the second device had a incorrect device ID!
+[artf58832] : all response udp reads made blocking; cleanup verbose & warnings
+[artf156116]: resolved 9 coverty warnings.
+[artf156383]: Fix multiple issues with MBDRC, and fix Filters for 88
+[artf124422] : added hostname lookup to linux udp
+[artf110593] : added hex input parsing for pins
+[artf110593] : udp set pin and getversion implemented
+[artf110593] : added hex inpt to pin set cmd
+[artf110593] : udp get pin implemented
+
+v2.9.3 (2015-wk51)
+[artf109128] profile switch on internal clock: set SBSL in driver
+[artf109128]: Switch profile with internal clock (osc1m)
+[artf154468]: Fix save issue XML id for vstep
+[artf155387] tfa98xx: check the sample rate for every profile, not only for profiles with a vstep
+[artf155379]: Resolve valgrind warnings for --diag.
+[artf154697]: Resolved android marshmallow build warning.
+[artf155038]: Resolved coverty warnings.
+[artf123859]: Fix MBDRC channels problem for 88
+[artf153695] fix tfaContGetDevList error parameter check
+[artf153535] added channel to AlsaMixerControl plugin
+[artf148009]: Use variable for dynamic buffer size.
+
+v2.9.2 (2015-wk50)
+[artf153696]: Fix the calibrate=once climax crash. Fix the .standby suffix
+[artf126911]: Added reading & writing bitfields without a container file. (Example: --slave=0x36 --tfa=0x80 VOL=3).
+[artf123859]: Calibrate switches to safe profile when .cal profile is found
+
+v2.9.1 (2015-wk49)
+[artf153294]: New order of filters for the 88
+[artf153294]: update the calibration to allow calibration with a specific profile given
+[artf153294]: Fix the profile switching from powerdown state
+[artf148434] fixed copying of .dll's to right windows output dir
+[artf148434] added the windows side channel function to lxScribo
+[artf148415]: Fix --dump option for bug with DCMCC bitfield
+[artf127183]: Implementation of interrupt with writing the filters 91
+[artf127183]: Filter workaround write during warmboot
+[artf112794]: Implement SB1.x filters for 88!
+[artf139559] added administration of profile switching in linux driver
+[artf124411]: Fixxed the buffer overflow problem for dumpmodel option
+
+v2.9.0 (2015-wk46)
+[artf126301]: Implement the trap&patch way for 88. 
+[artf126960]: Implement filter workaround for the 91.
+[artf126943]: Fix append_substring bug in tfa server dll.
+
+v2.8.3 (2015-wk45)
+[artf126405]: Fix --diag calibration test by no longer comparing Ohms with mOhms.
+[artf123446]: Fix 91 calibration issue by opening key2
+[artf111404]: fix for filters during coldstart
+[artf122764] updated USBGIO libs for reduced HID report size
+[artf124137]: Play music in bypass when calibration fails
+[artf111404]: Fix for 91 start calibration issue
+[artf123553]: Added a diag test to compare features in MTP and the cnt file.
+[artf114337]: Climax now uses dynamic buffer to dump bigger cnt filename.
+[artf122694]: New flow for profile switching max1/max2
+[artf122688]: Implement calibration check individual speaker N1C
+[artf109095]: Added features keyword implementation to climax.
+[artf110406]: Never make it possible to exit reset without close
+[artf113079]: Implement the noinit in the cold startup flow.
+[artf122159]: Be able to write, dump and add header for the new max2 vstep file
+
+v2.8.2 (2015-wk42)
+[artf107734]: Added selftest for broken speaker (88 only).
+[artf112863]: Updated the example code with an example for reading out a livedata value.
+[artf114432]: Load profile items in the order they are added
+[artf114432]: Fix patch version check
+[artf114462]: Fixes for 90 device volume loading
+
+v2.8.1 (2015-wk41)
+[artf113502]: When MTPOTC=1 we get calibration values from MTP. Else get them from speakerboost!
+[artf110738]: Implement the new filter settings (91), remove the last warning in windows build
+[artf113696]: Make it possible to write xmem, ymem or iomem with the ini file
+[artf112794]: Add new DRC max comGainDB to limit the gain
+[artf113502]: Set profile also when calibrating, catch error when calibration fails, reduce time when calibrate=once fails
+[artf111404]: Set vstep value, fix bypass startup crash 91
+
+v2.8.0 (2015-wk40)
+[artf113080] updated external audio detection by gpio probe for LPC4337
+[artf112821] added android marshmallow build to build.sh (used by RTF)
+[artf94186]: Changed the name of function tfaCheckStringLength() into  tfa_append_substring() 
+[artf111404] : update tfa layer to load patches from profile
+[artf111404] : added HAL for 8bits
+[artf111404] : changed time and device name
+[artf111404]: Adding the audio-ui demo + my uinput tap simulation
+[artf111404] : added dummy input driver
+[artf111138]: Added the single DLL project solution. (service, tfa and hal layer combined).
+[artf108186]: Added Climax set bitfield with --slave option.
+[artf110005] set SAAMGAIN default to +25dB
+[artf84969]: Added code comments for doxygen.
+[artf110503]: Change dumpmodel to speed up smartstudio.
+
+v2.7.3 (2015-wk36)
+[artf109344]: Fix calibrate=once issue
+[artf93579]: Fixed bug in tfa1 bitfield lookup
+[artf93579]: Fixed bug in get_sample_rate_info()
+[artf110503]: Change srv layer functions to speed up smartstudio!
+[artf110507]: Update code with N1C fieldnames
+[artf110738]: Filtersettings for the 91 need update
+[artf110675]: Increase PLL timeout time
+[artf85663]: connected audio source info added to climax --versions --> This requires the new 1.2.6 LPC firmware!
+
+v2.7.2 (2015-wk34)
+[artf104301]: Fix 90 startup problem
+[artf102959]: Complete change of the record function (max1 and max2) to make it more future proof
+[artf102959]: Cleanup of the ini2cnt for max1
+[artf102959]: Fix profile switching for max1 (90)
+[artf107265]: dummy: added pins and version string return
+[artf107265]: added NXP_I2C_Open and changed lxSCribo un/register dependency
+[artf107265]: dummy: add print to pins
+[artf107909]: Fix dump of registers, xmem, iomem, ymem and versions
+[artf107223]: on 97 reset the DSP after loading the delay tables
+[artf107948]: Fix the save function for speaker, vstep and drc for max2
+[artf97389]:  adding delay tables for every sample rate for the 88 device. Also added a check when switching profiles to write the delay tables
+[artf88319]:  Change print when reading or writing bitfield
+[artf88319]:  Add mute for max1 when calling --stop
+[artf107771]: Add slave error when having wrong slave/cnt file, return proper error from probe
+[artf107944]: ini2cnt does now work without --tfa
+[artf108693]: SB1.0x: update the x/ymem for TFA9891
+[artf108693]: Fix BQ_1.b2/b1 and b0 by removing negative scalefactor
+[artf86095]:  Allow profile names as string, allow multiple profiles on the same line
+[artf109125]: add VIRT_BOARD_RESET (virtual gpio pin) to reset the target LPC board
+
+v2.7.1 (2015-wk31)
+[artf104956]: run Temporary Workaround Ticket PLMA4446 only for tfa2
+[artf105928]: Fix a bug in record function
+[artf105928]: remove exit(1) and replace with return
+[artf104956]: tfa_get_swprof was not always returning proper prof in repeated calls
+[artf104956]: print NONE in verbose if profile = -1
+[artf104956]: disabled speaker data check in diag for 91
+[artf104767]: fix permission problems when trying to read container file from other user (no write permissions)
+[artf105223]: Workaround for calibrate=once
+[artf105223]: add memtrack max item check
+[artf105341]: check for an invalid profile mixer value
+[artf105223]: fix kernel crash in tfa_start() at cold start (active_profile = -1)
+[artf105223]: Add profile to calibrate function.
+[artf105223]: Fix the ini2cnt with bitnames!
+[artf104767]: fixed feature bits for max1 types
+[artf104767]: fixed windows path functions
+[artf104956]: enabled more bytes in diag speaker test
+[artf104956]: added error check return after clicommands
+[artf102959]: Set HID as default
+[artf104902]: fixed saving profile and vstep into shadow in mtp for max1
+[artf104767]: fixed bug in return of error in patch dev lookup
+
+v2.7.0 (2015-wk30)
+[artf104608]: Fix calibrate once
+[artf104608]: fix calibrate always flow
+[artf104608]: fix profile save when calibrate
+[artf103528]: added get hw features function 
+[artf103528]: invalidate cached values
+[artf103528]: initial cleanup for bitnames in dummy
+[artf103528]: fixed tfaContBfEnumAny() calls
+[artf103528]: big cleanup if tfa_debug.c unused code
+[artf103528]: cleanup if bitfield lookup
+[artf103528]: added early lookup of device type
+[artf103528]: added tfaContBfEnumAny for parser
+[artf103528]: adding saam feature for tfa9891
+[artf103528]: added missing registered call in dummy lxscriboe to fix version crash for -V 
+[artf103528]: added SAAM feature printout for -V 
+[artf103528]: defined saam enums and extended local handles struct 
+[artf103528]: added tfa98xx_supported_saam() function 
+[artf103528]: added initial code for get feature caching 
+[artf103528]: check clock in get_feature function
+[artf104301]: Fix the dumpmodel bug for tfa9888
+
+v.2.6.1 (2015-wk30)
+[artf104301]: Fix the tfa2 dumpmodel bug 
+
+v.2.6.0 (2015-wk29)
+[artf103528]: added tfa9891 include file
+[artf103528]: cleanup of bitfield lookups and tables
+[artf103528]: added --tfa=0xREV for max1 support
+[artf103528]:  added tfa9891 tables
+[artf104148]: Fix the diag for N1B(3)
+[artf104148]: Add N1B3 specific optimal settings
+[artf104045]: reduce system load by avoiding busy-wait loops
+[artf99008] : Bug fix for the print register & dump function
+[artf103528]: 91 updates (running diag)
+[artf102959]: Cleanup of the record function
+[artf102959]: Implementation of dumpmodel for max1. (Also cleanup of the code, using malloc for buffer allocation)
+[artf103511]: Profile switching while we are waiting for NOCLK
+[artf94920]: It is possible to start-up with CF in bypass
+[artf102959]: Working record for the 90 device (This means the function for max2 record are slightly changed!)
+[artf102959]: Use dev_type for all files in serviceLayer
+[artf102959]: add error returns for tfaContWriteVstepMax2 to catch error
+
+v.2.5.7 (2015-wk28)
+[artf102902]: Fix for the calibration issue when speakers are > 16 ohm
+
+v.2.5.6 (2015-wk28)
+[artf103035]: Serious issues found in the MTP for calibrate=once! Workaround created, but only up to 16ohm speakers!
+[artf102959]: Fix spkr file warning for tfa1 devices
+[artf102959]: Cleanup bitfield print for tfa1 devices
+[artf102959]: Fix the calibrate always & once for the 90 device
+
+v.2.5.5 (2015-wk28)
+[artf102895]: Remove AMPINSEL and dsp stable wait from tfa2_cf_powerup
+[artf102755]: the algoparams and mbdrc RPC messages need to be force to be 'without reset' when SBSL=0
+[artf100503]: Allow bitfields and registers to be set after a file
+[artf100169]: Add KEY2 unlock to calibration once
+[artf100169]: Cleanup and modify the calibration sequence
+[artf100170]: Remove max2 device specific defines
+
+v.2.5.4 (2015-wk26)
+[artf99351]: Fix record with 50 memtrack items (crach with count, and not correct 50th value)
+[artf99351]: Fix vbatFactor with an S added --> SetvBatFactors
+
+v.2.5.3 (2015-wk26)
+[artf98876]: Fix 0.0 values for calibrate once
+[artf98876]: Fix tfa_cnt_get_devid by adding checkadress
+[artf95170]: Optimal settings v17
+[artf98027] added patch header revid checking
+[artf95170] N1B updates : fix calibration always
+[artf98978]: Change pins error message when using reset pin (moved from clicommands to climax.c)
+[artf98979]: Fix debug 64 build issue
+
+v.2.5.1 (2015-wk26)
+[artf95170]: added v15 N1B1,2 optimal settings
+[artf95172]: fixed dummy POR value for 0x10/status0
+[artf98666]: Fix diag
+[artf95170]: sync with git
+[artf95170]: error: ‘spkr_count’ may be used uninitialized in this function
+
+v.2.5.0 (2015-wk25)
+[artf95170] N1B updates
+ - fixed default to N1B variant build
+ - return with Tfa98xx_Error_Bad_Parameter error if wrong type
+ - remove key1 unlock to N1A only
+ - added v14 N1B optimal settings
+ - refactored N1B and N1A parts
+[artf95168] update to N1B ini file for four usescases. 
+[artf85904]: Added SWVSTEP and SWPROFIL to register 0xF0 and use these to store profile and vstep.
+[artf95168] update to N1B, removed DATASHEET names not used in N1B anymore 
+[artf97416] added pin VIRT_I2S_32FS_ENABLE to climax
+[artf76441] rename directory to indicate that these tests are v1.x specific
+[artf95168] in case I2C_SLAVE is already defined, then 0x0706 is not assigned when I2C_FORCE is set
+[artf95168] update to N1B preprocessor fix for windows visual studio project files and builds
+[artf89790] SConstruct: add a full static build for climax (can be used to create an executable for Android)
+[artf94920]: Change printing of max1 devices to only print 1 channel calibration value
+[artf95168] : added extra_ccflags option to pass CCFLAGS to scons
+[artf95168] : swapped order of load patch diag and dsp reset response test; patch must be first for N1B
+[artf95168] : added I2C_FORCE build flag for i2c ioctl forcing
+[artf94920]: N1B fieldnames update V14
+[artf94920]: N1B (samsung demo) ini file
+
+v.2.4.2 (2015-wk23)
+[artf95060]: Refine all the defines (N1A, N1A1, N1A12 and N1B)
+[artf95060]: Fix issue with N1B MANSTATE check
+[artf95060]: Allign error return codes with tfa_error from tfa.h
+
+
+v.2.4.1 (2015-wk23)
+-- artf95065: add manager state information to verbose option when using --start or --profile
+-- artf95059: Add defines around N1A code
+-- artf94921: Dump correct datasheet names when using --dump for max1 devices
+-- artf94921: Dump correct datasheet names when using --register for max1 devices
+-- artf94919: Added tfa98xx_set_live_data for recording memtrack items
+-- artf94882: Fix the windows 32 build
+-- artf94366: If you add --count to the dumpmodel command you get an array listing the values per frequency
+
+v2.4.0 (2015-wk21)
+-- artf93696: It is allowed to run --diag with slave option (up to test 8)
+-- artf93696: It is not allowed to run --record with slave option
+-- artf93696: If DSP is not running record wont work
+-- artf91431: Issue fixed when libtfa98xx.so causes seg. fault when non existing target is queried using Scribo over UDP
+-- artf93580: Add Doxygen API description for live data and come code style fix
+-- artf93626: Implement / enable DRC and EQ files inside the cnt file
+-- artf93626: Able to print vstep files with 3 messages
+-- artf90134: handle vstep file with multiple registers
+-- artf93558: It is possible to create a cnt file without a patch for tfa2
+-- artf93558: Settings parameters is not allowed if the profile is also in a GROUP
+-- artf93558: Allow setting parameters inside a profile
+-- artf85487: Integrate DRC plotting
+-- artf86506: recorded loaded profile and vol step in the MTP register F0 making currentprof obsolete
+-- artf89165: Create a place holder inside the ini/cnt file to store info data (for example GUI data from smartstudio)
+-- artf90108: Boost converter current limit needs factory trimming inside the init
+-- artf89849: Change ini2nct regarding relative/absolute path only save filename
+-- artf89849: Extent splitparms to take relative path or absolute paths as argument
+-- artf89836: Add units to the speaker file header
+-- artf89971: Set speaker count when using mono cnt
+
+v2.3.3	(2015-wk17)
+-- artf88798: Dsp message status -1 bug fixed
+-- artf85486: Implement SetMBDrc and GetMBdrc
+-- artf85904: Binairy dump of the cnt are now the same when using the same ini file. 
+-- artf78414: Introduced profile grouping in the ini/cnt file to manage profile transition behaviour
+-- artf89239: allow to monitor up to 50 XML parameters via memtrack
+-- artf87535: Introduce cmd= ini option for selector commands
+-- artf80570: Allow to add and set bit names in the ini file
+-- artf85599: clear count_boot at coldstart
+-- artf75922: Fix bug modifying the version of the header in combination with --tfa
+-- artf88798: Fix dsp msg status error (when using calshow or record)
+-- artf88503: update the speaker file header to support two speaker resistance (required new speaker file, and cnt file)
+
+v2.3.2	(2015-wk15)
+-- artf87306: Re25 calibration fails at industrialy calibrated samples, update for Key1
+-- artf81942, artf69104: enable/disable i2s output at start/stop for TFA1 devices without TDM
+-- artf84957: pin numbers can now also be set as names, e.g. GPIO_LED_BLUE
+-- artf88037: Change error to warning from calibration
+-- artf88037: Fix --speaker command when using calshow
+-- artf87478: Calibrate once is waiting for MTPB and MTPEX when performing a calibrate=once
+-- artf87478: Get the Device ID from the patch file
+-- artf82572: add Makefile to build the subset of the sources used by the future Linux kernel driver
+-- artf82572: remove  linux_driver/.tmp_versions
+-- artf82572: add PRINT_ASSERT for compiling for Linux kernel in dbgprint.h
+-- artf84984: put hid libraries in a platform (Linux-x86_64) specific directory
+-- artf82572: replace floating point calculations in tfa_container.c
+-- artf85655: added tfa1 and tfa2 specific register names
+-- artf84970: add tfa1 enum tables
+-- artf84970: update register fields to be able to use tfa1/tfa2 bitfields on climax commandline
+
+v2.3.0	(2015-wk11)
+First release with the Architecture improvements/modifications targeted to tfa9888 N1A12
+-- artf81740: coldstart OSC1M implemented (startup without audio)
+-- artf81740: replace all reg/bit access by get/set bf
+-- artf81740: add tfa1/2 full register get/set
+-- artf81941: If the bitfield oldvalue read back from the device is the same as the new value we do not overwrite
+-- artf81941: define/implement monitor error check functions
+-- artf80334: Execute proposed TFA98xx Architecture improvements
+-- artf81481: Re-arrange / re-partition tfa files 
+-- artf66306: prepare for tfa1/tfa2 mixed types
+-- artf66306: Handle diffs in register map
+-- artf66306: Dynamic registration of device specific handling
+-- artf66306: handle diffs in family specific startup and transition flow
+-- artf66306: Partition user mode only and user/kernal code
+-- artf66306: leave all calculation and generation in user only
+-- artf66306: driver part only passes data
+-- artf66306: driver part handle devices specifics and DSP interaction
+-- artf66306: optimize HostSDK for better integration
+
+v2.2.4	(2015-wk09)
+NOTE: We are aware the current "coldstart" is not optimal. Register settings in the profile used at coldstart will not be loaded. 
+-- artf79970: New optimal settings implemented in the startup for N1A
+-- artf66306: fix dummy for proper powerdown tracing
+-- artf81116: implement lxScriboUnRegister(), replaces close functionality in tfa98xx_close()
+-- artf79474 (PLMA4050): add i2c scanning functions to diagnostics
+-- artf79474: lxHid.c: don't return -1, instead set the error code: fixes a crash when scanning i2c addresses
+-- artf79474: add function lxHidScan() to return the number of available hid devices
+-- artf79474: hid: if already open then close it first
+-- artf80942: change --start command behavior
+-- artf79970: Enable livedata for I2C registers -> NOTE: The cnt file needs to be recreated. (We have to do a ini2cnt with --max=2)
+-- artf66306: fix generated code brackets
+-- artf66306: fixed calibration done xmem[516]
+-- artf79767: implement socket under windows
+-- artf80327: modifications startup sequence + build fix lxdummy include
+-- artf78167: lxScriboRegister('hid') now returns 0 on success
+-- artf66306: updated dummy for N1A12, to print bitnames and undefined regs
+-- artf78167: multiple lxScriboRegister now works, added check on already opened device
+-- artf78167: removed usbgio_api.dll copy in static build
+
+v2.2, (2015-wk07)
+-- artf79655: Adding a DSP reset before init and remove the reset before writing files
+-- artf79655: Removing the digital mute
+-- artf78167: removed error after SetPin cmd
+-- artf79329: support strings in ini file for mode: normal=0, rcv=1
+-- artf78167: usbgio_api is now statically linked against the tfa98xx_hal
+-- artf79311: Fix calibrateDone when only 1 speaker is attached
+-- artf79311: unlock / lock A1 to clear MTPEX (recalibrate once)
+-- artf79311: Reset MTP for calibrate=once
+-- artf79311: Startup sequence is improved
+-- artf79311: Remove of the ACS "Hack" for N1A
+
+v2.1, (2015-wk05)
+-- artf77805: Implement diagnostic test to verify profile parameters
+-- artf78367: Export tfa98xx_read_data in Tfa98xx_2.dll
+-- artf78167: Version option in climax now returns LPC device serial number
+-- artf77806: Profile switching implemented
+-- artf77150: create new default section within profiles 
+-- artf66306: fixed max2 dummy startup/calibration done
+-- artf76895: added the sycon HID library to the max2 HAL (x64 only)
+-- artf69695: replace --vstep option with --volume
+-- artf73433: Container files are now checked by there version
+-- artf75643: Removed the retries when calibrating
+-- artf75636: tfa98xx_dsp_mem_write overwrites bits
+-- artf75601: implement use-case 1 (ringtone) in container file 
+-- artf75925: Implement get- and setMemory (--rpc command)
+-- artf75925: Implement --xmem, --ymem and -iomem
+-- artf75479: Create get/set Coef functions for SmartStudio
+-- artf75334: Create option to enable configurations for individuale channels (--speaker)
+-- artf69194: stop puts device from operation to powerdown state
+-- artf75066: livedata dsp crashes after nonfatal error
+
+v2.0, (2014-wk44)
+-- artf73433: max1 and max2 container files now have different versions
+-- artf69759: CRC is now checked for every file when creating ini file
+-- artf73081: climax --pin command does now work on windows
+-- artf73394: Unable to create/print old cnt files solved
+-- artf69556: allows SetGains, SetSensesDelay and SetSensesCal in container file
+-- artf62467: create new ini keywords: inputsel, outputsel, progmconfig
+-- artf69694: download vstep messages to the dsp
+-- artf65584: extend the --record to use the memtrack section specificed in the cnt file
+-- artf72930: livedata functions cleanup and update
+-- artf69100: save for Max2 speaker
+-- artf69623: Update I2C_list to print correct datasheet names
+-- artf62545: support memtrack in ini file
+-- artf61604: introduce --maximus to allow user to distinguish the types of maximus files for climax commands
+-- artf65582: A .cnt file with memtrack should be able to be printed
+-- artf62838: allow to download max2 speaker file
+-- artf68146: Cleanup max2 branch
+-- artf73022: Create a raw_data function for livedata
+-- artf66307: extend --dumpmodel for Max2 to dump Xf and Zf
+-- artf66212: Fix memtrack section in the ini file
+-- artf62944: Fix the diag for max2
+-- artf67509: Get Re25C working for max2
+-- artf68545: handle buffer crash when loading a vstep file
+-- artf69318: read the FW API FW from xmem and publish it with -V option
+-- artf57085: ini file register patch key reverses mask and value
+-- artf58354: Provide new FW API to set LagW parameter
+-- artf69695: --volume works only in combination with --start or --params, --vsteps is removed

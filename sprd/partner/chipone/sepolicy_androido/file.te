@@ -1,0 +1,3 @@
+#add for chipone fingerprint test
+type fpsensor_test_file, file_type, data_file_type;
+

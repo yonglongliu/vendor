@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AccountSettings>
+    <!--
+    <operator spn="Example" mcc="999" mnc="999" pingMaxCount="5" pingMinCount="1"
+        useIpsec="true/false" transportType="udp/tcp/auto" regPort="5060"
+        subscribeRegInfo="true/false" regExpiresTime="600000" regSubscribeTime="600000"
+        authType="AKA/Digest" uriFormatType="sip/tel" userAgent="VOWIFI UA"
+        preconditionEnabled="true/false" voiceCodecSupport="AMR,AMR-WB,PCMU,PCMA"
+        videoCodecSupport="H264,H265,VP8,VP9" videoLevel="12" confFactoryUri="" xcapHostUri=""
+        voicePriority="AMR-WB-NO-OCTET-ALIGN,AMR-WB,AMR-NO-OCTET-ALIGN,AMR"
+        enableReasonHeader="true/false" />
+    -->
+
+    <operator spn="TRUE" mcc="520" mnc="000,004" transportType="udp"
+        confFactoryUri="sip:conf-factory.ics.mnc004.mcc520.3gppnetwork.org"
+        voicePriority="AMR-NO-OCTET-ALIGN,AMR,AMR-WB-NO-OCTET-ALIGN,AMR-WB" />
+    <operator spn="Reliance" mcc="405" mnc="872,874" pingMaxCount="5" pingMinCount="1"
+        transportType="udp" enableReasonHeader="true"/>
+    <operator spn="Spirent" mcc="001" mnc="001" pingMaxCount="0" pingMinCount="0" />
+    <operator spn="DTAC" mcc="520" mnc="005" videoLevel="22" />
+    <operator spn="AIS" mcc="520" mnc="003"
+        confFactoryUri="sip:conf@ims.mnc03.mcc520.3gppnetwork.org" />
+    <operator spn="Smartfren" mcc="510" mnc="009" transportType="tcp" useIpsec="true" />
+    <operator spn="EE" mcc="234" mnc="030,033" uriFormatType="tel" />
+    <operator spn="Vodafone" mcc="262" mnc="002,004,009,042" preconditionEnabled="true" />
+    <operator spn="YTLC" mcc="502" mnc="152" confFactoryUri="sip:conference-factory@yes.my"
+        preconditionEnabled="true" />
+    <operator spn="Claro PE" mcc="716" mnc="010" voiceCodecSupport="AMR-WB,AMR" />
+    <operator spn="Movistar" mcc="334" mnc="030" regExpiresTime="3600" preconditionEnabled="true"
+        confFactoryUri="sip:conference@factory.ims.movistar.mx" />
+    <operator spn="Telcel" mcc="334" mnc="020" preconditionEnabled="true" />
+</AccountSettings>
